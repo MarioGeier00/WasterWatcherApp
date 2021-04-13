@@ -14,5 +14,11 @@ namespace WasteWatcherApp
         {
             InitializeComponent();
         }
+
+        // Button für Scanner
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

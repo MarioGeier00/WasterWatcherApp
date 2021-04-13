@@ -4,21 +4,40 @@
              x:Class="WasteWatcherApp.MainPage">
 
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
+
+        <Label Text="Waste Watcher" HorizontalTextAlignment="Center" TextColor="black" FontSize="46" Margin="30"/>
+
+        <!-- 
+        Hier sollte ein Bild rein (zum testen), nur will er meinen Pfad nicht akzeptieren 
+        <Image 
+            Source="Recycle.png"
+            Grid.Row = "1"
+            WidthRequest="74" HeightRequest="74"
+            VerticalOptions="Center" Margin="0,0,0,0"
+            HorizontalOptions="Center">
+        </Image>
+        -->
+
+        <Label Text="Der tägliche Müllverbrauch in Deutschland liegt bei 457kg im Jahr, das bedeutet ungefähr 1,25kg Müll am Tag." FontSize="Title" HorizontalTextAlignment="Center" Padding="30,50,30,40"/>
+        <Label Text="Die App soll helfen deinen täglichen Müllverbrauch zu messen, damit du insgesamt weniger Müll produzierst." FontSize="16" Padding="30,0,30,0" HorizontalTextAlignment="Center"/>
         <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
         </Label>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <!-- middle controls -->
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="End">
+            <!-- bottom control-->
+            <Button
+                Clicked="Button_Clicked"
+                Text="Scan" 
+                BackgroundColor="Gray"
+                BorderWidth="1"
+                TextColor="white"
+                HorizontalOptions="CenterAndExpand"
+                Margin="20"
+            />
+        </StackLayout>
+
     </StackLayout>
 
 </ContentPage>
