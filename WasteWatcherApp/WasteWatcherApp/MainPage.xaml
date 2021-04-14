@@ -1,27 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WasteWatcherApp.MainPage">
+             x:Class="WasteWatcherApp.MainPage"
+             xmlns:local="clr-namespace:WasteWatcherApp"
+             BackgroundColor="black">
+
 
     <StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="Waste" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
+            <Image 
+                Source="https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-twotone-light-green.png"
+                Grid.Row = "1"
+                WidthRequest="50" HeightRequest="50"
+                VerticalOptions="Center" Margin="-5,0,-17,0"
+                HorizontalOptions="Center">
+            </Image>
+            <Label Text="Watcher" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
+        </StackLayout>
 
-        <Label Text="Waste Watcher" HorizontalTextAlignment="Center" TextColor="black" FontSize="46" Margin="30"/>
 
-        <!-- 
-        Hier sollte ein Bild rein (zum testen), nur will er meinen Pfad nicht akzeptieren 
-        <Image 
-            Source="Recycle.png"
-            Grid.Row = "1"
-            WidthRequest="74" HeightRequest="74"
-            VerticalOptions="Center" Margin="0,0,0,0"
-            HorizontalOptions="Center">
-        </Image>
-        -->
 
-        <Label Text="Der tägliche Müllverbrauch in Deutschland liegt bei 457kg im Jahr, das bedeutet ungefähr 1,25kg Müll am Tag." FontSize="Title" HorizontalTextAlignment="Center" Padding="30,50,30,40"/>
-        <Label Text="Die App soll helfen deinen täglichen Müllverbrauch zu messen, damit du insgesamt weniger Müll produzierst." FontSize="16" Padding="30,0,30,0" HorizontalTextAlignment="Center"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-        </Label>
+        <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="300"
+               BackgroundColor="black" Padding="0" HasShadow="True">
+            <Grid>
+                <StackLayout HeightRequest="150">
+                    <Image Source="https://images.pexels.com/photos/2409022/pexels-photo-2409022.jpeg"
+                    Aspect="AspectFill" Opacity="0.7"/>
+                </StackLayout>
+                <Label Text="Der Müllverbrauch pro Person in Deutschland liegt bei 457kg im Jahr, das bedeutet ungefähr 1,25kg Müll am Tag." 
+                   FontSize="20" 
+                   TextColor="white"
+                   FontAttributes="Bold"
+                   Margin="15"
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center"/>
+            </Grid>
+        </Frame>
+            
+        <Label Text="Die App soll helfen deinen täglichen Müllverbrauch zu messen, damit du insgesamt weniger Müll produzierst." 
+               FontSize="16" 
+               Padding="30,0,30,0" 
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               TextColor="white"
+               />
+        
         <StackLayout VerticalOptions="CenterAndExpand">
             <!-- middle controls -->
         </StackLayout>
