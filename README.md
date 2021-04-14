@@ -9,4 +9,4 @@ which can then be mapped to the corresponding CO2 emission.
 
 ### Technology and organization
 * <a href="https://dotnet.microsoft.com/apps/xamarin">Xamarin</a>
-* <a href="https://trello.com/b/fEUztwW5/waste-watcher>Trello Board</a>
+* <a href="https://trello.com/b/fEUztwW5/waste-watcher">Trello Board</a>
