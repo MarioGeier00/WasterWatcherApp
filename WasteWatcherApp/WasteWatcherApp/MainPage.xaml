@@ -9,15 +9,15 @@
     <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Label Text="Waste" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
-            <Image 
-                Source="https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-twotone-light-green.png"
-                Grid.Row = "1"
-                WidthRequest="50" HeightRequest="50"
-                VerticalOptions="Center" Margin="-5,0,-17,0"
-                HorizontalOptions="Center">
-            </Image>
+                <Image 
+                    Source="https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-twotone-light-green.png"
+                    Grid.Row = "1"
+                    WidthRequest="50" HeightRequest="50"
+                    VerticalOptions="Center" Margin="-5,0,-17,0"
+                    HorizontalOptions="Center">
+                </Image>
             <Label Text="Watcher" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
-        </StackLayout>
+    </StackLayout>
 
 
 
@@ -37,7 +37,7 @@
                    VerticalTextAlignment="Center"/>
             </Grid>
         </Frame>
-            
+
         <Label Text="Die App soll helfen deinen täglichen Müllverbrauch zu messen, damit du insgesamt weniger Müll produzierst." 
                FontSize="16" 
                Padding="30,0,30,0" 
@@ -45,9 +45,11 @@
                VerticalTextAlignment="Center"
                TextColor="white"
                />
-        
+
         <StackLayout VerticalOptions="CenterAndExpand">
             <!-- middle controls -->
+            <Label Text="Barcode:" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"></Label>
+            <Label x:Name="Barcode" TextColor="White" HorizontalTextAlignment="Center"  FontSize="30"></Label>
         </StackLayout>
         <StackLayout Orientation="Horizontal" VerticalOptions="End">
             <!-- bottom control-->
@@ -61,7 +63,5 @@
                 Margin="20"
             />
         </StackLayout>
-
     </StackLayout>
-
 </ContentPage>

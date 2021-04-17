@@ -16,9 +16,11 @@ namespace WasteWatcherApp
         }
 
         // Button für Scanner
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-
+            var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+            var result = await scanner.Scan();
+            Barcode.Text = result.Text;
         }
     }
 }
