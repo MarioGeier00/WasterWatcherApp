@@ -5,7 +5,6 @@
              xmlns:local="clr-namespace:WasteWatcherApp"
              BackgroundColor="black">
 
-
     <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Label Text="Waste" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
@@ -18,8 +17,6 @@
                 </Image>
             <Label Text="Watcher" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
     </StackLayout>
-
-
 
         <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="300"
                BackgroundColor="black" Padding="0" HasShadow="True">
