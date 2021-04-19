@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -30,7 +25,10 @@ namespace WasteWatcherApp
             {
                 var scanner = new ZXing.Mobile.MobileBarcodeScanner();
                 var result = await scanner.Scan();
-                Barcode.Text = result.Text;
+                if (result != null)
+                {
+                    Barcode.Text = result.Text;
+                }
             }
             else
             {
