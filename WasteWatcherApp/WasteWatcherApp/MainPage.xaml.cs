@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Net.Http;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -28,12 +30,26 @@ namespace WasteWatcherApp
                 if (result != null)
                 {
                     Barcode.Text = result.Text;
+                    GetDataFoodFacts(result.Text);
                 }
             }
             else
             {
                 MessageService.ShowToast("Einscannen nur mit Kamerazugriff möglich.");
             }
+        }
+
+        private async void  GetDataFoodFacts(string barcode)
+        {
+            string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
+            HttpClient client = new HttpClient();
+            string res = await client.GetStringAsync(url);
+
+            JObject root = JObject.Parse(res);
+            var fields = root.Value<JObject>("product");
+            string productName = fields["product_name"].ToString();
+            string brand = fields["brands"].ToString();
+            Barcode.Text = $" {brand} - {productName} ";
         }
     }
 }
