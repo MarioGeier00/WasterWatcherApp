@@ -1,13 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WasteWatcherApp.ProductInfo">
+             x:Class="WasteWatcherApp.ProductInfo"
+             BackgroundColor="black">
+    
+
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout  HorizontalOptions="CenterAndExpand">
             <Label
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
-                   x:Name="testOut"/>
+                HorizontalTextAlignment="Center"
+                   x:Name="testOut"
+                TextColor="white"
+                FontSize="30"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label 
+                    HorizontalTextAlignment="Center"
+                    Text="Verpackung:"
+                   FontSize="25"
+                   TextColor="White"/>
+            <Label x:Name="package"
+                   FontSize="25"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            
+            
+            <Image x:Name="productPic"
+                   WidthRequest="200"
+                   HeightRequest="400"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

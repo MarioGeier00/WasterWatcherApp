@@ -12,15 +12,28 @@ namespace WasteWatcherApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductInfo : ContentPage
     {
+        Product prod;
+
         public ProductInfo()
         {
             InitializeComponent();
-            testOut.Text = $"HALL0 anderer Konstruktor!!!";
-
+           
         }
-        public ProductInfo(Product prod )
+        public ProductInfo(Product prod)
         {
             InitializeComponent();
+            this.prod = prod;
+            productPic.Source = prod.ProductImage;
+            
+            if (prod.Package == "")
+            {
+                package.Text = "Keine Informationen.";
+            }
+            else
+            {
+                package.Text = prod.Package;
+            }
+           
             testOut.Text = $"{prod.Brand} - {prod.ProductName}";
 
         }

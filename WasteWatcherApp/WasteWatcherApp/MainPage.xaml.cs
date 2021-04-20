@@ -12,6 +12,7 @@ namespace WasteWatcherApp
         public MainPage()
         {
             InitializeComponent();
+
         }
 
         // Button für Scanner
@@ -51,9 +52,11 @@ namespace WasteWatcherApp
             var fields = root.Value<JObject>("product");
             string productName = fields["product_name"].ToString();
             string brand = fields["brands"].ToString();
+            string productImage = fields["image_front_url"].ToString();
+            string package = fields["packaging"].ToString();
             Barcode.Text = $" {brand} - {productName} ";
 
-            Product prod = new Product(prodName: productName, brand: brand, barcode: barcode);
+            Product prod = new Product(prodName: productName, brand: brand, barcode: barcode, productImage: productImage, package: package);
             return prod;
         }
     }

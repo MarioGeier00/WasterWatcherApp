@@ -9,12 +9,16 @@ namespace WasteWatcherApp
         public string ProductName { get; set; }
         public string Barcode { get; set; }
         public string Brand { get; set; }
-        
-        public Product(string prodName, string barcode, string brand)
+        public string ProductImage { get; set; }
+        public string Package { get; set; }
+
+        public Product(string prodName, string barcode, string brand, string productImage, string package)
         {
             this.ProductName = prodName;
             this.Barcode = barcode;
             this.Brand = brand;
+            this.ProductImage = productImage;
+            this.Package = package;
         }
 
     }
