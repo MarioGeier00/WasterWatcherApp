@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -30,7 +31,8 @@ namespace WasteWatcherApp
                 if (result != null)
                 {
                     Barcode.Text = result.Text;
-                    GetDataFoodFacts(result.Text);
+                    Product prod = await GetDataFoodFacts(result.Text);
+                    await Navigation.PushAsync(new ProductInfo(prod));
                 }
             }
             else
@@ -39,7 +41,7 @@ namespace WasteWatcherApp
             }
         }
 
-        private async void  GetDataFoodFacts(string barcode)
+        private async Task<Product> GetDataFoodFacts(string barcode)
         {
             string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
             HttpClient client = new HttpClient();
@@ -50,6 +52,9 @@ namespace WasteWatcherApp
             string productName = fields["product_name"].ToString();
             string brand = fields["brands"].ToString();
             Barcode.Text = $" {brand} - {productName} ";
+
+            Product prod = new Product(prodName: productName, brand: brand, barcode: barcode);
+            return prod;
         }
     }
 }
