@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Acr.UserDialogs;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -30,13 +31,18 @@ namespace WasteWatcherApp
             {
                 var scanner = new ZXing.Mobile.MobileBarcodeScanner();
                 var result = await scanner.Scan();
+
                 if (result != null)
                 {
-                    Barcode.Text = result.Text;
+                    //Barcode.Text = result.Text;
                     try
                     {
+                        //TODO: Loading Popup ohne, dass es auf die Mainpage zurückgeht (sollte zu ProductInfo Page)
                         Product prod = await GetDataFoodFacts(result.Text);
+                        UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
+                        await Task.Delay(1000);
                         await Navigation.PushAsync(new ProductInfo(prod));
+                        UserDialogs.Instance.HideLoading();
                     }
                     catch (ProductNotFoundException)
                     {
@@ -51,7 +57,6 @@ namespace WasteWatcherApp
                     {
                         MessageService.ShowToastLong("Sonstiger Fehler. Bitte Devs kontaktieren!!!!!1!");
                     }
-
                 }
             }
             else
