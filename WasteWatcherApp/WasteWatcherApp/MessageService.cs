@@ -21,9 +21,13 @@ namespace WasteWatcherApp
                 return _ToastService;
             }
         }
-        public static void ShowToast(string message)
+        public static void ShowToastShort(string message)
         {
             ToastService.ShortAlert(message);
+        }
+        public static void ShowToastLong(string message)
+        {
+            ToastService.LongAlert(message);
         }
     }
 }
