@@ -38,6 +38,7 @@ namespace WasteWatcherApp
                     try
                     {
                         //TODO: Loading Popup ohne, dass es auf die Mainpage zurückgeht (sollte zu ProductInfo Page)
+                        
                         Product prod = await GetDataFoodFacts(result.Text);
                         UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
                         await Task.Delay(1000);
@@ -83,7 +84,6 @@ namespace WasteWatcherApp
             string brand = fields["brands"]?.ToString();
             string productImage = fields["image_front_url"]?.ToString();
             string package = fields["packaging"]?.ToString();
-            Barcode.Text = $" {brand} - {productName} ";
 
             Product prod = new Product(prodName: productName, brand: brand, barcode: barcode, productImage: productImage, package: package);
             return prod;

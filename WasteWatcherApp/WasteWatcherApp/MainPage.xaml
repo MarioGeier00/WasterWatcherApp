@@ -44,10 +44,9 @@
                />
 
         <StackLayout VerticalOptions="CenterAndExpand">
-            <!-- middle controls -->
-            <Label Text="Barcode:" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"></Label>
-            <Label x:Name="Barcode" TextColor="White" HorizontalTextAlignment="Center"  FontSize="30"></Label>
+            <!-- middle control -->
         </StackLayout>
+        
         <StackLayout Orientation="Horizontal" VerticalOptions="End">
             <!-- bottom control-->
             <Button x:Name="Scan_Button"
