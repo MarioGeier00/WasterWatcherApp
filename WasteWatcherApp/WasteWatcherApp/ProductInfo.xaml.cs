@@ -34,7 +34,7 @@ namespace WasteWatcherApp
                 package.Text = prod.Package;
             }
            
-            testOut.Text = $"{prod.Brand} - {prod.ProductName}";
+            Brand_and_Product.Text = $"{prod.Brand} - {prod.ProductName}";
 
         }
     }

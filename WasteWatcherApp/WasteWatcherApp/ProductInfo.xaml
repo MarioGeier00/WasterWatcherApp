@@ -4,34 +4,44 @@
              x:Class="WasteWatcherApp.ProductInfo"
              BackgroundColor="black">
     
-
     <ContentPage.Content>
-        <StackLayout  HorizontalOptions="CenterAndExpand">
-            <Label
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                HorizontalTextAlignment="Center"
-                   x:Name="testOut"
-                TextColor="white"
-                FontSize="30"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label 
-                    HorizontalTextAlignment="Center"
-                    Text="Verpackung:"
-                   FontSize="25"
-                   TextColor="White"/>
-            <Label x:Name="package"
-                   FontSize="25"
-                   TextColor="White"
-                   HorizontalTextAlignment="Center"/>
-            </StackLayout>
-            
-            
-            <Image x:Name="productPic"
-                   WidthRequest="200"
-                   HeightRequest="400"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"/>
+        <StackLayout Padding="-30">
+            <Frame BackgroundColor="black" 
+                CornerRadius="10" Padding="0" 
+                HeightRequest="200" WidthRequest="200"
+                HasShadow="true">
+                <StackLayout Padding="0" Margin="50">
+                    <Label                    
+                        VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="CenterAndExpand" 
+                        HorizontalTextAlignment="Center"
+                        x:Name="Brand_and_Product"
+                        TextColor="white"
+                        TextDecorations="Underline"
+                        FontSize="25"/>
+                    <Label 
+                        HorizontalTextAlignment="Center"
+                        Text="Verpackung:"
+                        FontSize="25"
+                        TextColor="white"/>
+                    <Label x:Name="package"
+                        FontSize="18"
+                        TextColor="white"
+                        HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="300" WidthRequest="300"
+                BackgroundColor="Black" Padding="0" HasShadow="True">
+                <Grid>
+                    <Image x:Name="productPic"
+                        HeightRequest="300"
+                        WidthRequest="300"
+                        Aspect="AspectFit"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
