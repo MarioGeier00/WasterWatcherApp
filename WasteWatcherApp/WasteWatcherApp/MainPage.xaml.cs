@@ -21,7 +21,7 @@ namespace WasteWatcherApp
         {
             Scan_Button.IsEnabled = false;
             var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
-            
+
             if (status != PermissionStatus.Granted)
             {
                 status = await Permissions.RequestAsync<Permissions.Camera>();
@@ -30,6 +30,15 @@ namespace WasteWatcherApp
             if (status == PermissionStatus.Granted)
             {
                 var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+                var current = Connectivity.NetworkAccess;
+
+                if (current != NetworkAccess.Internet)
+                {
+                    MessageService.ShowToastShort("Verbinde dich mit dem Internet");
+                    Scan_Button.IsEnabled = true;
+                    return;
+                }
+                
                 var result = await scanner.Scan();
 
                 if (result != null)
@@ -38,7 +47,7 @@ namespace WasteWatcherApp
                     try
                     {
                         //TODO: Loading Popup ohne, dass es auf die Mainpage zurückgeht (sollte zu ProductInfo Page)
-                        
+
                         Product prod = await GetDataFoodFacts(result.Text);
                         UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
                         await Task.Delay(500);
@@ -92,6 +101,6 @@ namespace WasteWatcherApp
 
     internal class ProductNotFoundException : Exception
     {
-        
+
     }
 }
