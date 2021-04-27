@@ -41,7 +41,7 @@ namespace WasteWatcherApp
                         
                         Product prod = await GetDataFoodFacts(result.Text);
                         UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
-                        await Task.Delay(1000);
+                        await Task.Delay(500);
                         await Navigation.PushAsync(new ProductInfo(prod));
                         UserDialogs.Instance.HideLoading();
                     }
@@ -56,7 +56,7 @@ namespace WasteWatcherApp
                     }
                     catch (Exception)
                     {
-                        MessageService.ShowToastLong("Sonstiger Fehler. Bitte Devs kontaktieren!!!!!1!");
+                        MessageService.ShowToastLong("Fehler beim Datenabruf");
                     }
                 }
             }

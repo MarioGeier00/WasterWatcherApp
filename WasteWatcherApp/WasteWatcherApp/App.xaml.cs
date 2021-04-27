@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +20,12 @@ namespace WasteWatcherApp
 
         protected override void OnStart()
         {
+            var current = Connectivity.NetworkAccess;
+            
+            if (current != NetworkAccess.Internet)
+            {
+                MessageService.ShowToastLong("Verbinde dich mit dem Internet");
+            }
         }
 
         protected override void OnSleep()
