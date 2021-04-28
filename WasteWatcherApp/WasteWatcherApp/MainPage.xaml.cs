@@ -10,15 +10,39 @@ namespace WasteWatcherApp
 {
     public partial class MainPage : ContentPage
     {
+
+        Task<Product> productLoadingTask;
+
+
         public MainPage()
         {
             InitializeComponent();
 
+            this.Appearing += MainPage_Appearing;
+        }
+        
+
+        void MainPage_Appearing(object sender, EventArgs e)
+        {
+            // Show loading indicator as soon as this page appears
+            // and the data fetching task is still in running
+            if (productLoadingTask != null &&
+                !productLoadingTask.IsCompleted)
+            {
+                UserDialogs.Instance.ShowLoading();
+            }
         }
 
-        // Button für Scanner
-        private async void Button_Clicked(object sender, EventArgs e)
+
+        async void Button_Clicked(object sender, EventArgs e)
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                MessageService.ShowToastShort("Verbinde dich mit dem Internet");
+                return;
+            }
+
+
             Scan_Button.IsEnabled = false;
             var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
 
@@ -30,42 +54,19 @@ namespace WasteWatcherApp
             if (status == PermissionStatus.Granted)
             {
                 var scanner = new ZXing.Mobile.MobileBarcodeScanner();
-                var current = Connectivity.NetworkAccess;
 
-                if (current != NetworkAccess.Internet)
+                var scanResult = await scanner.Scan();
+                if (scanResult != null)
                 {
-                    MessageService.ShowToastShort("Verbinde dich mit dem Internet");
-                    Scan_Button.IsEnabled = true;
-                    return;
-                }
-                
-                var result = await scanner.Scan();
+                    productLoadingTask = LoadProduct(scanResult.Text);
 
-                if (result != null)
-                {
-                    //Barcode.Text = result.Text;
-                    try
+                    var product = await productLoadingTask;
+                    productLoadingTask = null;
+                    
+                    UserDialogs.Instance.HideLoading();
+                    if (product != null)
                     {
-                        //TODO: Loading Popup ohne, dass es auf die Mainpage zurückgeht (sollte zu ProductInfo Page)
-
-                        Product prod = await GetDataFoodFacts(result.Text);
-                        UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
-                        await Task.Delay(500);
-                        await Navigation.PushAsync(new ProductInfo(prod));
-                        UserDialogs.Instance.HideLoading();
-                    }
-                    catch (ProductNotFoundException)
-                    {
-                        MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich! Produkt nicht gefunden");
-                    }
-                    //TODO: Internet Fehlermeldung finden. Welche Exception wird geworfen bei fehlender Internetverbindung
-                    catch (HttpRequestException)
-                    {
-                        MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich! Internetverbindung prüfen");
-                    }
-                    catch (Exception)
-                    {
-                        MessageService.ShowToastLong("Fehler beim Datenabruf");
+                        await Navigation.PushAsync(new ProductInfo(product));
                     }
                 }
             }
@@ -77,7 +78,38 @@ namespace WasteWatcherApp
             Scan_Button.IsEnabled = true;
         }
 
-        private async Task<Product> GetDataFoodFacts(string barcode)
+
+        async Task<Product> LoadProduct(string productId)
+        {
+            var minLoadingTimeTask = Task.Delay(500);
+            Product result = null;
+
+            try
+            {
+                result = await GetDataFoodFacts(productId);
+                if (!minLoadingTimeTask.IsCompleted)
+                {
+                    await minLoadingTimeTask;
+                }
+            }
+            catch (ProductNotFoundException)
+            {
+                MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich, das Produkt wurde nicht gefunden");
+            }
+            //TODO: Internet Fehlermeldung finden. Welche Exception wird geworfen bei fehlender Internetverbindung
+            catch (HttpRequestException)
+            {
+                MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich! Internetverbindung prüfen");
+            }
+            catch (Exception)
+            {
+                MessageService.ShowToastLong("Fehler beim Datenabruf");
+            }
+
+            return result;
+        }
+
+        async Task<Product> GetDataFoodFacts(string barcode)
         {
             string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
             HttpClient client = new HttpClient();
