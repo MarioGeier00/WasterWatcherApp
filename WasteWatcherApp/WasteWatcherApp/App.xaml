@@ -4,5 +4,43 @@
              x:Class="WasteWatcherApp.App">
     <Application.Resources>
 
+        <!-- Light colors --><!--
+        <Color x:Key="LightPrimaryColor">WhiteSmoke</Color>
+        <Color x:Key="LightSecondaryColor">Black</Color>
+
+        --><!-- Dark colors --><!--
+        <Color x:Key="DarkPrimaryColor">Teal</Color>
+        <Color x:Key="DarkSecondaryColor">White</Color>-->
+
+        <!-- Colors -->
+        <Color x:Key="AppPrimaryColorLight">#4F9501</Color>
+        <Color x:Key="AppPrimaryColorDark">#4F5501</Color>
+
+        <Color x:Key="AppBackgroundColorLight">AliceBlue</Color>
+        <Color x:Key="AppBackgroundColorDark">Black</Color>
+
+        <Color x:Key="PrimaryForegroundColorLight">Black</Color>
+        <Color x:Key="PrimaryForegroundColorDark">White</Color>
+        
+        <Color x:Key="SecondaryColor">White</Color>
+        <Color x:Key="TertiaryColor">Silver</Color>
+
+        <!-- Implicit styles -->
+        <Style TargetType="ContentPage"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource AppBackgroundColorLight}, Dark={StaticResource AppBackgroundColorDark}}" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize"
+                    Value="Medium" />
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource AppPrimaryColorLight}, Dark={StaticResource AppPrimaryColorDark}}" />
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource PrimaryForegroundColorLight}, Dark={StaticResource PrimaryForegroundColorDark}}" />
+            <Setter Property="CornerRadius"
+                    Value="5" />
+        </Style>
     </Application.Resources>
 </Application>

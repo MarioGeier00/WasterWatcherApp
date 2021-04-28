@@ -2,12 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WasteWatcherApp.MainPage"
-             xmlns:local="clr-namespace:WasteWatcherApp"
-             BackgroundColor="black">
+             xmlns:local="clr-namespace:WasteWatcherApp">
 
     <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Label Text="Waste" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
+            <Label Text="Waste" HorizontalTextAlignment="Center" FontSize="40" Margin="10,20,0,30"/>
                 <Image
                     Source="Recycle.png"
                     Grid.Row = "1"
@@ -15,11 +14,10 @@
                     VerticalOptions="Center" Margin="-5,0,-17,0"
                     HorizontalOptions="Center">
                 </Image>
-            <Label Text="Watcher" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
+            <Label Text="Watcher" HorizontalTextAlignment="Center" FontSize="40" Margin="10,20,0,30"/>
     </StackLayout>
 
-        <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="300"
-               BackgroundColor="black" Padding="0" HasShadow="True">
+        <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="300" Padding="0" HasShadow="True">
             <Grid>
                 <StackLayout HeightRequest="150">
                     <Image Source="background_mainpage.jpeg"
@@ -40,7 +38,6 @@
                Padding="30,0,30,0" 
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
-               TextColor="white"
                />
 
         <StackLayout VerticalOptions="CenterAndExpand">
@@ -53,8 +50,6 @@
                 Clicked="Button_Clicked"
                 Text="Scan"
                 FontSize="Large"
-                BackgroundColor="#4F9501"
-                TextColor="White"
                 CornerRadius="10"
                 HorizontalOptions="CenterAndExpand"
                 Margin="10"
