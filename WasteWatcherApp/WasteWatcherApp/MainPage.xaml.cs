@@ -20,7 +20,7 @@ namespace WasteWatcherApp
 
             this.Appearing += MainPage_Appearing;
         }
-        
+
 
         void MainPage_Appearing(object sender, EventArgs e)
         {
@@ -62,7 +62,7 @@ namespace WasteWatcherApp
 
                     var product = await productLoadingTask;
                     productLoadingTask = null;
-                    
+
                     UserDialogs.Instance.HideLoading();
                     if (product != null)
                     {
@@ -96,14 +96,21 @@ namespace WasteWatcherApp
             {
                 MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich, das Produkt wurde nicht gefunden");
             }
-            //TODO: Internet Fehlermeldung finden. Welche Exception wird geworfen bei fehlender Internetverbindung
             catch (HttpRequestException)
             {
-                MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich! Internetverbindung prüfen");
+                MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich, bitte Internetverbindung prüfen");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageService.ShowToastLong("Fehler beim Datenabruf");
+                bool isNetworkException = ex.GetType().FullName.ToLower().Contains("java.net");
+                if (isNetworkException)
+                {
+                    MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich, bitte Internetverbindung prüfen");
+                }
+                else
+                {
+                    MessageService.ShowToastLong($"Fehler beim Datenabruf: {ex.GetType().FullName}");
+                }
             }
 
             return result;
