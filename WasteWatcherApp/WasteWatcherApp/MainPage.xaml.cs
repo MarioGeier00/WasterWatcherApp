@@ -130,9 +130,4 @@ namespace WasteWatcherApp
             return prod;
         }
     }
-
-    internal class ProductNotFoundException : Exception
-    {
-
-    }
 }
