@@ -33,8 +33,13 @@ namespace WasteWatcherApp
             }
         }
 
+        async void ShowTestProduct_Clicked(object sender, EventArgs e)
+        {
+            var testProduct = new Product("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "Recycle.png", "Festplatte");
+            await Navigation.PushAsync(new ProductInfo(testProduct));
+        }
 
-        async void Button_Clicked(object sender, EventArgs e)
+        async void ScanButton_Clicked(object sender, EventArgs e)
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
@@ -43,7 +48,7 @@ namespace WasteWatcherApp
             }
 
 
-            Scan_Button.IsEnabled = false;
+            ScanButton.IsEnabled = false;
             var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
 
             if (status != PermissionStatus.Granted)
@@ -75,7 +80,7 @@ namespace WasteWatcherApp
                 MessageService.ShowToastShort("Einscannen nur mit Kamerazugriff möglich.");
             }
 
-            Scan_Button.IsEnabled = true;
+            ScanButton.IsEnabled = true;
         }
 
 
@@ -136,5 +141,6 @@ namespace WasteWatcherApp
             Product prod = new Product(prodName: productName, brand: brand, barcode: barcode, productImage: productImage, package: package);
             return prod;
         }
+
     }
 }
