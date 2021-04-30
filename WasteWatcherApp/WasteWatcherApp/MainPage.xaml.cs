@@ -35,7 +35,7 @@ namespace WasteWatcherApp
 
         async void ShowTestProduct_Clicked(object sender, EventArgs e)
         {
-            var testProduct = new Product("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "Recycle.png", "Festplatte");
+            var testProduct = new Product("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "recycling.png", "Festplatte");
             await Navigation.PushAsync(new ProductInfo(testProduct));
         }
 
