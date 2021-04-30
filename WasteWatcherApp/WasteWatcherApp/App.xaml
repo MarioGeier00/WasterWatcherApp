@@ -4,28 +4,25 @@
              x:Class="WasteWatcherApp.App">
     <Application.Resources>
 
-        <!-- Light colors --><!--
-        <Color x:Key="LightPrimaryColor">WhiteSmoke</Color>
-        <Color x:Key="LightSecondaryColor">Black</Color>
-
-        --><!-- Dark colors --><!--
-        <Color x:Key="DarkPrimaryColor">Teal</Color>
-        <Color x:Key="DarkSecondaryColor">White</Color>-->
-
         <!-- Colors -->
-        <Color x:Key="AppPrimaryColorLight">#4F9501</Color>
+        <Color x:Key="AppPrimaryColorLight">#F3AB29</Color>
         <Color x:Key="AppPrimaryColorDark">#4F5501</Color>
 
-        <Color x:Key="AppBackgroundColorLight">AliceBlue</Color>
+        <Color x:Key="AppBackgroundColorLight">#eaf0e4</Color>
         <Color x:Key="AppBackgroundColorDark">Black</Color>
 
-        <Color x:Key="PrimaryForegroundColorLight">Black</Color>
+        <!--TODO: Find primary dark color-->
+        <Color x:Key="PrimaryForegroundColorLight">White</Color>
         <Color x:Key="PrimaryForegroundColorDark">White</Color>
-        
-        <Color x:Key="SecondaryColor">White</Color>
-        <Color x:Key="TertiaryColor">Silver</Color>
 
-        <!-- Implicit styles -->
+        <!--TODO: Find primary dark color-->
+        <Color x:Key="PrimaryBackgroundColorLight">#F3AB29</Color>
+        <Color x:Key="PrimaryBackgroundColorDark">#F3AB29</Color>
+
+        <Color x:Key="SecondaryColorLight">#57a600</Color>
+        <Color x:Key="SecondaryColorDark">#3c7300</Color>
+                
+        
         <Style TargetType="ContentPage"
                ApplyToDerivedTypes="True">
             <Setter Property="BackgroundColor"
@@ -33,14 +30,20 @@
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="FontSize"
-                    Value="Medium" />
             <Setter Property="BackgroundColor"
-                    Value="{AppThemeBinding Light={StaticResource AppPrimaryColorLight}, Dark={StaticResource AppPrimaryColorDark}}" />
+                    Value="{AppThemeBinding Light={StaticResource PrimaryBackgroundColorLight}, Dark={StaticResource PrimaryBackgroundColorDark}}" />
             <Setter Property="TextColor"
                     Value="{AppThemeBinding Light={StaticResource PrimaryForegroundColorLight}, Dark={StaticResource PrimaryForegroundColorDark}}" />
-            <Setter Property="CornerRadius"
-                    Value="5" />
+            <Setter Property="Padding" Value="12, 20" />
+            <Setter Property="CornerRadius" Value="8" />
         </Style>
+
+        <Style TargetType="Switch">
+            <Setter Property="OnColor"
+                    Value="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorLight}}" />
+            <Setter Property="ThumbColor"
+                    Value="{AppThemeBinding Light={StaticResource SecondaryColorDark}, Dark={StaticResource SecondaryColorDark}}" />
+        </Style>
+        
     </Application.Resources>
 </Application>
