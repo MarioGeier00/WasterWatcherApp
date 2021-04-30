@@ -1,47 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WasteWatcherApp.ProductInfo"
-             BackgroundColor="black">
-    
-    <ContentPage.Content>
-        <StackLayout Padding="-30">
-            <Frame BackgroundColor="black" 
-                CornerRadius="10" Padding="0" 
-                HeightRequest="200" WidthRequest="200"
-                HasShadow="true">
-                <StackLayout Padding="0" Margin="50">
-                    <Label                    
-                        VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="CenterAndExpand" 
-                        HorizontalTextAlignment="Center"
-                        x:Name="Brand_and_Product"
-                        TextColor="white"
-                        TextDecorations="Underline"
-                        FontSize="25"/>
-                    <Label 
-                        HorizontalTextAlignment="Center"
-                        Text="Verpackung:"
-                        FontSize="25"
-                        TextColor="white"/>
-                    <Label x:Name="package"
-                        FontSize="18"
-                        TextColor="white"
-                        HorizontalTextAlignment="Center"/>
+             x:Class="WasteWatcherApp.ProductInfo">
+
+    <ScrollView>
+        <StackLayout>
+            <Frame CornerRadius="22" Margin="0, -20, 0, 0" Padding="18, 38, 18, 18" HasShadow="true" BackgroundColor="#F3AB29">
+                <StackLayout>
+                    <Image x:Name="ProductImage"
+                       WidthRequest="200"
+                       HeightRequest="200"
+                       Aspect="AspectFit" />
                 </StackLayout>
             </Frame>
 
-            <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="300" WidthRequest="300"
-                BackgroundColor="Black" Padding="0" HasShadow="True">
-                <Grid>
-                    <Image x:Name="productPic"
-                        HeightRequest="300"
-                        WidthRequest="300"
-                        Aspect="AspectFit"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="CenterAndExpand"/>
-                </Grid>
-            </Frame>
+            <StackLayout Margin="32, 22" VerticalOptions="CenterAndExpand" >
+
+                <Frame Margin="0, 4">
+                    <StackLayout>
+                        <Label Text="Eco Score" FontSize="Title" TextColor="Black" />
+                        <!--TODO: Display eco score with colored letter for a to e-->
+                        <Label Text="Bla Bla" TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0, 4">
+                    <StackLayout>
+                        <Label Text="Verpackung" FontSize="Title" TextColor="Black" />
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" x:Name="Package" TextColor="Black" />
+
+                            <Label Grid.Row="1" Grid.Column="1" Text="Papier" TextColor="Black" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="65g"  TextColor="Black" HorizontalOptions="End" />
+
+                            <Label Grid.Row="2" Grid.Column="1" Text="Plastik" TextColor="Black" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="200g"  TextColor="Black" HorizontalOptions="End" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0, 4">
+                    <StackLayout>
+                        <Label Text="Hersteller" FontSize="Title" TextColor="Black" />
+                        <Label x:Name="Brand" TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

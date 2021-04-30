@@ -4,5 +4,52 @@
              x:Class="WasteWatcherApp.App">
     <Application.Resources>
 
+        <!-- Colors -->
+        <Color x:Key="AppPrimaryColorLight">#F3AB29</Color>
+        <Color x:Key="AppPrimaryColorDark">#4F5501</Color>
+
+        <Color x:Key="AppBackgroundColorLight">#eaf0e4</Color>
+        <Color x:Key="AppBackgroundColorDark">Black</Color>
+
+        <!--TODO: Find primary dark color-->
+        <Color x:Key="PrimaryForegroundColorLight">White</Color>
+        <Color x:Key="PrimaryForegroundColorDark">White</Color>
+
+        <!--TODO: Find primary dark color-->
+        <Color x:Key="PrimaryBackgroundColorLight">#F3AB29</Color>
+        <Color x:Key="PrimaryBackgroundColorDark">#F3AB29</Color>
+
+        <Color x:Key="SecondaryColorLight">#57a600</Color>
+        <Color x:Key="SecondaryColorDark">#3c7300</Color>
+                
+        
+        <Style TargetType="ContentPage"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource AppBackgroundColorLight}, Dark={StaticResource AppBackgroundColorDark}}" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource PrimaryBackgroundColorLight}, Dark={StaticResource PrimaryBackgroundColorDark}}" />
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource PrimaryForegroundColorLight}, Dark={StaticResource PrimaryForegroundColorDark}}" />
+            <Setter Property="Padding" Value="12, 20" />
+            <Setter Property="CornerRadius" Value="8" />
+        </Style>
+        <Style TargetType="Button" x:Key="Muted">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource AppBackgroundColorLight}, Dark={StaticResource AppBackgroundColorDark}}" />
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource PrimaryBackgroundColorLight}, Dark={StaticResource PrimaryBackgroundColorLight}}" />
+            <Setter Property="Padding" Value="12, 20" />
+            <Setter Property="CornerRadius" Value="8" />
+        </Style>
+
+        <Style TargetType="Switch">
+            <Setter Property="OnColor"
+                    Value="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorLight}}" />
+        </Style>
+        
     </Application.Resources>
 </Application>
