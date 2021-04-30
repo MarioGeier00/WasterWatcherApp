@@ -49,8 +49,6 @@
         <Style TargetType="Switch">
             <Setter Property="OnColor"
                     Value="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorLight}}" />
-            <Setter Property="ThumbColor"
-                    Value="{AppThemeBinding Light={StaticResource SecondaryColorDark}, Dark={StaticResource SecondaryColorDark}}" />
         </Style>
         
     </Application.Resources>
