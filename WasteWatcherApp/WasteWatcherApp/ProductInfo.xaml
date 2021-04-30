@@ -3,52 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WasteWatcherApp.ProductInfo">
 
-    <StackLayout>
-        <Frame CornerRadius="22" Margin="0, -20, 0, 0" Padding="18, 38, 18, 18" HasShadow="true" BackgroundColor="#F3AB29">
-            <StackLayout>
-                <Image x:Name="ProductImage"
+    <ScrollView>
+        <StackLayout>
+            <Frame CornerRadius="22" Margin="0, -20, 0, 0" Padding="18, 38, 18, 18" HasShadow="true" BackgroundColor="#F3AB29">
+                <StackLayout>
+                    <Image x:Name="ProductImage"
                        WidthRequest="200"
                        HeightRequest="200"
                        Aspect="AspectFit" />
+                </StackLayout>
+            </Frame>
+
+            <StackLayout Margin="32, 22" VerticalOptions="CenterAndExpand" >
+
+                <Frame Margin="0, 4">
+                    <StackLayout>
+                        <Label Text="Eco Score" FontSize="Title" TextColor="Black" />
+                        <!--TODO: Display eco score with colored letter for a to e-->
+                        <Label Text="Bla Bla" TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0, 4">
+                    <StackLayout>
+                        <Label Text="Verpackung" FontSize="Title" TextColor="Black" />
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" x:Name="Package" TextColor="Black" />
+
+                            <Label Grid.Row="1" Grid.Column="1" Text="Papier" TextColor="Black" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="65g"  TextColor="Black" HorizontalOptions="End" />
+
+                            <Label Grid.Row="2" Grid.Column="1" Text="Plastik" TextColor="Black" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="200g"  TextColor="Black" HorizontalOptions="End" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0, 4">
+                    <StackLayout>
+                        <Label Text="Hersteller" FontSize="Title" TextColor="Black" />
+                        <Label x:Name="Brand" TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+
             </StackLayout>
-        </Frame>
 
-        <Grid Margin="20,35,20,20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <Label Grid.Row="0" Grid.Column="1" Text="Hersteller:" TextColor="Black" />
-            <Label Grid.Row="0" Grid.Column="2" x:Name="Brand" TextColor="Black" />
-
-            <Label Grid.Row="1" Grid.Column="1" Text="Verpackung:" TextColor="Black" />
-            <Grid Grid.Row="1" Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Label Grid.Row="0" Grid.ColumnSpan="2" x:Name="Package" TextColor="Black" />
-
-                <Label Grid.Row="1" Grid.Column="1" Text="Papier" TextColor="Black" />
-                <Label Grid.Row="1" Grid.Column="0" Text="65g"  TextColor="Black" HorizontalOptions="End" />
-
-                <Label Grid.Row="2" Grid.Column="1" Text="Plastik" TextColor="Black" />
-                <Label Grid.Row="2" Grid.Column="0" Text="200g"  TextColor="Black" HorizontalOptions="End" />
-
-            </Grid>
-
-        </Grid>
-
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
