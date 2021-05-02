@@ -8,15 +8,15 @@
     <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Label Text="Waste" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
-                <Image
+            <Image
                     Source="Recycle.png"
                     Grid.Row = "1"
                     WidthRequest="50" HeightRequest="50"
                     VerticalOptions="Center" Margin="-5,0,-17,0"
                     HorizontalOptions="Center">
-                </Image>
+            </Image>
             <Label Text="Watcher" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
-    </StackLayout>
+        </StackLayout>
 
         <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="300"
                BackgroundColor="black" Padding="0" HasShadow="True">
@@ -46,7 +46,7 @@
         <StackLayout VerticalOptions="CenterAndExpand">
             <!-- middle control -->
         </StackLayout>
-        
+
         <StackLayout Orientation="Horizontal" VerticalOptions="End">
             <!-- bottom control-->
             <Button x:Name="Scan_Button"

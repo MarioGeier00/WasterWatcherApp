@@ -118,11 +118,9 @@ namespace WasteWatcherApp
 
         async Task<Product> GetDataFoodFacts(string barcode)
         {
-            string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
-            HttpClient client = new HttpClient();
-            string res = await client.GetStringAsync(url);
+            string data = await ProductCache.GetDataWithCache(barcode, GetOpenFoodFactsDataByBarcode);
 
-            JObject root = JObject.Parse(res);
+            JObject root = JObject.Parse(data);
             var fields = root.Value<JObject>("product");
             if (fields == null)
             {
@@ -135,6 +133,13 @@ namespace WasteWatcherApp
 
             Product prod = new Product(prodName: productName, brand: brand, barcode: barcode, productImage: productImage, package: package);
             return prod;
+        }
+
+        private async Task<string> GetOpenFoodFactsDataByBarcode(string barcode)
+        {
+            string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
+            HttpClient client = new HttpClient();
+            return await client.GetStringAsync(url);
         }
     }
 }
