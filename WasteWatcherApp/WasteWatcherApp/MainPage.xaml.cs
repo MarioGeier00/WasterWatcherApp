@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing;
+using ZXing.QrCode.Internal;
+using FormatException = ZXing.FormatException;
 
 namespace WasteWatcherApp
 {
@@ -36,7 +39,7 @@ namespace WasteWatcherApp
 
         async void ShowTestProduct_Clicked(object sender, EventArgs e)
         {
-            var testProduct = new Product("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "recycling.png", "Festplatte");
+            var testProduct = new Product("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "recycling.png", "Festplatte", "1");
             await Navigation.PushAsync(new ProductInfo(testProduct));
         }
 
@@ -62,7 +65,7 @@ namespace WasteWatcherApp
                 var scanner = new ZXing.Mobile.MobileBarcodeScanner();
 
                 var scanResult = await scanner.Scan();
-                if (scanResult != null)
+                if (scanResult != null && scanResult.BarcodeFormat != BarcodeFormat.QR_CODE)
                 {
                     // If Caching is enabled reduce minLoadingTime to zero
                     if (ProductCache.IsCachingEnabled)
@@ -82,6 +85,10 @@ namespace WasteWatcherApp
                     {
                         await Navigation.PushAsync(new ProductInfo(product));
                     }
+                }
+                else
+                {
+                    MessageService.ShowToastLong("Einscannen war nicht möglich. Code nicht lesbar.");
                 }
             }
             else
@@ -144,8 +151,9 @@ namespace WasteWatcherApp
             string brand = fields["brands"]?.ToString();
             string productImage = fields["image_front_url"]?.ToString();
             string package = fields["packaging"]?.ToString();
+            string ecoScore = fields["ecoscore_grade"]?.ToString();
 
-            Product prod = new Product(prodName: productName, brand: brand, barcode: barcode, productImage: productImage, package: package);
+            Product prod = new Product(prodName: productName, brand: brand, barcode: barcode, productImage: productImage, package: package, ecoScore: ecoScore);
             return prod;
         }
 
