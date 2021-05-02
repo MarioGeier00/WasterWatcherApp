@@ -16,14 +16,25 @@
 
             <StackLayout Margin="32, 22" VerticalOptions="CenterAndExpand" >
 
-                <Frame Margin="0, 4">
-                    <StackLayout>
-                        <Label Text="Eco Score" FontSize="Title" TextColor="Black" />
-                        <Label x:Name="Eco_Score" TextColor="Black" />
+                <Frame Margin="0, 4" x:Name="EcoScoreContainer">
+                    <StackLayout Orientation="Horizontal">
                         <Image x:Name="EcoImage" 
-                               Aspect="AspectFit" />
+                               Aspect="AspectFit" HorizontalOptions="Start" Margin="0, 0, 12, 0"/>
+                        <StackLayout>
+                            <Label Text="ECO" FontSize="32" FontAttributes="Bold" TextColor="DarkSlateGray" />
+                            <Label Text="SCORE" FontSize="18" Margin="0, -12, 0, 0" FontAttributes="Bold" TextColor="DarkSlateGray" />
+                            <Button Style="{DynamicResource Muted}" Text="Weitere Informationen" Margin="-8, 0, 0, 0" TextTransform="None" BackgroundColor="White"/>
+                        </StackLayout>
                     </StackLayout>
                 </Frame>
+
+                <Frame x:Name="EcoScoreUnavailableContainer" IsVisible="False">
+                    <StackLayout>
+                        <Label Text="Eco Score" FontSize="Title" TextColor="Black" />
+                        <Label Text="Keine Informationen" TextColor="Gray" />
+                    </StackLayout>
+                </Frame>
+                
 
                 <Frame Margin="0, 4">
                     <StackLayout>
@@ -49,10 +60,17 @@
                     </StackLayout>
                 </Frame>
 
-                <Frame Margin="0, 4">
+                <Frame Margin="0, 4" x:Name="BrandContainer">
                     <StackLayout>
                         <Label Text="Hersteller" FontSize="Title" TextColor="Black" />
                         <Label x:Name="Brand" TextColor="Black" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0, 4" x:Name="BrandUnavailableContainer" IsVisible="False">
+                    <StackLayout>
+                        <Label Text="Hersteller" FontSize="Title" TextColor="Black" />
+                        <Label Text="Keine Informationen" TextColor="Gray" />
                     </StackLayout>
                 </Frame>
 
