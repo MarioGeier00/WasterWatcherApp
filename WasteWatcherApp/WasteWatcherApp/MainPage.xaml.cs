@@ -17,6 +17,7 @@ namespace WasteWatcherApp
         public MainPage()
         {
             InitializeComponent();
+            CachingSwitch.IsToggled = ProductCache.IsCachingEnabled;
 
             this.Appearing += MainPage_Appearing;
         }
@@ -63,7 +64,15 @@ namespace WasteWatcherApp
                 var scanResult = await scanner.Scan();
                 if (scanResult != null)
                 {
-                    productLoadingTask = LoadProduct(scanResult.Text);
+                    // If Caching is enabled reduce minLoadingTime to zero
+                    if (ProductCache.IsCachingEnabled)
+                    {
+                        productLoadingTask = LoadProduct(scanResult.Text, 0);
+                    }
+                    else
+                    {
+                        productLoadingTask = LoadProduct(scanResult.Text);
+                    }
 
                     var product = await productLoadingTask;
                     productLoadingTask = null;
@@ -84,9 +93,9 @@ namespace WasteWatcherApp
         }
 
 
-        async Task<Product> LoadProduct(string productId)
+        async Task<Product> LoadProduct(string productId, uint minLoadingTime = 500)
         {
-            var minLoadingTimeTask = Task.Delay(500);
+            var minLoadingTimeTask = Task.Delay((int)minLoadingTime);
             Product result = null;
 
             try
@@ -145,6 +154,11 @@ namespace WasteWatcherApp
             string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
             HttpClient client = new HttpClient();
             return await client.GetStringAsync(url);
+        }
+
+        private void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            ProductCache.IsCachingEnabled = CachingSwitch.IsToggled;
         }
     }
 }
