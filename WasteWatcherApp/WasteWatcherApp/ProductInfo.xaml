@@ -23,7 +23,7 @@
                         <StackLayout>
                             <Label Text="ECO" FontSize="32" FontAttributes="Bold" TextColor="DarkSlateGray" />
                             <Label Text="SCORE" FontSize="18" Margin="0, -12, 0, 0" FontAttributes="Bold" TextColor="DarkSlateGray" />
-                            <Button Style="{DynamicResource Muted}" Text="Weitere Informationen" Margin="-8, 0, 0, 0" TextTransform="None" BackgroundColor="White"/>
+                            <Button Style="{DynamicResource Muted}" Clicked="EcoScoreInfoButton_Clicked" Text="Weitere Informationen" Margin="-8, 0, 0, 0" TextTransform="None" BackgroundColor="White"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>

@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WasteWatcherApp
@@ -46,5 +47,9 @@ namespace WasteWatcherApp
             }
         }
 
+        private async void EcoScoreInfoButton_Clicked(object sender, System.EventArgs e)
+        {
+            await Browser.OpenAsync("https://de.openfoodfacts.org", BrowserLaunchMode.SystemPreferred);
+        }
     }
 }
