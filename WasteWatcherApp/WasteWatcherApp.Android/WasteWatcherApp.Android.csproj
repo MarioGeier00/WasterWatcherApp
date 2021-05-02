@@ -76,6 +76,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ecoscore_a.png" />
+    <AndroidResource Include="Resources\drawable\Nutri_Score_A.png" />
+    <AndroidResource Include="Resources\drawable\Nutri_Score_B.png" />
+    <AndroidResource Include="Resources\drawable\Nutri_Score_C.png" />
+    <AndroidResource Include="Resources\drawable\Nutri_Score_D.png" />
+    <AndroidResource Include="Resources\drawable\Nutri_Score_E.png" />
     <AndroidResource Include="Resources\drawable\recycling.png">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

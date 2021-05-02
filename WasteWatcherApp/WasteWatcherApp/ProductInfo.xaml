@@ -19,8 +19,9 @@
                 <Frame Margin="0, 4">
                     <StackLayout>
                         <Label Text="Eco Score" FontSize="Title" TextColor="Black" />
-                        <!--TODO: Display eco score with colored letter for a to e-->
-                        <Label Text="Bla Bla" TextColor="Black" />
+                        <Label x:Name="Eco_Score" TextColor="Black" />
+                        <Image x:Name="EcoImage" 
+                               Aspect="AspectFit" />
                     </StackLayout>
                 </Frame>
 
