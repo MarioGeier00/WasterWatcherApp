@@ -2,63 +2,57 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WasteWatcherApp.MainPage"
-             xmlns:local="clr-namespace:WasteWatcherApp"
-             BackgroundColor="black">
+             NavigationPage.HasNavigationBar="False"
+             xmlns:local="clr-namespace:WasteWatcherApp">
 
     <StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Label Text="Waste" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
-                <Image 
-                    Source="https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-twotone-light-green.png"
-                    Grid.Row = "1"
-                    WidthRequest="50" HeightRequest="50"
-                    VerticalOptions="Center" Margin="-5,0,-17,0"
-                    HorizontalOptions="Center">
-                </Image>
-            <Label Text="Watcher" HorizontalTextAlignment="Center" TextColor="white" FontSize="40" Margin="10,20,0,30"/>
-    </StackLayout>
 
-        <Frame CornerRadius="10" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="300"
-               BackgroundColor="black" Padding="0" HasShadow="True">
-            <Grid>
-                <StackLayout HeightRequest="150">
-                    <Image Source="https://images.pexels.com/photos/2409022/pexels-photo-2409022.jpeg"
-                    Aspect="AspectFill" Opacity="0.7"/>
-                </StackLayout>
-                <Label Text="Der Müllverbrauch pro Person in Deutschland liegt bei 457kg im Jahr, das bedeutet ungefähr 1,25kg Müll am Tag." 
-                   FontSize="20" 
-                   TextColor="white"
-                   FontAttributes="Bold"
-                   Margin="15"
-                   HorizontalTextAlignment="Center" 
-                   VerticalTextAlignment="Center"/>
-            </Grid>
+        <Frame BackgroundColor="#F3AB29">
+            <StackLayout  Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="0, 24">
+                <Label Text="Waste" TextColor="White" FontSize="42"/>
+                <Image Source="recycling.png"
+                       Grid.Row = "1"
+                       WidthRequest="50" HeightRequest="50"
+                       HorizontalOptions="Center"/>
+                <Label Text="Watcher" TextColor="White" FontSize="42"/>
+            </StackLayout>
         </Frame>
 
-        <Label Text="Die App soll helfen deinen täglichen Müllverbrauch zu messen, damit du insgesamt weniger Müll produzierst." 
-               FontSize="16" 
-               Padding="30,0,30,0" 
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               TextColor="white"
-               />
+            <StackLayout VerticalOptions="CenterAndExpand" Margin="32">
+                <Frame CornerRadius="12" HorizontalOptions="CenterAndExpand" Padding="0" HasShadow="True">
+                    <Grid>
+                        <Image Source="plastic_waste_on_beach_dark.jpeg"
+                        Aspect="AspectFill" />
+                        <Label Text="Der Müllverbrauch pro Person in Deutschland liegt bei 72kg im Jahr, das bedeutet ungefähr 200g Müll am Tag." 
+                       FontSize="20" 
+                       TextColor="White"
+                       FontAttributes="Bold"
+                           Margin="32, 18"
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center"/>
+                    </Grid>
+                </Frame>
 
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <!-- middle controls -->
-            <Label Text="Barcode:" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"></Label>
-            <Label x:Name="Barcode" TextColor="White" HorizontalTextAlignment="Center"  FontSize="30"></Label>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Label Text="Die App soll helfen deinen täglichen Müllverbrauch zu messen, damit du insgesamt weniger Müll produzierst." 
+                   FontSize="16" 
+                   Padding="30,0,30,0" 
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="24">
+                    <Label Text="Cache aktivieren" VerticalOptions="Center" FontSize="Medium" />
+                    <Switch x:Name="CachingSwitch" Toggled="CachingSwitch_Toggled" />
+                </StackLayout>
+
+            </StackLayout>
+
             <!-- bottom control-->
-            <Button
-                Clicked="Button_Clicked"
-                Text="Scan" 
-                BackgroundColor="Gray"
-                BorderWidth="1"
-                TextColor="white"
-                HorizontalOptions="CenterAndExpand"
-                Margin="20"
-            />
-        </StackLayout>
+            <StackLayout Padding="30,10,30,10">
+                <Button Style="{DynamicResource Muted}" Clicked="ShowTestProduct_Clicked" Text="Testprodukt anzeigen"/>
+                <Button x:Name="ScanButton" Clicked="ScanButton_Clicked" Text="Produkt einscannen"/>
+            </StackLayout>
+
+
     </StackLayout>
 </ContentPage>
