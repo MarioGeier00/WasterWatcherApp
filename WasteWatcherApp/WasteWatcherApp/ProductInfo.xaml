@@ -50,12 +50,12 @@
                             </Grid.RowDefinitions>
 
                             <Label Grid.Row="0" Grid.ColumnSpan="2" x:Name="Package" TextColor="Black" />
-
+                            <!--
                             <Label Grid.Row="1" Grid.Column="1" Text="Papier" TextColor="Black" />
                             <Label Grid.Row="1" Grid.Column="0" Text="65g"  TextColor="Black" HorizontalOptions="End" />
 
                             <Label Grid.Row="2" Grid.Column="1" Text="Plastik" TextColor="Black" />
-                            <Label Grid.Row="2" Grid.Column="0" Text="200g"  TextColor="Black" HorizontalOptions="End" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="200g"  TextColor="Black" HorizontalOptions="End" />-->
                         </Grid>
                         <Button Style="{DynamicResource Muted}" Clicked="AddWasteInfo_Clicked" Text="Daten hinzufügen" Margin="-8, 0, 0, 0" TextTransform="None" BackgroundColor="White"/>
                     </StackLayout>
