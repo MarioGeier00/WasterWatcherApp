@@ -2,37 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WasteWatcherApp.EditWasteInfo">
-    <StackLayout>
-        <Frame>
-            <StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                    <CheckBox x:Name="hasPlastic" />
-                    <Label Text="Plastik" FontSize="Title" />
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <CheckBox x:Name="hasPlastic" />
+                        <Label Text="Plastik" FontSize="Title" />
+                    </StackLayout>
+                    <Entry x:Name="plasticWasteInput" Keyboard="Numeric" ReturnType="Next"
+                       Placeholder="Abfallmenge von Plastik in g" IsEnabled="{Binding hasPlastic.IsChecked}" />
                 </StackLayout>
-                <Entry x:Name="plasticWasteInput" Placeholder="Abfallmenge von Plastik in g" IsEnabled="{Binding hasPlastic.IsChecked}" />
-            </StackLayout>
-        </Frame>
-        
-        <Frame>
-            <StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                    <CheckBox x:Name="hasPaper" />
-                    <Label Text="Papier / Pappe" FontSize="Title" />
-                </StackLayout>
-                <Entry x:Name="paperWasteInput" Placeholder="Abfallmenge von Papier in g" IsEnabled="{Binding hasPaper.IsChecked}"/>
-            </StackLayout>
-        </Frame>
-        
-        <Frame>
-            <StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                    <CheckBox x:Name="hasGlas" />
-                    <Label Text="Glas" FontSize="Title" />
-                </StackLayout>
-                <Entry x:Name="glasWasteInput" Placeholder="Abfallmenge von Glas in g" IsEnabled="{Binding hasGlas.IsChecked}"/>
-            </StackLayout>
-        </Frame>
+            </Frame>
 
-        <Button x:Name="SubmitButton" Clicked="SubmitButton_Clicked" Text="Daten speichern"/>
-    </StackLayout>
+            <Frame>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <CheckBox x:Name="hasPaper" />
+                        <Label Text="Papier / Pappe" FontSize="Title" />
+                    </StackLayout>
+                    <Entry x:Name="paperWasteInput" Keyboard="Numeric" ReturnType="Next"
+                       Placeholder="Abfallmenge von Papier in g" IsEnabled="{Binding hasPaper.IsChecked}"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <CheckBox x:Name="hasGlas" />
+                        <Label Text="Glas" FontSize="Title" />
+                    </StackLayout>
+                    <Entry x:Name="glasWasteInput" Keyboard="Numeric" ReturnType="Done" 
+                       Placeholder="Abfallmenge von Glas in g" IsEnabled="{Binding hasGlas.IsChecked}"/>
+                </StackLayout>
+            </Frame>
+
+            <Button x:Name="SubmitButton" Clicked="SubmitButton_Clicked" Text="Daten speichern"/>
+        </StackLayout>
+    </ContentPage.Content>
+
 </ContentPage>
