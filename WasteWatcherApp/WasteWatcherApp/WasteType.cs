@@ -5,5 +5,6 @@
         Plastic,
         Paper,
         Glas,
+        Metal,
     }
 }

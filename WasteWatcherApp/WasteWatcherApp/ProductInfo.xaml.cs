@@ -1,4 +1,5 @@
 ﻿using System;
+using WasteWatcherApp.helper;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,7 +9,7 @@ namespace WasteWatcherApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductInfo : ContentPage
     {
-        private static IWasteStore WasteStore { get; } = new LocalWasteStorage();
+        private static IWasteStore WasteStore { get; } = new Firestore();
 
         public Product Product { get; }
 
@@ -50,8 +51,8 @@ namespace WasteWatcherApp
 
         private async void LoadWasteData()
         {
-            WasteData wasteData = await WasteStore.GetData(Product.Barcode);
-            string wasteString = wasteData.ToString();
+            WasteData<int> wasteData = await WasteStore.GetData(Product.Barcode);
+            string wasteString = WasteData<int>.ConvertToString(wasteData);
             if (wasteString.Length > 0)
             {
                 this.Package.Text = wasteString;

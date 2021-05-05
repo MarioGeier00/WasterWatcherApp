@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WasteWatcherApp.helper
 {
-    class Firestore
+    class Firestore : IWasteStore
     {
         string apiKey;
         string jsonStr;
@@ -55,14 +55,21 @@ namespace WasteWatcherApp.helper
             return reply.idToken;
 
         }
-        public async void GetProductData(string barcode)
+
+
+        public Task SaveData(string productId, string plasticWaste, string paperWaste, string glasWaste)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<WasteData<int>> GetData(string productId)
         {
             HttpClient client = new HttpClient();
 
-            // string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{barcode}";
-            string url = $"https://firestore.googleapis.com/v1/projects/test-aabf0/databases/(default)/documents/prod/5411188130765";
+            string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{productId}";
+            //string url = $"https://firestore.googleapis.com/v1/projects/test-aabf0/databases/(default)/documents/prod/5411188130765";
 
-
+            WasteData<int> wasteData = default;
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
             try
@@ -74,19 +81,20 @@ namespace WasteWatcherApp.helper
                 JObject root = JObject.Parse(res);
                 var fields = root.Value<JObject>("fields");
 
+                int glas_g = fields["glas_g"]?["integerValue"]?.ToObject<int>() ?? 0;
+                int plastik_g = fields["plastik_g"]?["integerValue"]?.ToObject<int>() ?? 0;
+                int papier_g = fields["papier_g"]?["integerValue"]?.ToObject<int>() ?? 0;
+                int metall_g = fields["metall_g"]?["integerValue"]?.ToObject<int>() ?? 0;
 
-                prod.glas_g = fields["glas_g"]["integerValue"].ToObject<int>();
-                prod.plastik_g = fields["plastik_g"]["integerValue"].ToObject<int>();
-                prod.papier_g = fields["papier_g"]["integerValue"].ToObject<int>();
-                prod.metall_g = fields["metall_g"]["integerValue"].ToObject<int>();
+                 wasteData = new WasteData<int>(plastik_g, papier_g, glas_g, metall_g);
+                
             }
             catch (Exception e)
             {
                 MessageService.ShowToastLong($"Fehler {e.ToString()}");
 
             }
+            return wasteData;
         }
-
-
     }
 }

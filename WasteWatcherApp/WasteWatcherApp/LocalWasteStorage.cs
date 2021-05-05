@@ -4,12 +4,14 @@ namespace WasteWatcherApp
 {
     public class LocalWasteStorage : IWasteStore
     {
-        public async Task<WasteData> GetData(string productId)
+        public async Task<WasteData<int>> GetData(string productId)
         {
-            return new WasteData (
+            return new WasteData<int> (
                     plasticWaste: GetWasteValue(GetWasteKey(productId, WasteType.Plastic)),
                     glasWaste:  GetWasteValue(GetWasteKey(productId, WasteType.Glas)),
-                    paperWaste: GetWasteValue(GetWasteKey(productId, WasteType.Paper))
+                    paperWaste: GetWasteValue(GetWasteKey(productId, WasteType.Paper)),
+                    metalWaste: GetWasteValue(GetWasteKey(productId, WasteType.Metal))
+
                 );
         }
 
@@ -36,24 +38,24 @@ namespace WasteWatcherApp
         {
             if (App.Current.Properties.ContainsKey(wasteKey))
             {
-                App.Current.Properties[wasteKey] = value;
+                App.Current.Properties[wasteKey] = int.Parse(value);
             }
             else
             {
-                App.Current.Properties.Add(wasteKey, value);
+                App.Current.Properties.Add(wasteKey, int.Parse(value));
             }
         }
 
-        private string GetWasteValue(string wasteKey)
+        private int GetWasteValue(string wasteKey)
         {
             if (App.Current.Properties.TryGetValue(wasteKey, out object savedObject))
             {
-                if (savedObject.GetType() == typeof(string))
+                if (savedObject.GetType() == typeof(int))
                 {
-                    return (string)savedObject;
+                    return (int)savedObject;
                 }
             }
-            return null;
+            return 0;
         }
 
 

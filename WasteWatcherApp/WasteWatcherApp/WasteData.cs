@@ -2,34 +2,40 @@
 
 namespace WasteWatcherApp
 {
-    public struct WasteData
+    public struct WasteData<T>
     {
-        public WasteData(string plasticWaste, string paperWaste, string glasWaste)
+        public WasteData(T plasticWaste, T paperWaste, T glasWaste, T metalWaste)
         {
             PlasticWaste = plasticWaste;
             PaperWaste = paperWaste;
             GlasWaste = glasWaste;
+            MetalWaste = metalWaste;
         }
 
-        public string PlasticWaste { get; }
-        public string PaperWaste { get; }
-        public string GlasWaste { get; }
+        public T PlasticWaste { get; }
+        public T PaperWaste { get; }
+        public T GlasWaste { get; }
+        public T MetalWaste { get; }
 
-        public override string ToString()
+        public static string ConvertToString( WasteData<int> wasteData)
         {
             string result = string.Empty;
 
-            if (PlasticWaste != null)
+            if (wasteData.PlasticWaste != 0)
             {
-                result += "Plastik: " +  PlasticWaste + Environment.NewLine;
+                result += "Plastik: " + wasteData.PlasticWaste + Environment.NewLine;
             }
-            if (PaperWaste != null)
+            if (wasteData.PaperWaste != 0)
             {
-                result += "Papier: " +  PaperWaste + Environment.NewLine;
+                result += "Papier: " + wasteData.PaperWaste + Environment.NewLine;
             }
-            if (GlasWaste != null)
+            if (wasteData.GlasWaste != 0)
             {
-                result += "Glas: " + GlasWaste + Environment.NewLine;
+                result += "Glas: " + wasteData.GlasWaste + Environment.NewLine;
+            }
+            if (wasteData.MetalWaste != 0)
+            {
+                result += "Metall: " + wasteData.MetalWaste + Environment.NewLine;
             }
 
             return result;

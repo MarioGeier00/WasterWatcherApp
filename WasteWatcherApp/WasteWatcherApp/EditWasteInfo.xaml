@@ -9,7 +9,7 @@
                     <CheckBox x:Name="hasPlastic" />
                     <Label Text="Plastik" FontSize="Title" />
                 </StackLayout>
-                <InputView x:Name="plasticWasteInput" Placeholder="Abfallmenge von Plastik in g" IsEnabled="{Binding hasPlastic.IsChecked}" />
+                <Entry x:Name="plasticWasteInput" Placeholder="Abfallmenge von Plastik in g" IsEnabled="{Binding hasPlastic.IsChecked}" />
             </StackLayout>
         </Frame>
         
@@ -19,7 +19,7 @@
                     <CheckBox x:Name="hasPaper" />
                     <Label Text="Papier / Pappe" FontSize="Title" />
                 </StackLayout>
-                <InputView x:Name="paperWasteInput" Placeholder="Abfallmenge von Papier in g" IsEnabled="{Binding hasPaper.IsChecked}"/>
+                <Entry x:Name="paperWasteInput" Placeholder="Abfallmenge von Papier in g" IsEnabled="{Binding hasPaper.IsChecked}"/>
             </StackLayout>
         </Frame>
         
@@ -29,7 +29,7 @@
                     <CheckBox x:Name="hasGlas" />
                     <Label Text="Glas" FontSize="Title" />
                 </StackLayout>
-                <InputView x:Name="glasWasteInput" Placeholder="Abfallmenge von Glas in g" IsEnabled="{Binding hasGlas.IsChecked}"/>
+                <Entry x:Name="glasWasteInput" Placeholder="Abfallmenge von Glas in g" IsEnabled="{Binding hasGlas.IsChecked}"/>
             </StackLayout>
         </Frame>
 
