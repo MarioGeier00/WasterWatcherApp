@@ -55,11 +55,11 @@ namespace WasteWatcherApp.helper
             return reply.idToken;
 
         }
-        public async void GetProductData(Product prod)
+        public async void GetProductData(string barcode)
         {
             HttpClient client = new HttpClient();
 
-            // string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{prod.Barcode}";
+            // string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{barcode}";
             string url = $"https://firestore.googleapis.com/v1/projects/test-aabf0/databases/(default)/documents/prod/5411188130765";
 
 
