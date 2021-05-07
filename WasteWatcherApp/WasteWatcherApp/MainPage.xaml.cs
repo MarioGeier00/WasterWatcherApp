@@ -153,7 +153,7 @@ namespace WasteWatcherApp
             string package = fields["packaging"]?.ToString();
             string ecoScore = fields["ecoscore_grade"]?.ToString();
 
-            Product prod = new Product(prodName: productName, brand: brand, barcode: barcode, productImage: productImage, package: package, ecoScore: ecoScore);
+            Product prod = new Product(ProductName:  productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
             return prod;
         }
 
