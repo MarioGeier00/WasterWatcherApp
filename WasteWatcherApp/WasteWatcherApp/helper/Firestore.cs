@@ -100,7 +100,7 @@ namespace WasteWatcherApp.helper
                 jsonData += "}";
             }
 
-            StringContent extraData = new StringContent("{fields:" + jsonData + "}", Encoding.UTF8, "application/json");
+            StringContent extraData = new StringContent("{fields:{" + jsonData + "}}", Encoding.UTF8, "application/json");
 
             await client.PatchAsync(url, extraData);
         }
