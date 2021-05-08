@@ -1,13 +1,12 @@
 ﻿using Acr.UserDialogs;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZXing;
-using ZXing.QrCode.Internal;
-using FormatException = ZXing.FormatException;
 
 namespace WasteWatcherApp
 {
@@ -62,9 +61,18 @@ namespace WasteWatcherApp
 
             if (status == PermissionStatus.Granted)
             {
-                var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+                var scanner = new ZXing.Mobile.MobileBarcodeScanner()
+                {
+                    TopText = "Barcode Einscannen",
+                };
 
-                var scanResult = await scanner.Scan();
+                var scanResult = await scanner.Scan(new ZXing.Mobile.MobileBarcodeScanningOptions()
+                {
+                    PossibleFormats = new List<BarcodeFormat>()
+                    {
+                        BarcodeFormat.All_1D
+                    },
+                });
                 if (scanResult != null && scanResult.BarcodeFormat != BarcodeFormat.QR_CODE)
                 {
                     // If Caching is enabled reduce minLoadingTime to zero
@@ -98,7 +106,6 @@ namespace WasteWatcherApp
 
             ScanButton.IsEnabled = true;
         }
-
 
         async Task<Product> LoadProduct(string productId, uint minLoadingTime = 500)
         {
@@ -153,7 +160,7 @@ namespace WasteWatcherApp
             string package = fields["packaging"]?.ToString();
             string ecoScore = fields["ecoscore_grade"]?.ToString();
 
-            Product prod = new Product(ProductName:  productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
+            Product prod = new Product(ProductName: productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
             return prod;
         }
 

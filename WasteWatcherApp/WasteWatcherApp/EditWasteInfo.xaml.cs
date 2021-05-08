@@ -21,18 +21,21 @@ namespace WasteWatcherApp
             this.Title = product.ProductName;
             LoadWasteData();
         }
+
         private async void LoadWasteData()
         {
-            WasteData<int> wasteData = await Store.GetData(Product.Barcode);
-            plasticWasteInput.Text = wasteData.PlasticWaste.ToString();
-            paperWasteInput.Text = wasteData.PaperWaste.ToString();
-            glasWasteInput.Text = wasteData.GlasWaste.ToString();
-            
-            hasPlastic.IsChecked = wasteData.PlasticWaste != 0;
-            hasGlas.IsChecked = wasteData.GlasWaste != 0;
-            hasPaper.IsChecked = wasteData.PaperWaste != 0;
+            var wasteData = await Store.GetData(Product.Barcode);
+            if (wasteData is null) return;
 
+            plasticWasteInput.Text = wasteData[WasteType.Plastic].ToString();
+            paperWasteInput.Text = wasteData[WasteType.Paper].ToString();
+            glasWasteInput.Text = wasteData[WasteType.Glas].ToString();
+
+            hasPlastic.IsChecked = wasteData[WasteType.Plastic].HasValue;
+            hasGlas.IsChecked = wasteData[WasteType.Glas].HasValue;
+            hasPaper.IsChecked = wasteData[WasteType.Paper].HasValue;
         }
+
         private async void SubmitButton_Clicked(object sender, System.EventArgs e)
         {
             UserDialogs.Instance.ShowLoading();

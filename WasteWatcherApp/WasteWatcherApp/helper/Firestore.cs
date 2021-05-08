@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using WasteWatcherApp.Waste;
 
 namespace WasteWatcherApp.helper
 {
@@ -63,12 +62,12 @@ namespace WasteWatcherApp.helper
 
             string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{productId}";
             string json_data = "{ \"fields\": {";
-            if(!string.IsNullOrEmpty(plasticWaste) )
-                json_data +=  "\"plastik_g\":" + "{ \"integerValue\": \"" +  plasticWaste +"\"},";
+            if (!string.IsNullOrEmpty(plasticWaste))
+                json_data += "\"plastik_g\":" + "{ \"integerValue\": \"" + plasticWaste + "\"},";
             if (!string.IsNullOrEmpty(paperWaste))
                 json_data += "\"papier_g\":" + "{ \"integerValue\": \"" + paperWaste + "\" },";
             if (!string.IsNullOrEmpty(glasWaste))
-                json_data += "\"glas_g\":" + "{ \"integerValue\": \"" + plasticWaste + "\" },";
+                json_data += "\"glas_g\":" + "{ \"integerValue\": \"" + glasWaste + "\" },";
             if (json_data.EndsWith(","))
                 json_data = json_data.Remove(json_data.Length - 1);
 
@@ -78,22 +77,46 @@ namespace WasteWatcherApp.helper
             StringContent extraData = new StringContent(json_data, Encoding.UTF8, "application/json");
 
             await client.PatchAsync(url, extraData);
-            
         }
 
-        public async Task<WasteData<int>> GetData(string productId)
+
+        public async Task SaveData(string productId, WasteCollection wasteCollection)
+        {
+            HttpClient client = new HttpClient();
+            string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{productId}";
+
+            string jsonData = string.Empty;
+
+            bool addComma = false;
+            foreach (var waste in wasteCollection)
+            {
+                if (addComma)
+                    jsonData += ",";
+                else
+                    addComma = true;
+
+                jsonData += waste.WasteType.ToFriendlyName().ToLower() + "_g:{";
+                jsonData += "integerValue: \"" + waste.Amount + "\"";
+                jsonData += "}";
+            }
+
+            StringContent extraData = new StringContent("{fields:" + jsonData + "}", Encoding.UTF8, "application/json");
+
+            await client.PatchAsync(url, extraData);
+        }
+
+
+        public async Task<WasteCollection> GetData(string productId)
         {
             HttpClient client = new HttpClient();
 
             string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{productId}";
             //string url = $"https://firestore.googleapis.com/v1/projects/test-aabf0/databases/(default)/documents/prod/5411188130765";
 
-            WasteData<int> wasteData = null;
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
             try
             {
-
 
                 string res = await client.GetStringAsync(url);
 
@@ -105,13 +128,17 @@ namespace WasteWatcherApp.helper
                 int papier_g = fields["papier_g"]?["integerValue"]?.ToObject<int>() ?? 0;
                 int metall_g = fields["metall_g"]?["integerValue"]?.ToObject<int>() ?? 0;
 
-                 wasteData = new WasteData<int>(plastik_g, papier_g, glas_g, metall_g);
-                
+                return new WasteCollection(new(WasteType.Glas, glas_g),
+                                           new(WasteType.Plastic, plastik_g),
+                                           new(WasteType.Paper, papier_g),
+                                           new(WasteType.Metal, metall_g));
+
             }
-            catch (Exception e)
+            catch
             {
+                return null;
             }
-            return wasteData;
         }
+
     }
 }
