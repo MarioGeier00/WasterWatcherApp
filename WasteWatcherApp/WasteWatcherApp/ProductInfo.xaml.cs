@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using WasteWatcherApp.helper;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -53,9 +54,13 @@ namespace WasteWatcherApp
         {
             WasteData<int> wasteData = await WasteStore.GetData(Product.Barcode);
             string wasteString = WasteData<int>.ConvertToString(wasteData);
-            if (wasteString.Length > 0)
+            if (!string.IsNullOrEmpty(wasteString))
             {
                 this.Package.Text = wasteString;
+                AddWasteInfo.Text = "Daten ändern";
+            } else
+            {
+                this.Package.Text = "Keine Daten gefunden";
             }
         }
 
@@ -67,6 +72,7 @@ namespace WasteWatcherApp
         private async void AddWasteInfo_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditWasteInfo(Product, WasteStore));
+            await Task.Delay(1000);
             LoadWasteData();
         }
     }
