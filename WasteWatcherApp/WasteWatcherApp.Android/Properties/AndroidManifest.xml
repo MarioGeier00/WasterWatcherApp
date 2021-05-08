@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.wastewatcherapp" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.3" package="de.thnuernberg.wastewatcherapp" android:installLocation="internalOnly">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
-	<application android:label="WasteWatcherApp.Android" android:theme="@style/MainTheme" android:icon="@mipmap/icon"></application>
+	<application android:label="WasteWatcher.Android" android:theme="@style/MainTheme" android:icon="@mipmap/icon"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.FLASHLIGHT" />
 	<queries>
 		<intent>
 			<action android:name="android.intent.action.VIEW" />
-			<data android:scheme="http"/>
+			<data android:scheme="http" />
 		</intent>
 		<intent>
 			<action android:name="android.intent.action.VIEW" />
-			<data android:scheme="https"/>
+			<data android:scheme="https" />
 		</intent>
 	</queries>
 </manifest>
