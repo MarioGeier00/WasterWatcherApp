@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using System;
+using WasteWatcherApp.Waste;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,11 +41,23 @@ namespace WasteWatcherApp
         {
             UserDialogs.Instance.ShowLoading();
 
-            string plasticWaste = hasPlastic.IsChecked ? plasticWasteInput.Text : null;
-            string paperWaste = hasPaper.IsChecked ? paperWasteInput.Text : null;
-            string glasWaste = hasGlas.IsChecked ? glasWasteInput.Text : null;
+            WasteCollection wasteCollection = new();
+            EditableWasteCollection editableWasteCollection = wasteCollection.Modify();
 
-            await Store.SaveData(Product.Barcode, plasticWaste, paperWaste, glasWaste);
+            if (int.TryParse(plasticWasteInput.Text, out int plasticWaste) && hasPlastic.IsChecked)
+            {
+                editableWasteCollection.SetWasteAmount(WasteType.Plastic, plasticWaste);
+            }
+            if (int.TryParse(paperWasteInput.Text, out int paperWaste) && hasPaper.IsChecked)
+            {
+                editableWasteCollection.SetWasteAmount(WasteType.Paper, paperWaste);
+            }
+            if (int.TryParse(glasWasteInput.Text, out int glasWaste) && hasGlas.IsChecked)
+            {
+                editableWasteCollection.SetWasteAmount(WasteType.Glas, glasWaste);
+            }
+
+            await Store.SaveData(Product.Barcode, wasteCollection);
 
             UserDialogs.Instance.HideLoading();
             await Navigation.PopAsync();
