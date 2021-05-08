@@ -24,7 +24,7 @@ namespace WasteWatcherApp
         public static string ToFriendlyName(this WasteType wasteType)
             => wasteType switch
             {
-                WasteType.Plastic => "Platik",
+                WasteType.Plastic => "Plastik",
                 WasteType.Paper => "Papier",
                 WasteType.Glas => "Glas",
                 WasteType.Metal => "Metall",
