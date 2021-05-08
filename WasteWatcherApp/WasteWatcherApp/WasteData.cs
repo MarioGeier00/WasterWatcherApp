@@ -2,7 +2,7 @@
 
 namespace WasteWatcherApp
 {
-    public struct WasteData<T>
+    public class WasteData<T>
     {
         public WasteData(T plasticWaste, T paperWaste, T glasWaste, T metalWaste)
         {
@@ -21,21 +21,25 @@ namespace WasteWatcherApp
         {
             string result = string.Empty;
 
+            if(wasteData == null)
+            {
+                return null;
+            }
             if (wasteData.PlasticWaste != 0)
             {
-                result += "Plastik: " + wasteData.PlasticWaste + Environment.NewLine;
+                result += "Plastik: " + wasteData.PlasticWaste + "g" + Environment.NewLine;
             }
             if (wasteData.PaperWaste != 0)
             {
-                result += "Papier: " + wasteData.PaperWaste + Environment.NewLine;
+                result += "Papier: " + wasteData.PaperWaste + "g" +  Environment.NewLine;
             }
             if (wasteData.GlasWaste != 0)
             {
-                result += "Glas: " + wasteData.GlasWaste + Environment.NewLine;
+                result += "Glas: " + wasteData.GlasWaste + "g" + Environment.NewLine;
             }
             if (wasteData.MetalWaste != 0)
             {
-                result += "Metall: " + wasteData.MetalWaste + Environment.NewLine;
+                result += "Metall: " + wasteData.MetalWaste + "g" + Environment.NewLine;
             }
 
             return result;

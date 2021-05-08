@@ -57,9 +57,28 @@ namespace WasteWatcherApp.helper
         }
 
 
-        public Task SaveData(string productId, string plasticWaste, string paperWaste, string glasWaste)
+        public async Task SaveData(string productId, string plasticWaste, string paperWaste, string glasWaste)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+
+            string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{productId}";
+            string json_data = "{ \"fields\": {";
+            if(!string.IsNullOrEmpty(plasticWaste) )
+                json_data +=  "\"plastik_g\":" + "{ \"integerValue\": \"" +  plasticWaste +"\"},";
+            if (!string.IsNullOrEmpty(paperWaste))
+                json_data += "\"papier_g\":" + "{ \"integerValue\": \"" + paperWaste + "\" },";
+            if (!string.IsNullOrEmpty(glasWaste))
+                json_data += "\"glas_g\":" + "{ \"integerValue\": \"" + plasticWaste + "\" },";
+            if (json_data.EndsWith(","))
+                json_data = json_data.Remove(json_data.Length - 1);
+
+            json_data += "} }";
+
+
+            StringContent extraData = new StringContent(json_data, Encoding.UTF8, "application/json");
+
+            await client.PatchAsync(url, extraData);
+            
         }
 
         public async Task<WasteData<int>> GetData(string productId)
@@ -69,7 +88,7 @@ namespace WasteWatcherApp.helper
             string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{productId}";
             //string url = $"https://firestore.googleapis.com/v1/projects/test-aabf0/databases/(default)/documents/prod/5411188130765";
 
-            WasteData<int> wasteData = default;
+            WasteData<int> wasteData = null;
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
             try
@@ -91,8 +110,6 @@ namespace WasteWatcherApp.helper
             }
             catch (Exception e)
             {
-                MessageService.ShowToastLong($"Fehler {e.ToString()}");
-
             }
             return wasteData;
         }
