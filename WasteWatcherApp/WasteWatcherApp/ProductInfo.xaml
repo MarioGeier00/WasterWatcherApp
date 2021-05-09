@@ -21,25 +21,26 @@
                         <Image x:Name="EcoImage" 
                                Aspect="AspectFit" HorizontalOptions="Start" Margin="0, 0, 12, 0"/>
                         <StackLayout>
-                            <Label Text="ECO" FontSize="32" FontAttributes="Bold" TextColor="DarkSlateGray" />
-                            <Label Text="SCORE" FontSize="18" Margin="0, -12, 0, 0" FontAttributes="Bold" TextColor="DarkSlateGray" />
-                            <Button Style="{DynamicResource Muted}" Clicked="EcoScoreInfoButton_Clicked" Text="Weitere Informationen" Margin="-8, 0, 0, 0" TextTransform="None" BackgroundColor="White"/>
+                            <Label Text="ECO" FontSize="32" FontAttributes="Bold" Style="{DynamicResource EcoScoreTextStyle}" />
+                            <Label Text="SCORE" FontSize="18" Margin="0, -12, 0, 0" FontAttributes="Bold" Style="{DynamicResource EcoScoreTextStyle}" />
+                            <Button Style="{DynamicResource Muted}" Clicked="EcoScoreInfoButton_Clicked" Text="Weitere Informationen"
+                                    Margin="-8, 0, 0, 0" BackgroundColor="{AppThemeBinding Light={StaticResource AppFrameColorLight}, Dark={StaticResource AppFrameColorDark}}" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
 
                 <Frame x:Name="EcoScoreUnavailableContainer" IsVisible="False">
                     <StackLayout>
-                        <Label Text="Eco Score" FontSize="Title" TextColor="Black" />
-                        <Label Text="Keine Informationen" TextColor="Gray" />
+                        <Label Text="Eco Score" FontSize="Title" />
+                        <Label Text="Keine Informationen" Opacity="0.8" />
                     </StackLayout>
                 </Frame>
                 
 
                 <Frame Margin="0, 4">
                     <StackLayout>
-                        <Label Text="Verpackung" FontSize="Title" TextColor="Black" />
-                        <Label  x:Name="Package" TextColor="Black" />
+                        <Label Text="Verpackung" FontSize="Title" />
+                        <Label x:Name="Package" />
 
                         <!--<Grid >
                             <Grid.ColumnDefinitions>
@@ -59,21 +60,22 @@
                             <Label Grid.Row="2" Grid.Column="1" Text="Plastik" TextColor="Black" />
                             <Label Grid.Row="2" Grid.Column="0" Text="200g"  TextColor="Black" HorizontalOptions="End" />
                         </Grid>-->
-                        <Button x:Name="AddWasteInfo" Style="{DynamicResource Muted}" Clicked="AddWasteInfo_Clicked" Text="Daten hinzufügen" Margin="-8, 0, 0, 0" TextTransform="None" BackgroundColor="White"/>
+                        <Button x:Name="AddWasteInfo" Style="{DynamicResource Muted}" Clicked="AddWasteInfo_Clicked" Text="Daten hinzufügen" 
+                                Margin="0, 12, 0, 0" TextTransform="None" BackgroundColor="{AppThemeBinding Light={StaticResource AppFrameColorLight}, Dark={StaticResource AppFrameColorDark}}"/>
                     </StackLayout>
                 </Frame>
 
                 <Frame Margin="0, 4" x:Name="BrandContainer">
                     <StackLayout>
-                        <Label Text="Hersteller" FontSize="Title" TextColor="Black" />
-                        <Label x:Name="Brand" TextColor="Black" />
+                        <Label Text="Hersteller" FontSize="Title" />
+                        <Label x:Name="Brand" />
                     </StackLayout>
                 </Frame>
 
                 <Frame Margin="0, 4" x:Name="BrandUnavailableContainer" IsVisible="False">
                     <StackLayout>
-                        <Label Text="Hersteller" FontSize="Title" TextColor="Black" />
-                        <Label Text="Keine Informationen" TextColor="Gray" />
+                        <Label Text="Hersteller" FontSize="Title" />
+                        <Label Text="Keine Informationen" Opacity="0.8" />
                     </StackLayout>
                 </Frame>
 
