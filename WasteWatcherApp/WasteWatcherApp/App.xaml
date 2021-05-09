@@ -10,6 +10,11 @@
 
         <Color x:Key="AppBackgroundColorLight">#eaf0e4</Color>
         <Color x:Key="AppBackgroundColorDark">Black</Color>
+        <Color x:Key="AppFrameColorLight">White</Color>
+        <Color x:Key="AppFrameColorDark">#313330</Color>
+
+        <Color x:Key="TextColorLight">#313330</Color>
+        <Color x:Key="TextColorDark">#f7faf2</Color>
 
         <!--TODO: Find primary dark color-->
         <Color x:Key="PrimaryForegroundColorLight">White</Color>
@@ -22,11 +27,27 @@
         <Color x:Key="SecondaryColorLight">#57a600</Color>
         <Color x:Key="SecondaryColorDark">#3c7300</Color>
                 
+        <!-- EcoScore Text Color -->
+        <Color x:Key="EcoScoreColorLight">DarkSlateGray</Color>
+        <Color x:Key="EcoScoreColorDark">White</Color>
+        
         
         <Style TargetType="ContentPage"
                ApplyToDerivedTypes="True">
             <Setter Property="BackgroundColor"
                     Value="{AppThemeBinding Light={StaticResource AppBackgroundColorLight}, Dark={StaticResource AppBackgroundColorDark}}" />
+        </Style>
+
+        <Style TargetType="Frame"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource AppFrameColorLight}, Dark={StaticResource AppFrameColorDark}}" />
+        </Style>
+
+        <Style TargetType="Label"
+               ApplyToDerivedTypes="True">
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}" />
         </Style>
 
         <Style TargetType="Button">
@@ -49,6 +70,12 @@
         <Style TargetType="Switch">
             <Setter Property="OnColor"
                     Value="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorLight}}" />
+        </Style>
+
+
+
+        <Style TargetType="Label" x:Key="EcoScoreTextStyle">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource EcoScoreColorLight}, Dark={StaticResource EcoScoreColorDark}}" />
         </Style>
         
     </Application.Resources>
