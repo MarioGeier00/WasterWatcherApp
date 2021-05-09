@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using System;
+using System.Threading.Tasks;
 using WasteWatcherApp.Waste;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,10 +21,11 @@ namespace WasteWatcherApp
             Store = store ?? throw new ArgumentNullException(nameof(store));
 
             this.Title = product.ProductName;
-            LoadWasteData();
+            UserDialogs.Instance.ShowLoading();
+            LoadWasteData().ContinueWith(new Action<object>((_) => UserDialogs.Instance.HideLoading()));
         }
 
-        private async void LoadWasteData()
+        private async Task LoadWasteData()
         {
             var wasteData = await Store.GetData(Product.Barcode);
             if (wasteData is null) return;
