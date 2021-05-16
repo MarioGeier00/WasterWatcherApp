@@ -29,5 +29,12 @@ namespace WasteWatcherApp.Waste
             return this;
         }
 
+        public EditableWasteCollection ClearAllWaste()
+        {
+            WasteList.Clear();
+         
+            return this;
+        }
+
     }
 }

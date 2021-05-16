@@ -15,6 +15,8 @@ namespace WasteWatcherApp
 
         public Product Product { get; }
 
+        EditWasteInfo editWasteInfoPage;
+
         public ProductInfo(Product product)
         {
             InitializeComponent();
@@ -48,12 +50,21 @@ namespace WasteWatcherApp
                 EcoScoreUnavailableContainer.IsVisible = !EcoScoreContainer.IsVisible;
             }
 
-            LoadWasteData();
+
+
+            this.Appearing += MainPage_Appearing;
         }
 
-        private async void LoadWasteData()
+
+        void MainPage_Appearing(object sender, EventArgs e)
         {
-            WasteCollection wasteData = await WasteStore.GetData(Product.Barcode);
+            LoadWasteData(editWasteInfoPage?.WasteData);
+            editWasteInfoPage = null;
+        }
+
+        private async void LoadWasteData(WasteCollection wasteData = null)
+        {
+            wasteData ??= await WasteStore.GetData(Product.Barcode);
 
             this.Package.Text = wasteData?.ToString() ?? "Keine Daten gefunden";
             if (wasteData is not null)
@@ -69,8 +80,8 @@ namespace WasteWatcherApp
 
         private async void AddWasteInfo_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditWasteInfo(Product, WasteStore));
-            LoadWasteData();
+            editWasteInfoPage = new EditWasteInfo(Product, WasteStore);
+            await Navigation.PushAsync(editWasteInfoPage);
         }
     }
 }

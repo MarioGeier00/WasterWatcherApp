@@ -14,6 +14,8 @@ namespace WasteWatcherApp
         public Product Product { get; }
         public IWasteStore Store { get; }
 
+        public WasteCollection WasteData { get; private set; }
+
         public EditWasteInfo(Product product, IWasteStore store)
         {
             InitializeComponent();
@@ -27,24 +29,24 @@ namespace WasteWatcherApp
 
         private async Task LoadWasteData()
         {
-            var wasteData = await Store.GetData(Product.Barcode);
-            if (wasteData is null) return;
+            WasteData = await Store.GetData(Product.Barcode);
+            if (WasteData is null) return;
 
-            plasticWasteInput.Text = wasteData[WasteType.Plastic].ToString();
-            paperWasteInput.Text = wasteData[WasteType.Paper].ToString();
-            glasWasteInput.Text = wasteData[WasteType.Glas].ToString();
+            plasticWasteInput.Text = WasteData[WasteType.Plastic].ToString();
+            paperWasteInput.Text = WasteData[WasteType.Paper].ToString();
+            glasWasteInput.Text = WasteData[WasteType.Glas].ToString();
 
-            hasPlastic.IsChecked = wasteData[WasteType.Plastic].HasValue;
-            hasGlas.IsChecked = wasteData[WasteType.Glas].HasValue;
-            hasPaper.IsChecked = wasteData[WasteType.Paper].HasValue;
+            hasPlastic.IsChecked = WasteData[WasteType.Plastic].HasValue;
+            hasGlas.IsChecked = WasteData[WasteType.Glas].HasValue;
+            hasPaper.IsChecked = WasteData[WasteType.Paper].HasValue;
         }
 
         private async void SubmitButton_Clicked(object sender, System.EventArgs e)
         {
             UserDialogs.Instance.ShowLoading();
 
-            WasteCollection wasteCollection = new();
-            EditableWasteCollection editableWasteCollection = wasteCollection.Modify();
+            EditableWasteCollection editableWasteCollection = WasteData.Modify();
+            editableWasteCollection.ClearAllWaste();
 
             if (int.TryParse(plasticWasteInput.Text, out int plasticWaste) && hasPlastic.IsChecked)
             {
@@ -59,7 +61,7 @@ namespace WasteWatcherApp
                 editableWasteCollection.SetWasteAmount(WasteType.Glas, glasWaste);
             }
 
-            await Store.SaveData(Product.Barcode, wasteCollection);
+            await Store.SaveData(Product.Barcode, WasteData);
 
             UserDialogs.Instance.HideLoading();
             await Navigation.PopAsync();
