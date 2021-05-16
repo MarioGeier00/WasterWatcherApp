@@ -61,9 +61,20 @@ namespace WasteWatcherApp
                 editableWasteCollection.SetWasteAmount(WasteType.Glas, glasWaste);
             }
 
-            await Store.SaveData(Product.Barcode, WasteData);
+            try
+            {
+                await Store.SaveData(Product.Barcode, WasteData);
+            }
+            catch (Exception)
+            {
+                MessageService.ShowToastLong("Daten können nicht abgespeichert werden. Bitte erneut versuchen.");
+                return;
+            }
+            finally
+            {
+                UserDialogs.Instance.HideLoading();
+            }
 
-            UserDialogs.Instance.HideLoading();
             await Navigation.PopAsync();
         }
     }
