@@ -30,7 +30,6 @@ namespace WasteWatcherApp
         private async Task LoadWasteData()
         {
             WasteData = await Store.GetData(Product.Barcode);
-            if (WasteData is null) return;
 
             plasticWasteInput.Text = WasteData[WasteType.Plastic].ToString();
             paperWasteInput.Text = WasteData[WasteType.Paper].ToString();
@@ -45,6 +44,7 @@ namespace WasteWatcherApp
         {
             UserDialogs.Instance.ShowLoading();
 
+            WasteData ??= new WasteCollection();
             EditableWasteCollection editableWasteCollection = WasteData.Modify();
             editableWasteCollection.ClearAllWaste();
 
