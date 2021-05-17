@@ -1,6 +1,6 @@
 ﻿namespace WasteWatcherApp
 {
-
+ 
     public record Product(string ProductName, string Barcode, string Brand, string ProductImage, string Package, string EcoScore);
 
 

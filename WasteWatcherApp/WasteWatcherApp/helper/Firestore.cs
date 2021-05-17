@@ -8,6 +8,10 @@ using WasteWatcherApp.Waste;
 
 namespace WasteWatcherApp.helper
 {
+    
+    /// <summary>
+    /// Class used to connect to and query the Firestore Database
+     /// </summary>
     class Firestore : IWasteStore
     {
         string apiKey;
@@ -24,7 +28,10 @@ namespace WasteWatcherApp.helper
             int expiresIn { get; set; }
             string localId { get; set; }
         }
-
+        
+        /// <summary>
+        /// Initilizes the Firestore Object and requests an ID Token
+        /// </summary>
         public Firestore()
         {
             apiKey = "AIzaSyCrPIipyWAi2YSZC34HZRp2NQ2MU10APds";
@@ -39,6 +46,9 @@ namespace WasteWatcherApp.helper
             authToken = await GetIdToken();
 
         }
+        /// <summary>
+        /// Get Firestore ID token
+        /// </summary>
         private async Task<String> GetIdToken()
         {
             HttpClient client = new HttpClient();
@@ -55,7 +65,9 @@ namespace WasteWatcherApp.helper
 
         }
 
-
+        /// <summary>
+        /// Save Data to Firestore
+        /// </summary>
         public async Task SaveData(string productId, string plasticWaste, string paperWaste, string glasWaste)
         {
             HttpClient client = new HttpClient();
@@ -105,7 +117,11 @@ namespace WasteWatcherApp.helper
             await client.PatchAsync(url, extraData);
         }
 
-
+        /// <summary>
+        /// Request data from given Object from Firestore
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         public async Task<WasteCollection> GetData(string productId)
         {
             HttpClient client = new HttpClient();

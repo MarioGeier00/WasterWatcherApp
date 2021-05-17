@@ -106,7 +106,12 @@ namespace WasteWatcherApp
 
             ScanButton.IsEnabled = true;
         }
-
+        /// <summary>
+        /// Load Product data and show loading screen 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="minLoadingTime"></param>
+        /// <returns></returns>
         async Task<Product> LoadProduct(string productId, uint minLoadingTime = 500)
         {
             var minLoadingTimeTask = Task.Delay((int)minLoadingTime);
@@ -143,7 +148,11 @@ namespace WasteWatcherApp
 
             return result;
         }
-
+       /// <summary>
+       /// Get Data from OpenFoodfacts
+       /// </summary>
+       /// <param name="barcode"></param>
+       /// <returns>Product object</returns>
         async Task<Product> GetDataFoodFacts(string barcode)
         {
             string data = await ProductCache.GetDataWithCache(barcode, GetOpenFoodFactsDataByBarcode);
@@ -163,14 +172,18 @@ namespace WasteWatcherApp
             Product prod = new Product(ProductName: productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
             return prod;
         }
-
+        /// <summary>
+        /// Function to retrieve the data from OpenFoodFacts api
+        /// </summary>
+        /// <param name="barcode"></param>
+        /// <returns></returns>
         private async Task<string> GetOpenFoodFactsDataByBarcode(string barcode)
         {
             string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
             HttpClient client = new HttpClient();
             return await client.GetStringAsync(url);
         }
-
+        
         private void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             ProductCache.IsCachingEnabled = CachingSwitch.IsToggled;

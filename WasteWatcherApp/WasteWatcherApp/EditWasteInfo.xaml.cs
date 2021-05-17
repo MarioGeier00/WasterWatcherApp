@@ -27,6 +27,10 @@ namespace WasteWatcherApp
             LoadWasteData().ContinueWith(new Action<object>((_) => UserDialogs.Instance.HideLoading()));
         }
 
+        /// <summary>
+        /// Load Product data and display data on the InfoPage
+        /// </summary>
+        /// <returns></returns>
         private async Task LoadWasteData()
         {
             WasteData = await Store.GetData(Product.Barcode);
@@ -39,7 +43,11 @@ namespace WasteWatcherApp
             hasGlas.IsChecked = WasteData[WasteType.Glas].HasValue;
             hasPaper.IsChecked = WasteData[WasteType.Paper].HasValue;
         }
-
+        /// <summary>
+        /// Method triggered by the submit button to update the data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SubmitButton_Clicked(object sender, System.EventArgs e)
         {
             UserDialogs.Instance.ShowLoading();
