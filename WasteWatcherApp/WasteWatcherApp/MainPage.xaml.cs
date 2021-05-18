@@ -1,9 +1,8 @@
 ﻿using Acr.UserDialogs;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using WasteWatcherApp.OpenFoodFacts;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZXing;
@@ -119,7 +118,7 @@ namespace WasteWatcherApp
 
             try
             {
-                result = await GetDataFoodFacts(productId);
+                result = await OpenFoodFactsApi.GetProductDataByBarcode(productId);
                 if (!minLoadingTimeTask.IsCompleted)
                 {
                     await minLoadingTimeTask;
@@ -148,42 +147,8 @@ namespace WasteWatcherApp
 
             return result;
         }
-       /// <summary>
-       /// Get Data from OpenFoodfacts
-       /// </summary>
-       /// <param name="barcode"></param>
-       /// <returns>Product object</returns>
-        async Task<Product> GetDataFoodFacts(string barcode)
-        {
-            string data = await ProductCache.GetDataWithCache(barcode, GetOpenFoodFactsDataByBarcode);
 
-            JObject root = JObject.Parse(data);
-            var fields = root.Value<JObject>("product");
-            if (fields == null)
-            {
-                throw new ProductNotFoundException();
-            }
-            string productName = fields["product_name"]?.ToString();
-            string brand = fields["brands"]?.ToString();
-            string productImage = fields["image_front_url"]?.ToString();
-            string package = fields["packaging"]?.ToString();
-            string ecoScore = fields["ecoscore_grade"]?.ToString();
 
-            Product prod = new Product(ProductName: productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
-            return prod;
-        }
-        /// <summary>
-        /// Function to retrieve the data from OpenFoodFacts api
-        /// </summary>
-        /// <param name="barcode"></param>
-        /// <returns></returns>
-        private async Task<string> GetOpenFoodFactsDataByBarcode(string barcode)
-        {
-            string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
-            HttpClient client = new HttpClient();
-            return await client.GetStringAsync(url);
-        }
-        
         private void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             ProductCache.IsCachingEnabled = CachingSwitch.IsToggled;
