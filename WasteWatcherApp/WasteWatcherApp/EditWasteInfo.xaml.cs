@@ -75,7 +75,7 @@ namespace WasteWatcherApp
             }
             catch (Exception)
             {
-                MessageService.ShowToastLong("Daten können nicht abgespeichert werden. Bitte erneut versuchen.");
+                ToastService.ShowToastLong("Daten können nicht abgespeichert werden. Bitte erneut versuchen.");
                 return;
             }
             finally

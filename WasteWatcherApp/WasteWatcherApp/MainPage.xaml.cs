@@ -46,7 +46,7 @@ namespace WasteWatcherApp
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                MessageService.ShowToastShort("Verbinde dich mit dem Internet");
+                ToastService.ShowToastShort("Verbinde dich mit dem Internet");
                 return;
             }
 
@@ -96,12 +96,12 @@ namespace WasteWatcherApp
                 }
                 else
                 {
-                    MessageService.ShowToastLong("Einscannen war nicht möglich. Code nicht lesbar.");
+                    ToastService.ShowToastLong("Einscannen war nicht möglich. Code nicht lesbar.");
                 }
             }
             else
             {
-                MessageService.ShowToastShort("Einscannen nur mit Kamerazugriff möglich.");
+                ToastService.ShowToastShort("Einscannen nur mit Kamerazugriff möglich.");
             }
 
             ScanButton.IsEnabled = true;
@@ -127,22 +127,22 @@ namespace WasteWatcherApp
             }
             catch (ProductNotFoundException)
             {
-                MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich, das Produkt wurde nicht gefunden");
+                ToastService.ShowToastLong("Datenabruf für Produkt nicht möglich, das Produkt wurde nicht gefunden");
             }
             catch (HttpRequestException)
             {
-                MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich, bitte Internetverbindung prüfen");
+                ToastService.ShowToastLong("Datenabruf für Produkt nicht möglich, bitte Internetverbindung prüfen");
             }
             catch (Exception ex)
             {
                 bool isNetworkException = ex.GetType().FullName.ToLower().Contains("java.net");
                 if (isNetworkException)
                 {
-                    MessageService.ShowToastLong("Datenabruf für Produkt nicht möglich, bitte Internetverbindung prüfen");
+                    ToastService.ShowToastLong("Datenabruf für Produkt nicht möglich, bitte Internetverbindung prüfen");
                 }
                 else
                 {
-                    MessageService.ShowToastLong($"Fehler beim Datenabruf: {ex.GetType().FullName}");
+                    ToastService.ShowToastLong($"Fehler beim Datenabruf: {ex.GetType().FullName}");
                 }
             }
 

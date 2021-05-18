@@ -3,33 +3,28 @@ using Xamarin.Forms;
 
 namespace WasteWatcherApp
 {
-    public static class MessageService
+    public static class ToastService
     {
-        static IMessage _ToastService;
+        static IMessage _service;
 
-        static IMessage ToastService
+        static IMessage Service
         {
             get
             {
                 // Get IMessage implementation only once as soon as it is requested
                 // to improve performance and decrease memory usage
-                if (_ToastService == null)
-                {
-                    _ToastService = DependencyService.Get<IMessage>();
-                }
-
-                return _ToastService;
+                return _service ??= DependencyService.Get<IMessage>();
             }
         }
 
         public static void ShowToastShort(string message)
         {
-            ToastService.ShortAlert(message);
+            Service.ShortAlert(message);
         }
 
         public static void ShowToastLong(string message)
         {
-            ToastService.LongAlert(message);
+            Service.LongAlert(message);
         }
     }
 }
