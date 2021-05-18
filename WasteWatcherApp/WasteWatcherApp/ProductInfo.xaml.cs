@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using WasteWatcherApp.helper;
+using WasteWatcherApp.Firebase;
 using WasteWatcherApp.Waste;
 using Xamarin.Essentials;
 using Xamarin.Forms;

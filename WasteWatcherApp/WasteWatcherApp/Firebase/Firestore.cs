@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WasteWatcherApp.Waste;
 
-namespace WasteWatcherApp.helper
+namespace WasteWatcherApp.Firebase
 {
     
     /// <summary>
