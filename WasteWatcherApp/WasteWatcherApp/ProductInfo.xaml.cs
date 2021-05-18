@@ -40,6 +40,11 @@ namespace WasteWatcherApp
                 "3" => "eco_score_c.png",
                 "4" => "eco_score_d.png",
                 "5" => "eco_score_e.png",
+                "a" => "eco_score_a.png",
+                "b" => "eco_score_b.png",
+                "c" => "eco_score_c.png",
+                "d" => "eco_score_d.png",
+                "e" => "eco_score_e.png",
                 _ => string.Empty
             };
 
