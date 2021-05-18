@@ -13,7 +13,9 @@ namespace WasteWatcherApp
             ProductCache productCacheWithApiSource = new(apiSource);
 
             ProductJsonParser parsedProductSource = new(productCacheWithApiSource);
-            MainPage = new NavigationPage(new MainPage(parsedProductSource));
+
+            ProductRequestStore requestStore = new(parsedProductSource);
+            MainPage = new NavigationPage(new MainPage(requestStore));
         }
 
         protected override void OnStart()
