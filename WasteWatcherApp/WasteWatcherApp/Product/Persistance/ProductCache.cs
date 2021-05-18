@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace WasteWatcherApp
+namespace WasteWatcherApp.Product.Persistance
 {
-    static class ProductCache
+    class ProductCache : IProductSource<string>
     {
         private const string SETTINGS_KEY = "ProductCaching";
         private static bool isCachingEnabled;
@@ -22,7 +21,7 @@ namespace WasteWatcherApp
 
         static ProductCache()
         {
-            if (App.Current.Properties.TryGetValue(SETTINGS_KEY, out object settings) && 
+            if (App.Current.Properties.TryGetValue(SETTINGS_KEY, out object settings) &&
                 settings.GetType() == typeof(bool))
             {
                 isCachingEnabled = (bool)settings;
@@ -33,21 +32,34 @@ namespace WasteWatcherApp
             }
         }
 
-        public static async Task<string> GetDataWithCache(string barcode, Func<string, Task<string>> fetchCall)
+
+
+        public IProductSource<string> Fallback { get; }
+
+        ProductCache(IProductSource<string> fallback = null)
+        {
+            Fallback = fallback;
+        }
+
+        public async Task<string> GetData(string barcode)
         {
             if (!IsCachingEnabled)
             {
-                return await fetchCall(barcode);
+                if (Fallback != null)
+                {
+                    return await Fallback.GetData(barcode);
+                }
+                throw new ProductNotFoundException();
             }
 
-            if (App.Current.Properties.TryGetValue(barcode, out object savedData) && 
+            if (App.Current.Properties.TryGetValue(barcode, out object savedData) &&
                 savedData.GetType() == typeof(string))
             {
                 return (string)savedData;
             }
             else
             {
-                string result = await fetchCall(barcode);
+                string result = await Fallback.GetData(barcode);
                 App.Current.Properties[barcode] = result;
                 // Do not await save call because it doesn't matter
                 // whether the call succeeds or not
@@ -55,6 +67,5 @@ namespace WasteWatcherApp
                 return result;
             }
         }
-
     }
 }

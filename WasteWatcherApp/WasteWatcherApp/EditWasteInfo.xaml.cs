@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using System;
 using System.Threading.Tasks;
+using WasteWatcherApp.Product;
 using WasteWatcherApp.Waste;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,12 +12,12 @@ namespace WasteWatcherApp
     public partial class EditWasteInfo : ContentPage
     {
 
-        public Product Product { get; }
+        public ProductData Product { get; }
         public IWasteStore Store { get; }
 
         public WasteCollection WasteData { get; private set; }
 
-        public EditWasteInfo(Product product, IWasteStore store)
+        public EditWasteInfo(ProductData product, IWasteStore store)
         {
             InitializeComponent();
             Product = product ?? throw new ArgumentNullException(nameof(product));

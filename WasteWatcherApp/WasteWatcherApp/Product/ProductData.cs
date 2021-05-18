@@ -1,7 +1,7 @@
-﻿namespace WasteWatcherApp
+﻿namespace WasteWatcherApp.Product
 {
  
-    public record Product(string ProductName, string Barcode, string Brand, string ProductImage, string Package, string EcoScore);
+    public record ProductData(string ProductName, string Barcode, string Brand, string ProductImage, string Package, string EcoScore);
 
 
     // Before C# 9.0 the class Product with its properties

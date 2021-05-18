@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 using WasteWatcherApp.Firebase;
+using WasteWatcherApp.Product;
 using WasteWatcherApp.Waste;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -13,11 +13,11 @@ namespace WasteWatcherApp
     {
         private static IWasteStore WasteStore { get; } = new Firestore();
 
-        public Product Product { get; }
+        public ProductData Product { get; }
 
         EditWasteInfo editWasteInfoPage;
 
-        public ProductInfo(Product product)
+        public ProductInfo(ProductData product)
         {
             InitializeComponent();
             Product = product;

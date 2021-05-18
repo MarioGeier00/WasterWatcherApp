@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using WasteWatcherApp.Product;
 
 namespace WasteWatcherApp.OpenFoodFacts
 {
@@ -11,9 +12,9 @@ namespace WasteWatcherApp.OpenFoodFacts
         /// </summary>
         /// <param name="barcode"></param>
         /// <returns>Product object</returns>
-        public static async Task<Product> GetProductDataByBarcode(string barcode)
+        public static async Task<ProductData> GetProductDataByBarcode(string barcode)
         {
-            string data = await ProductCache.GetDataWithCache(barcode, GetProductDataJsonByBarcode);
+            string data = await GetProductDataJsonByBarcode(barcode);
 
             JObject root = JObject.Parse(data);
             var fields = root.Value<JObject>("product");
@@ -27,7 +28,7 @@ namespace WasteWatcherApp.OpenFoodFacts
             string package = fields["packaging"]?.ToString();
             string ecoScore = fields["ecoscore_grade"]?.ToString();
 
-            Product prod = new Product(ProductName: productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
+            ProductData prod = new(ProductName: productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
             return prod;
         }
         
@@ -36,7 +37,7 @@ namespace WasteWatcherApp.OpenFoodFacts
         /// </summary>
         /// <param name="barcode"></param>
         /// <returns></returns>
-        private static async Task<string> GetProductDataJsonByBarcode(string barcode)
+        public static async Task<string> GetProductDataJsonByBarcode(string barcode)
         {
             string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";
             HttpClient client = new();

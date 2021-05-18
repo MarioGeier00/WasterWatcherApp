@@ -3,6 +3,8 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WasteWatcherApp.OpenFoodFacts;
+using WasteWatcherApp.Product;
+using WasteWatcherApp.Product.Persistance;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZXing;
@@ -12,7 +14,7 @@ namespace WasteWatcherApp
     public partial class MainPage : ContentPage
     {
 
-        Task<Product> productLoadingTask;
+        Task<ProductData> productLoadingTask;
 
 
         public MainPage()
@@ -37,7 +39,7 @@ namespace WasteWatcherApp
 
         async void ShowTestProduct_Clicked(object sender, EventArgs e)
         {
-            var testProduct = new Product("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "recycling.png", "Festplatte", "1");
+            var testProduct = new ProductData("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "recycling.png", "Festplatte", "1");
             await Navigation.PushAsync(new ProductInfo(testProduct));
         }
 
@@ -111,10 +113,10 @@ namespace WasteWatcherApp
         /// <param name="productId"></param>
         /// <param name="minLoadingTime"></param>
         /// <returns></returns>
-        async Task<Product> LoadProduct(string productId, uint minLoadingTime = 500)
+        async Task<ProductData> LoadProduct(string productId, uint minLoadingTime = 500)
         {
             var minLoadingTimeTask = Task.Delay((int)minLoadingTime);
-            Product result = null;
+            ProductData result = null;
 
             try
             {
