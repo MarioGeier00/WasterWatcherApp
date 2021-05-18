@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using WasteWatcherApp.Product.Persistance;
+using Xamarin.Forms;
 
 namespace WasteWatcherApp
 {
@@ -8,7 +9,11 @@ namespace WasteWatcherApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            OpenFoodFactsProductSource apiSource = new();
+            ProductCache productCacheWithApiSource = new(apiSource);
+
+            ProductJsonParser parsedProductSource = new(productCacheWithApiSource);
+            MainPage = new NavigationPage(new MainPage(parsedProductSource));
         }
 
         protected override void OnStart()

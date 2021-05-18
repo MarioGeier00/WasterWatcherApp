@@ -36,7 +36,7 @@ namespace WasteWatcherApp.Product.Persistance
 
         public IProductSource<string> Fallback { get; }
 
-        ProductCache(IProductSource<string> fallback = null)
+        public ProductCache(IProductSource<string> fallback = null)
         {
             Fallback = fallback;
         }

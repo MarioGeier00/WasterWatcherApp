@@ -2,7 +2,7 @@
 
 namespace WasteWatcherApp.Product.Persistance
 {
-    interface IProductSource<T>
+    public interface IProductSource<T>
     {
         Task<T> GetData(string barcode);
     }

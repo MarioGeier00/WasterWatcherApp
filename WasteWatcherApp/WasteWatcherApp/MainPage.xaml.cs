@@ -13,16 +13,18 @@ namespace WasteWatcherApp
 {
     public partial class MainPage : ContentPage
     {
+        public IProductSource<ProductData> ProductSource { get; }
 
         Task<ProductData> productLoadingTask;
 
 
-        public MainPage()
+        public MainPage(IProductSource<ProductData> productSource)
         {
             InitializeComponent();
             CachingSwitch.IsToggled = ProductCache.IsCachingEnabled;
 
             this.Appearing += MainPage_Appearing;
+            ProductSource = productSource ?? throw new ArgumentNullException(nameof(productSource));
         }
 
 
@@ -120,7 +122,7 @@ namespace WasteWatcherApp
 
             try
             {
-                result = await OpenFoodFactsApi.GetProductDataByBarcode(productId);
+                result = await ProductSource.GetData(productId);
                 if (!minLoadingTimeTask.IsCompleted)
                 {
                     await minLoadingTimeTask;

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using WasteWatcherApp.Product;
+using WasteWatcherApp.Product.Persistance;
 
 namespace WasteWatcherApp.OpenFoodFacts
 {
@@ -15,21 +16,7 @@ namespace WasteWatcherApp.OpenFoodFacts
         public static async Task<ProductData> GetProductDataByBarcode(string barcode)
         {
             string data = await GetProductDataJsonByBarcode(barcode);
-
-            JObject root = JObject.Parse(data);
-            var fields = root.Value<JObject>("product");
-            if (fields == null)
-            {
-                throw new ProductNotFoundException();
-            }
-            string productName = fields["product_name"]?.ToString();
-            string brand = fields["brands"]?.ToString();
-            string productImage = fields["image_front_url"]?.ToString();
-            string package = fields["packaging"]?.ToString();
-            string ecoScore = fields["ecoscore_grade"]?.ToString();
-
-            ProductData prod = new(ProductName: productName, Brand: brand, Barcode: barcode, ProductImage: productImage, Package: package, EcoScore: ecoScore);
-            return prod;
+            return ProductJsonParser.Parse(data, barcode);
         }
         
         /// <summary>

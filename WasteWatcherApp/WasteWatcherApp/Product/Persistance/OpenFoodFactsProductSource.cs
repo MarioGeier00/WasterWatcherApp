@@ -10,6 +10,5 @@ namespace WasteWatcherApp.Product.Persistance
 
         async Task<ProductData> IProductSource<ProductData>.GetData(string barcode)
             => await OpenFoodFactsApi.GetProductDataByBarcode(barcode);
-
     }
 }
