@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WasteWatcherApp
+namespace WasteWatcherApp.Waste
 {
     public class WasteData<T>
     {

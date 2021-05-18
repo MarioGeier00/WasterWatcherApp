@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using WasteWatcherApp.Waste;
 
-namespace WasteWatcherApp
+namespace WasteWatcherApp.Waste
 {
     public interface IWasteStore
     {

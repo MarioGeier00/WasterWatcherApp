@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WasteWatcherApp
+namespace WasteWatcherApp.Waste
 {
     public enum WasteType
     {

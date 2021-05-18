@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using WasteWatcherApp.Messaging;
+using Xamarin.Forms;
 
 namespace WasteWatcherApp
 {

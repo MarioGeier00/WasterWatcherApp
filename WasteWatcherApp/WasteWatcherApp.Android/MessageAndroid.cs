@@ -1,11 +1,8 @@
 ﻿
 using Android.App;
 using Android.Widget;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using WasteWatcherApp.Droid;
+using WasteWatcherApp.Messaging;
 
 [assembly: Xamarin.Forms.Dependency(typeof(MessageAndroid))]
 namespace WasteWatcherApp.Droid
