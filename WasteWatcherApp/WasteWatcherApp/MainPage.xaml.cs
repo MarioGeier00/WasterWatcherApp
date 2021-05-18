@@ -68,10 +68,10 @@ namespace WasteWatcherApp
 
                 var scanResult = await scanner.Scan(new ZXing.Mobile.MobileBarcodeScanningOptions()
                 {
-                    PossibleFormats = new List<BarcodeFormat>()
+                    /*PossibleFormats = new List<BarcodeFormat>()
                     {
                         BarcodeFormat.All_1D
-                    },
+                    },*/
                 });
                 if (scanResult != null && scanResult.BarcodeFormat != BarcodeFormat.QR_CODE)
                 {
