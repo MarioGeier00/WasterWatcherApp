@@ -33,5 +33,26 @@ namespace WasteWatcherApp.Waste
         public IEnumerator<WasteAmount> GetEnumerator() => WasteEnumeration.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
+
+
+        public static WasteCollection operator +(WasteCollection wasteA, WasteCollection wasteB)
+        {
+            WasteCollection wasteCollection = new();
+
+            foreach (var wasteType in WasteTypeHelper.WasteTypesEnumerator)
+            {
+                if (wasteA[wasteType].HasValue || wasteB[wasteType].HasValue)
+                {
+                    int wasteAmount = (wasteA[wasteType] ?? 0) +
+                                      (wasteB[wasteType] ?? 0);
+
+                    wasteCollection
+                        .Modify()
+                        .SetWasteAmount(wasteType, wasteAmount);
+                }
+            }
+
+            return wasteCollection;
+        }
     }
 }

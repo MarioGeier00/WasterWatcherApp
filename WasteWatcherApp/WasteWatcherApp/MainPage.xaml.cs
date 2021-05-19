@@ -2,8 +2,10 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using WasteWatcherApp.Firebase;
 using WasteWatcherApp.Product;
 using WasteWatcherApp.Product.Persistance;
+using WasteWatcherApp.Waste;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZXing;
@@ -37,14 +39,7 @@ namespace WasteWatcherApp
                 UserDialogs.Instance.ShowLoading();
             }
 
-
-            string[] scannedBarcodes = ProductRequestStore.GetBarcodeRequestsSince(DateTime.Today);
-            RequestCounterLabel.Text = scannedBarcodes.Length switch
-            {
-                0 => "Heute wurde noch kein Produkt eingescannt.",
-                1 => $"Du hast heute einen Barcode gescannt.",
-                _ => $"Heute wurden {scannedBarcodes.Length} Barcodes gescannt."
-            };
+            LoadWasteStatisticsAsync();
         }
 
         async void ShowTestProduct_Clicked(object sender, EventArgs e)
@@ -156,9 +151,42 @@ namespace WasteWatcherApp
         }
 
 
-        private void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
+        void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             ProductCache.IsCachingEnabled = CachingSwitch.IsToggled;
+        }
+
+
+        async Task LoadWasteStatisticsAsync()
+        {
+            string[] scannedBarcodes = ProductRequestStore.GetBarcodeRequestsSince(DateTime.Today);
+            RequestCounterLabel.Text = scannedBarcodes.Length switch
+            {
+                0 => "Heute wurde noch kein Produkt eingescannt.",
+                1 => $"Du hast heute einen Barcode gescannt.",
+                _ => $"Heute wurden {scannedBarcodes.Length} Barcodes gescannt."
+            };
+
+            Firestore wasteSource = new();
+            WasteCollection waste = new();
+
+            try
+            {
+                foreach (var barcode in scannedBarcodes)
+                {
+                    WasteCollection currentWaste = await wasteSource.GetData(barcode);
+                    if (currentWaste != null)
+                    {
+                        waste += currentWaste;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            WasteStatisticsLabel.Text = waste.ToString();
         }
     }
 }
