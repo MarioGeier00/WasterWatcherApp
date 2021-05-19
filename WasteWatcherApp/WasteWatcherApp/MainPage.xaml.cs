@@ -2,9 +2,10 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WasteWatcherApp.OpenFoodFacts;
+using WasteWatcherApp.Firebase;
 using WasteWatcherApp.Product;
 using WasteWatcherApp.Product.Persistance;
+using WasteWatcherApp.Waste;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZXing;
@@ -38,15 +39,7 @@ namespace WasteWatcherApp
                 UserDialogs.Instance.ShowLoading();
             }
 
-
-            string[] scannedBarcodes = ProductRequestStore.GetBarcodRequestsUntil(DateTime.Today);
-            RequestCounterLabel.Text = scannedBarcodes.Length switch
-            {
-                0 => "Heute wurde noch kein Produkt eingescannt.",
-                1 => $"Du hast heute einen Barcode gescannt.",
-                _ => $"Heute wurden {scannedBarcodes.Length} Barcodes gescannt."
-            };
-                
+            LoadWasteStatisticsAsync();
         }
 
         async void ShowTestProduct_Clicked(object sender, EventArgs e)
@@ -79,13 +72,7 @@ namespace WasteWatcherApp
                     TopText = "Barcode Einscannen",
                 };
 
-                var scanResult = await scanner.Scan(new ZXing.Mobile.MobileBarcodeScanningOptions()
-                {
-                    /*PossibleFormats = new List<BarcodeFormat>()
-                    {
-                        BarcodeFormat.All_1D
-                    },*/
-                });
+                var scanResult = await scanner.Scan();
                 if (scanResult != null && scanResult.BarcodeFormat != BarcodeFormat.QR_CODE)
                 {
                     // If Caching is enabled reduce minLoadingTime to zero
@@ -119,12 +106,13 @@ namespace WasteWatcherApp
 
             ScanButton.IsEnabled = true;
         }
+
         /// <summary>
-        /// Load Product data and show loading screen 
+        /// Load product data and show loading screen.
         /// </summary>
-        /// <param name="productId"></param>
-        /// <param name="minLoadingTime"></param>
-        /// <returns></returns>
+        /// <param name="productId">The id of the product, which is a barcode string</param>
+        /// <param name="minLoadingTime">The minimum time span how long the loading spinner should be displayed</param>
+        /// <returns>The product data</returns>
         async Task<ProductData> LoadProduct(string productId, uint minLoadingTime = 500)
         {
             var minLoadingTimeTask = Task.Delay((int)minLoadingTime);
@@ -163,9 +151,42 @@ namespace WasteWatcherApp
         }
 
 
-        private void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
+        void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             ProductCache.IsCachingEnabled = CachingSwitch.IsToggled;
+        }
+
+
+        async Task LoadWasteStatisticsAsync()
+        {
+            string[] scannedBarcodes = ProductRequestStore.GetBarcodeRequestsSince(DateTime.Today);
+            RequestCounterLabel.Text = scannedBarcodes.Length switch
+            {
+                0 => "Heute wurde noch kein Produkt eingescannt.",
+                1 => $"Du hast heute einen Barcode gescannt.",
+                _ => $"Heute wurden {scannedBarcodes.Length} Barcodes gescannt."
+            };
+
+            Firestore wasteSource = new();
+            WasteCollection waste = new();
+
+            try
+            {
+                foreach (var barcode in scannedBarcodes)
+                {
+                    WasteCollection currentWaste = await wasteSource.GetData(barcode);
+                    if (currentWaste != null)
+                    {
+                        waste += currentWaste;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            WasteStatisticsLabel.Text = waste.ToString();
         }
     }
 }

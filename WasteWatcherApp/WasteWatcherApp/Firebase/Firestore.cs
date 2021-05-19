@@ -46,6 +46,7 @@ namespace WasteWatcherApp.Firebase
             authToken = await GetIdToken();
 
         }
+
         /// <summary>
         /// Get Firestore ID token
         /// </summary>

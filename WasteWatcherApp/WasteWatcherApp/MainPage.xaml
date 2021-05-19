@@ -40,7 +40,10 @@
                    VerticalTextAlignment="Center"
                    />
 
-            <Label x:Name="RequestCounterLabel" Margin="12, 48" FontSize="16" HorizontalTextAlignment="Center" />
+            <StackLayout Margin="12, 48, 12, 12">
+                <Label x:Name="RequestCounterLabel" FontSize="16" HorizontalTextAlignment="Center" />
+                <Label x:Name="WasteStatisticsLabel" FontSize="16" HorizontalTextAlignment="Center" />
+            </StackLayout>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="24">
                 <Label Text="Produkt Zwischenspeicher" VerticalOptions="Center" FontSize="Medium" />

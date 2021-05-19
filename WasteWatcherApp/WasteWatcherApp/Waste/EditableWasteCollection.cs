@@ -32,7 +32,7 @@ namespace WasteWatcherApp.Waste
         public EditableWasteCollection ClearAllWaste()
         {
             WasteList.Clear();
-         
+
             return this;
         }
 

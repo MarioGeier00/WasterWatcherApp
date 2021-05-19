@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WasteWatcherApp.EditWasteInfo">
     <ContentPage.Content>
-        <StackLayout Margin="32, 22">
-            <ScrollView VerticalOptions="CenterAndExpand">
+        <StackLayout >
+            <ScrollView VerticalOptions="CenterAndExpand" Margin="32, 22">
                 <StackLayout>
                     <Frame Margin="0, 0, 0, 22">
                         <StackLayout>
@@ -34,8 +34,19 @@
                                 <CheckBox x:Name="hasGlas" />
                                 <Label Text="Glas" FontSize="Title" />
                             </StackLayout>
-                            <Entry x:Name="glasWasteInput" Keyboard="Numeric" ReturnType="Done" HeightRequest="75" ClearButtonVisibility="WhileEditing"
+                            <Entry x:Name="glasWasteInput" Keyboard="Numeric" ReturnType="Next" HeightRequest="75" ClearButtonVisibility="WhileEditing"
                                Placeholder="Abfallmenge von Glas in g" IsEnabled="{Binding hasGlas.IsChecked}"/>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Frame Margin="0, 0, 0, 32">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <CheckBox x:Name="hasMetal" />
+                                <Label Text="Metall" FontSize="Title" />
+                            </StackLayout>
+                            <Entry x:Name="metalWasteInput" Keyboard="Numeric" ReturnType="Done" HeightRequest="75" ClearButtonVisibility="WhileEditing"
+                               Placeholder="Abfallmenge von Metall in g" IsEnabled="{Binding hasMetal.IsChecked}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
