@@ -43,7 +43,7 @@
             <Label x:Name="RequestCounterLabel" Margin="12, 48" FontSize="16" HorizontalTextAlignment="Center" />
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="24">
-                <Label Text="Zwischenspeicher aktivieren" VerticalOptions="Center" FontSize="Medium" />
+                <Label Text="Produkt Zwischenspeicher" VerticalOptions="Center" FontSize="Medium" />
                 <Switch x:Name="CachingSwitch" Toggled="CachingSwitch_Toggled" />
             </StackLayout>
 
