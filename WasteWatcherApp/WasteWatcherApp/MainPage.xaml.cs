@@ -38,7 +38,7 @@ namespace WasteWatcherApp
             }
 
 
-            string[] scannedBarcodes = ProductRequestStore.GetBarcodRequestsUntil(DateTime.Today);
+            string[] scannedBarcodes = ProductRequestStore.GetBarcodeRequestsSince(DateTime.Today);
             RequestCounterLabel.Text = scannedBarcodes.Length switch
             {
                 0 => "Heute wurde noch kein Produkt eingescannt.",

@@ -38,10 +38,12 @@ namespace WasteWatcherApp
             plasticWasteInput.Text = WasteData[WasteType.Plastic].ToString();
             paperWasteInput.Text = WasteData[WasteType.Paper].ToString();
             glasWasteInput.Text = WasteData[WasteType.Glas].ToString();
+            metalWasteInput.Text = WasteData[WasteType.Metal].ToString();
 
             hasPlastic.IsChecked = WasteData[WasteType.Plastic].HasValue;
             hasGlas.IsChecked = WasteData[WasteType.Glas].HasValue;
             hasPaper.IsChecked = WasteData[WasteType.Paper].HasValue;
+            hasMetal.IsChecked = WasteData[WasteType.Metal].HasValue;
         }
 
         /// <summary>
@@ -66,6 +68,10 @@ namespace WasteWatcherApp
             if (int.TryParse(glasWasteInput.Text, out int glasWaste) && hasGlas.IsChecked)
             {
                 editableWasteCollection.SetWasteAmount(WasteType.Glas, glasWaste);
+            }
+            if (int.TryParse(metalWasteInput.Text, out int metalWaste) && hasMetal.IsChecked)
+            {
+                editableWasteCollection.SetWasteAmount(WasteType.Metal, metalWaste);
             }
 
             try

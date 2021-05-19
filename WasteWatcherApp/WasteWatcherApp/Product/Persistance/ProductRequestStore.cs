@@ -14,7 +14,13 @@ namespace WasteWatcherApp.Product.Persistance
             return ProductSource.GetData(barcode);
         }
 
-        public static string[] GetBarcodRequestsUntil(DateTime expirationDate)
+
+        /// <summary>
+        /// Load the barcodes that were requested since the minimumDate.
+        /// </summary>
+        /// <param name="minimumDate">The minimum date when barcodes are still relevant</param>
+        /// <returns>An array of barcode strings</returns>
+        public static string[] GetBarcodeRequestsSince(DateTime minimumDate)
         {
             List<string> barcodes = new();
 
@@ -23,7 +29,7 @@ namespace WasteWatcherApp.Product.Persistance
                 if (item.Key.EndsWith(SAVE_DATE_KEY))
                 {
                     DateTime requestDate = DateTime.Parse((string)item.Value);
-                    if (requestDate > expirationDate)
+                    if (requestDate > minimumDate)
                     {
                         barcodes.Add(item.Key.Replace(SAVE_DATE_KEY, string.Empty));
                     }
@@ -34,6 +40,11 @@ namespace WasteWatcherApp.Product.Persistance
         }
 
 
+        /// <summary>
+        /// Saves the requested barcode and the given date.
+        /// </summary>
+        /// <param name="barcode">The barcode to use as part of the key</param>
+        /// <param name="dateTime">The date which is saved as a string value</param>
         void SaveRequestDate(string barcode, DateTime dateTime)
         {
             App.Current.Properties[$"{barcode}{SAVE_DATE_KEY}"] = dateTime.ToString();
