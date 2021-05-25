@@ -24,14 +24,17 @@ namespace WasteWatcherApp
             Store = store ?? throw new ArgumentNullException(nameof(store));
 
             this.Title = product.ProductName;
+
+            // Shows the loading indicator and hides it again when
+            // the asynchronous LoadWasteData call has been finished
             UserDialogs.Instance.ShowLoading();
             LoadWasteData().ContinueWith(new Action<object>((_) => UserDialogs.Instance.HideLoading()));
         }
 
         /// <summary>
-        /// Load waste data and fill constrols with that data
+        /// Loads waste data and fills constrols with that data
         /// </summary>
-        private async Task LoadWasteData()
+        async Task LoadWasteData()
         {
             WasteData = await Store.GetData(Product.Barcode);
 
@@ -53,6 +56,7 @@ namespace WasteWatcherApp
         {
             UserDialogs.Instance.ShowLoading();
 
+            // Creates new WasteCollection when no one has been created yet
             WasteData ??= new WasteCollection();
             EditableWasteCollection editableWasteCollection = WasteData.Modify();
             editableWasteCollection.ClearAllWaste();
