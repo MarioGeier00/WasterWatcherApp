@@ -28,26 +28,44 @@ namespace WasteWatcherApp
             ProductSource = productSource ?? throw new ArgumentNullException(nameof(productSource));
         }
 
-
+        /// <summary>
+        /// Is called everytime the MainPage is visible again on the screen
+        /// </summary>
         void MainPage_Appearing(object sender, EventArgs e)
         {
             // Show loading indicator as soon as this page appears
-            // and the data fetching task is still in running
+            // and the data fetching task is still running
             if (productLoadingTask != null &&
                 !productLoadingTask.IsCompleted)
             {
                 UserDialogs.Instance.ShowLoading();
             }
 
-            LoadWasteStatisticsAsync();
+            _ = LoadWasteStatisticsAsync();
         }
 
+        /// <summary>
+        /// Shows the ProductData Page with test data to check the page layout.
+        /// </summary>
         async void ShowTestProduct_Clicked(object sender, EventArgs e)
         {
             var testProduct = new ProductData("WasteWatcher App", "1902398237497", "Technische Hochschule Nürnberg", "recycling.png", "Festplatte", "1");
             await Navigation.PushAsync(new ProductInfo(testProduct));
         }
 
+        /// <summary>
+        /// Changes the caching settting
+        /// </summary>
+        void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            ProductCache.IsCachingEnabled = CachingSwitch.IsToggled;
+        }
+
+        /// <summary>
+        /// Starts the scanning process by verifying internet access and camera access,
+        /// opens the ZXing barcode scanner and checks that the scanned barcode is valid.
+        /// Finally calls the <see cref="LoadProduct"/> method.
+        /// </summary>
         async void ScanButton_Clicked(object sender, EventArgs e)
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
@@ -150,13 +168,10 @@ namespace WasteWatcherApp
             return result;
         }
 
-
-        void CachingSwitch_Toggled(object sender, ToggledEventArgs e)
-        {
-            ProductCache.IsCachingEnabled = CachingSwitch.IsToggled;
-        }
-
-
+        /// <summary>
+        /// Loads waste statistics for the total waste usage for the current day.
+        /// </summary>
+        /// <returns>The background task of fetching the waste data</returns>
         async Task LoadWasteStatisticsAsync()
         {
             string[] scannedBarcodes = ProductRequestStore.GetBarcodeRequestsSince(DateTime.Today);
@@ -169,21 +184,26 @@ namespace WasteWatcherApp
 
             Firestore wasteSource = new();
             WasteCollection waste = new();
+            WasteCollection currentWaste;
 
-            try
+
+            foreach (var barcode in scannedBarcodes)
             {
-                foreach (var barcode in scannedBarcodes)
+                currentWaste = null;
+                // Tries to get the wasteData for the barcode
+                try
                 {
-                    WasteCollection currentWaste = await wasteSource.GetData(barcode);
-                    if (currentWaste != null)
-                    {
-                        waste += currentWaste;
-                    }
+                    currentWaste = await wasteSource.GetData(barcode);
                 }
-            }
-            catch (Exception)
-            {
-
+                catch
+                {
+                    // The wasteData couldn't be loaded, but we don't care
+                    // because the waste statistics isn't crucial for using the app
+                }
+                if (currentWaste != null)
+                {
+                    waste += currentWaste;
+                }
             }
 
             WasteStatisticsLabel.Text = waste.ToString();
