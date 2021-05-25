@@ -66,32 +66,6 @@ namespace WasteWatcherApp.Firebase
 
         }
 
-        /// <summary>
-        /// Save Data to Firestore
-        /// </summary>
-        public async Task SaveData(string productId, string plasticWaste, string paperWaste, string glasWaste)
-        {
-            HttpClient client = new HttpClient();
-
-            string url = $"https://firestore.googleapis.com/v1/projects/{projectID}/databases/(default)/documents/{collection}/{productId}";
-            string json_data = "{ \"fields\": {";
-            if (!string.IsNullOrEmpty(plasticWaste))
-                json_data += "\"plastik_g\":" + "{ \"integerValue\": \"" + plasticWaste + "\"},";
-            if (!string.IsNullOrEmpty(paperWaste))
-                json_data += "\"papier_g\":" + "{ \"integerValue\": \"" + paperWaste + "\" },";
-            if (!string.IsNullOrEmpty(glasWaste))
-                json_data += "\"glas_g\":" + "{ \"integerValue\": \"" + glasWaste + "\" },";
-            if (json_data.EndsWith(","))
-                json_data = json_data.Remove(json_data.Length - 1);
-
-            json_data += "} }";
-
-
-            StringContent extraData = new StringContent(json_data, Encoding.UTF8, "application/json");
-
-            await client.PatchAsync(url, extraData);
-        }
-
 
         public async Task SaveData(string productId, WasteCollection wasteCollection)
         {

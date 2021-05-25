@@ -17,27 +17,6 @@ namespace WasteWatcherApp
         }
 
 
-        [Obsolete("Use SaveData(string productId, WasteCollection wasteCollection) instead.")]
-        public async Task SaveData(string productId, string plasticWaste, string paperWaste, string glasWaste)
-        {
-            if (plasticWaste != null)
-            {
-                SetWasteValue(WasteType.Plastic.WithProductId(productId), plasticWaste);
-            }
-            if (paperWaste != null)
-            {
-                SetWasteValue(WasteType.Paper.WithProductId(productId), paperWaste);
-            }
-            if (glasWaste != null)
-            {
-                SetWasteValue(WasteType.Glas.WithProductId(productId), glasWaste);
-            }
-
-            await App.Current.SavePropertiesAsync();
-            return;
-        }
-
-
         public async Task SaveData(string productId, WasteCollection wasteCollection)
         {
             foreach (var wasteType in WasteTypeHelper.WasteTypesEnumerator)
