@@ -42,7 +42,9 @@ namespace WasteWatcherApp.Waste
             => $"{productId}-{wasteType.ToString().ToLower()}";
 
 
-
+        /// <summary>
+        /// Enumerator to loop through all defined fields of <see cref="WasteType"/>.
+        /// </summary>
         public static IEnumerable<WasteType> WasteTypesEnumerator
             => Enum.GetValues(typeof(WasteType)).Cast<WasteType>();
 
