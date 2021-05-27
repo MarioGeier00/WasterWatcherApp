@@ -7,16 +7,35 @@ namespace WasteWatcherApp
     public class LocalWasteStorage : IWasteStore
     {
 
+        /// <summary>
+        /// Load a <see cref="WasteCollection"/> by a given barcode from the local storage.
+        /// </summary>
+        /// <param name="productId">The barcode string</param>
+        /// <returns>The waste amount task</returns>
         public Task<WasteCollection> GetData(string productId)
         {
-            WasteCollection collection = new(GetWasteValue(productId, WasteType.Plastic),
-                                             GetWasteValue(productId, WasteType.Glas),
-                                             GetWasteValue(productId, WasteType.Paper),
-                                             GetWasteValue(productId, WasteType.Metal));
-            return Task.FromResult(collection);
+            WasteCollection wasteCollection = new();
+            foreach (var wasteType in WasteTypeHelper.WasteTypesEnumerator)
+            {
+                WasteAmount wasteAmount = GetWasteValue(productId, wasteType);
+                if (wasteAmount is not null)
+                {
+                    wasteCollection
+                        .Modify()
+                        .SetWasteAmount(wasteType, wasteAmount.Amount);
+                }
+            }
+
+            return Task.FromResult(wasteCollection);
         }
 
 
+        /// <summary>
+        /// Asynchronously saves the given <see cref="WasteCollection"/> in the local storage.
+        /// </summary>
+        /// <param name="productId">The barcode string</param>
+        /// <param name="waste">The waste amount to store</param>
+        /// <returns>An awaitable Task of the store process</returns>
         public async Task SaveData(string productId, WasteCollection wasteCollection)
         {
             foreach (var wasteType in WasteTypeHelper.WasteTypesEnumerator)
@@ -26,24 +45,27 @@ namespace WasteWatcherApp
 
             foreach (var waste in wasteCollection)
             {
-                SetWasteValue(waste.WasteType.WithProductId(productId), waste.Amount.ToString());
+                SetWasteValue(waste.WasteType.WithProductId(productId), waste.Amount);
             }
             await App.Current.SavePropertiesAsync();
             return;
         }
 
 
-
-        private void RemoveWasteValue(string wasteKey)
-            => App.Current.Properties.Remove(wasteKey);
-
-
-
-        private void SetWasteValue(string wasteKey, string value)
-                  => SetWasteValue(wasteKey, int.Parse(value));
+        /// <summary>
+        /// Removes a saved waste entry for a given key.
+        /// </summary>
+        /// <param name="wasteKey">The key of the stored data to delete</param>
+        void RemoveWasteValue(string wasteKey)
+          => App.Current.Properties.Remove(wasteKey);
 
 
-        private void SetWasteValue(string wasteKey, int value)
+        /// <summary>
+        /// Adds or updates the waste value for a given key.
+        /// </summary>
+        /// <param name="wasteKey">The name for the stored value</param>
+        /// <param name="value">The waste amount</param>
+        void SetWasteValue(string wasteKey, int value)
         {
             if (App.Current.Properties.ContainsKey(wasteKey))
             {
@@ -55,7 +77,13 @@ namespace WasteWatcherApp
             }
         }
 
-        private int? GetWasteValue(string wasteKey)
+        /// <summary>
+        /// Loads the waste amount for a given waste key.
+        /// Returns null when no data has been stored for the given waste key.
+        /// </summary>
+        /// <param name="wasteKey">The name for the stored value</param>
+        /// <returns>A nullable integer that represents the waste amount</returns>
+        int? GetWasteValue(string wasteKey)
         {
             if (App.Current.Properties.TryGetValue(wasteKey, out object savedObject))
             {
@@ -67,8 +95,13 @@ namespace WasteWatcherApp
             return null;
         }
 
-
-        private WasteAmount GetWasteValue(string productId, WasteType wasteType)
+        /// <summary>
+        /// Loads the waste amount for a given barcode and waste type.
+        /// </summary>
+        /// <param name="productId">The barcode of the product</param>
+        /// <param name="wasteType">The waste type</param>
+        /// <returns>An instance of WasteAmount or null</returns>
+        WasteAmount GetWasteValue(string productId, WasteType wasteType)
         {
             var waste = GetWasteValue(wasteType.WithProductId(productId));
             if (waste.HasValue)

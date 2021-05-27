@@ -13,7 +13,7 @@ namespace WasteWatcherApp.Waste
         public WasteCollection(params WasteAmount[] waste)
         {
             WasteEnumeration = new(waste);
-            WasteEnumeration.RemoveAll(item => item.Amount == 0);
+            WasteEnumeration.RemoveAll(item => item.Amount == 0 || item == null);
         }
 
 
