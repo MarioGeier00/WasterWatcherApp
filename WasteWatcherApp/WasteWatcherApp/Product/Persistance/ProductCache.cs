@@ -41,6 +41,11 @@ namespace WasteWatcherApp.Product.Persistance
             Fallback = fallback;
         }
 
+
+        /// <summary>
+        /// Loads the data from the local storage.
+        /// When no value is stored, the fallback product source is used.
+        /// </summary>
         public async Task<string> GetData(string barcode)
         {
             if (!IsCachingEnabled)

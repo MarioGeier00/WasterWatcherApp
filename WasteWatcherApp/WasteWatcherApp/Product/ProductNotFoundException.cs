@@ -3,7 +3,7 @@
 namespace WasteWatcherApp
 {
     /// <summary>
-    /// Custom Exception that is thrown when a product is not found
+    /// Custom Exception that is thrown when a product is not found.
     /// </summary>
     public class ProductNotFoundException : Exception
     {
