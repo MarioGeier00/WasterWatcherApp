@@ -11,7 +11,6 @@ namespace WasteWatcherApp.OpenFoodFacts
         /// <summary>
         /// Get Data from OpenFoodfacts
         /// </summary>
-        /// <param name="barcode"></param>
         /// <returns>Product object</returns>
         public static async Task<ProductData> GetProductDataByBarcode(string barcode)
         {
@@ -22,8 +21,6 @@ namespace WasteWatcherApp.OpenFoodFacts
         /// <summary>
         /// Function to retrieve the data from OpenFoodFacts api
         /// </summary>
-        /// <param name="barcode"></param>
-        /// <returns></returns>
         public static async Task<string> GetProductDataJsonByBarcode(string barcode)
         {
             string url = $"https://world.openfoodfacts.org/api/v0/product/{barcode}.json";

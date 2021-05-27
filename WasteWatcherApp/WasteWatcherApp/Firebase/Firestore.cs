@@ -8,10 +8,10 @@ using WasteWatcherApp.Waste;
 
 namespace WasteWatcherApp.Firebase
 {
-    
+
     /// <summary>
     /// Class used to connect to and query the Firestore Database
-     /// </summary>
+    /// </summary>
     class Firestore : IWasteStore
     {
         string apiKey;
@@ -28,7 +28,7 @@ namespace WasteWatcherApp.Firebase
             int expiresIn { get; set; }
             string localId { get; set; }
         }
-        
+
         /// <summary>
         /// Initilizes the Firestore Object and requests an ID Token
         /// </summary>
@@ -44,7 +44,6 @@ namespace WasteWatcherApp.Firebase
         public async void Initialize()
         {
             authToken = await GetIdToken();
-
         }
 
         /// <summary>
@@ -55,18 +54,20 @@ namespace WasteWatcherApp.Firebase
             HttpClient client = new HttpClient();
             StringContent extraData = new StringContent(jsonStr, Encoding.UTF8, "application/json");
 
-
             var response = await client.PostAsync(loginUrl, extraData);
-
 
             string jsonText = await response.Content.ReadAsStringAsync();
             FirebaseAuthentificationReply reply = JsonConvert.DeserializeObject<FirebaseAuthentificationReply>(jsonText);
             await Task.Delay(1000);
             return reply.idToken;
-
         }
 
 
+        /// <summary>
+        /// Stores the given <see cref="WasteCollection"/> in the Firestore database.
+        /// </summary>
+        /// <param name="productId">The barcode of the product</param>
+        /// <param name="wasteCollection">The waste collection to store</param>
         public async Task SaveData(string productId, WasteCollection wasteCollection)
         {
             HttpClient client = new HttpClient();
@@ -95,8 +96,6 @@ namespace WasteWatcherApp.Firebase
         /// <summary>
         /// Request data from given Object from Firestore
         /// </summary>
-        /// <param name="productId"></param>
-        /// <returns></returns>
         public async Task<WasteCollection> GetData(string productId)
         {
             HttpClient client = new HttpClient();

@@ -17,11 +17,19 @@ namespace WasteWatcherApp
             }
         }
 
+        /// <summary>
+        /// Shows a short toast message on the bottom of the screen.
+        /// </summary>
+        /// <param name="message">The message to display to the user</param>
         public static void ShowToastShort(string message)
         {
             Service.ShortAlert(message);
         }
 
+        /// <summary>
+        /// Shows a long toast message on the bottom of the screen.
+        /// </summary>
+        /// <param name="message">The message to display to the user</param>
         public static void ShowToastLong(string message)
         {
             Service.LongAlert(message);
