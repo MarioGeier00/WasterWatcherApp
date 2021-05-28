@@ -14,20 +14,13 @@ namespace WasteWatcherApp.Firebase
     /// </summary>
     class Firestore : IWasteStore
     {
+        public string authToken;
         string apiKey;
         string jsonStr;
         string loginUrl;
-        public string authToken;
         string projectID;
         string collection;
-        public class FirebaseAuthentificationReply
-        {
-            public string idToken { get; set; }
-            string email { get; set; }
-            string refreshToken { get; set; }
-            int expiresIn { get; set; }
-            string localId { get; set; }
-        }
+
 
         /// <summary>
         /// Initilizes the Firestore Object and requests an ID Token
@@ -41,6 +34,7 @@ namespace WasteWatcherApp.Firebase
             collection = "prod";
             Initialize();
         }
+
         public async void Initialize()
         {
             authToken = await GetIdToken();
@@ -58,7 +52,6 @@ namespace WasteWatcherApp.Firebase
 
             string jsonText = await response.Content.ReadAsStringAsync();
             FirebaseAuthentificationReply reply = JsonConvert.DeserializeObject<FirebaseAuthentificationReply>(jsonText);
-            await Task.Delay(1000);
             return reply.idToken;
         }
 

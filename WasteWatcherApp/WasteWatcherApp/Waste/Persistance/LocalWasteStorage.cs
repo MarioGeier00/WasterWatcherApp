@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using WasteWatcherApp.Waste;
+﻿using System.Threading.Tasks;
 
-namespace WasteWatcherApp
+namespace WasteWatcherApp.Waste.Persistance
 {
     public class LocalWasteStorage : IWasteStore
     {
