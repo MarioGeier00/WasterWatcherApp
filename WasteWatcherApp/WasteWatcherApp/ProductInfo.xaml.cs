@@ -33,9 +33,9 @@ namespace WasteWatcherApp
             Package.Text = product.Package;
             Brand.Text = product.Brand;
 
-            bool hasBrand = product.Brand != null || product.Brand.Length > 0;
-            BrandContainer.IsVisible = hasBrand;
-            BrandUnavailableContainer.IsVisible = !hasBrand;
+            bool noBrand = string.IsNullOrEmpty(product.Brand);
+            BrandContainer.IsVisible = !noBrand;
+            BrandUnavailableContainer.IsVisible = noBrand;
 
             // Use of new C# 9.0 switch assignment
             // Checks the values of the EcoScore Property
