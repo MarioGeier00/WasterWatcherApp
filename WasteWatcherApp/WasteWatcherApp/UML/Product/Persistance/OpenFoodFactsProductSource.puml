@@ -1,0 +1,10 @@
+@startuml
+class OpenFoodFactsProductSource {
+    <<async>> GetData(barcode:string) : Task<string>
+    <<async>> GetData(barcode:string) : Task<ProductData>
+}
+class "IProductSource`1"<T> {
+}
+"IProductSource`1" "<string>" <|-- OpenFoodFactsProductSource
+"IProductSource`1" "<ProductData>" <|-- OpenFoodFactsProductSource
+@enduml

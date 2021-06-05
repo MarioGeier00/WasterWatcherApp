@@ -1,0 +1,5 @@
+@startuml
+class ProductNotFoundException {
+}
+Exception <|-- ProductNotFoundException
+@enduml

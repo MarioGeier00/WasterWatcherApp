@@ -1,0 +1,15 @@
+@startuml
+class WasteCollection {
+    + WasteCollection(waste:WasteAmount[])
+    + Modify() : EditableWasteCollection
+    + <<override>> ToString() : string
+    + GetEnumerator() : IEnumerator<WasteAmount>
+    GetEnumerator() : IEnumerator
+}
+class "IEnumerable`1"<T> {
+}
+class "List`1"<T> {
+}
+"IEnumerable`1" "<WasteAmount>" <|-- WasteCollection
+WasteCollection --> "WasteEnumeration<WasteAmount>" "List`1"
+@enduml

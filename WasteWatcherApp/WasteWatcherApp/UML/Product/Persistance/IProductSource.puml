@@ -1,0 +1,5 @@
+@startuml
+interface "IProductSource`1"<T> {
+    GetData(barcode:string) : Task<T>
+}
+@enduml

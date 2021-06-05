@@ -1,0 +1,6 @@
+@startuml
+interface IWasteStore {
+    SaveData(productId:string, waste:WasteCollection) : Task
+    GetData(productId:string) : Task<WasteCollection>
+}
+@enduml

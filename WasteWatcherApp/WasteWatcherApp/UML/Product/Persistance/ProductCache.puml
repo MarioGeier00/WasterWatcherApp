@@ -1,0 +1,12 @@
+@startuml
+class ProductCache {
+    + {static} IsCachingEnabled : bool <<get>> <<set>>
+    {static} ProductCache()
+    + ProductCache(fallback:IProductSource<string>)
+    + <<async>> GetData(barcode:string) : Task<string>
+}
+class "IProductSource`1"<T> {
+}
+"IProductSource`1" "<string>" <|-- ProductCache
+ProductCache --> "Fallback<string>" "IProductSource`1"
+@enduml

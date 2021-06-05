@@ -1,0 +1,6 @@
+@startuml
++ <<async>> GetData(barcode:string) : Task<ProductData>
++ {static} Parse(jsonData:string, barcode:string) : ProductData
+class "IProductSource`1"<T> {
+}
+@enduml

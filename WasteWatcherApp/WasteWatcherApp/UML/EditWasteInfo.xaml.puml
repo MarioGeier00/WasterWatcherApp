@@ -1,0 +1,10 @@
+@startuml
+class EditWasteInfo <<partial>> {
+    + EditWasteInfo(product:ProductData, store:IWasteStore)
+    <<async>> LoadWasteData() : Task
+}
+ContentPage <|-- EditWasteInfo
+EditWasteInfo --> "Product" ProductData
+EditWasteInfo --> "Store" IWasteStore
+EditWasteInfo --> "WasteData" WasteCollection
+@enduml

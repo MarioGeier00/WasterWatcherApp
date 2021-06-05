@@ -1,0 +1,15 @@
+@startuml
+class Firestore {
+    + authToken : string
+    apiKey : string
+    jsonStr : string
+    loginUrl : string
+    projectID : string
+    collection : string
+    + Firestore()
+    + <<async>> Initialize() : void
+    + <<async>> SaveData(productId:string, wasteCollection:WasteCollection) : Task
+    + <<async>> GetData(productId:string) : Task<WasteCollection>
+}
+IWasteStore <|-- Firestore
+@enduml

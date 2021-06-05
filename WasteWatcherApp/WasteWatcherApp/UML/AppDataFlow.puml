@@ -1,0 +1,91 @@
+﻿@startuml
+!theme plain
+
+interface IProductSource<T> {
+    GetData(barcode:string) : Task<T>
+}
+
+class Product
+{
+
+    + ProductName : string <<get>> <<set>>
+    + Barcode  : string <<get>> <<set>>
+    + Brand : string <<get>> <<set>>
+    + ProductImage : string <<get>> <<set>>
+    + Package : string <<get>> <<set>>
+    + EcoScore : string <<get>> <<set>>
+}
+
+
+
+class OpenFoodFactsApi <<static>> {
+    + {static} <<async>> GetProductDataByBarcode(barcode:string) : Task<Product>
+    + {static} <<async>> GetProductDataJsonByBarcode(barcode:string) : Task<string>
+}
+
+
+class ProductCache {
+    + {static} IsCachingEnabled : bool <<get>> <<set>>
+    + ProductCache(fallbackSource:IProductSource<string>)
+    + <<async>> GetData(barcode:string) : Task<string>
+}
+
+
+
+OpenFoodFactsApi --> ProductCache
+ProductCache --> OpenFoodFactsApi
+
+class ProductJsonParser {
+    + <<async>> GetData(barcode:string) : Task<Product>
+    + {static} Parse(jsonData:string, barcode:string) : Product
+}
+
+ProductCache --> ProductJsonParser
+ProductJsonParser --> ProductCache
+
+class ProductRequestStore {
+    + GetData(barcode:string) : Task<Product>
+    + {static} GetRequestedBarcodesSince(minimumDate:DateTime) : string[]
+    SaveRequestDate(barcode:string, dateTime:DateTime) : void
+}
+
+"IProductSource" "<string>" <|-- ProductCache
+"IProductSource" "<Product>" <|-- ProductRequestStore
+"IProductSource" "<Product>" <|-- ProductJsonParser
+
+
+ProductRequestStore --> ProductJsonParser
+ProductJsonParser --> ProductRequestStore
+
+
+
+class MainPage <<partial>> {
+    + MainPage(productSource:IProductSource<Product>)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    CachingSwitch_Toggled(sender:object, e:ToggledEventArgs) : void
+    <<async>> ShowTestProduct_Clicked(sender:object, e:EventArgs) : void
+    <<async>> ScanButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> LoadProduct(productId:string, minLoadingTime:uint) : Task<Product>
+    <<async>> LoadWasteStatisticsAsync() : Task
+}
+
+class ProductInfoPage <<partial>> {
+    + ProductInfoPage(product:Product)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    <<async>> LoadWasteData(wasteData:WasteCollection) : void
+    <<async>> EcoScoreInfoButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> AddWasteInfo_Clicked(sender:object, e:EventArgs) : void
+}
+ContentPage <|-- ProductInfoPage
+ContentPage <|-- MainPage
+
+
+
+
+ProductRequestStore --> MainPage
+MainPage --> ProductRequestStore
+
+MainPage --> ProductInfoPage
+ProductInfoPage --> MainPage
+
+@enduml

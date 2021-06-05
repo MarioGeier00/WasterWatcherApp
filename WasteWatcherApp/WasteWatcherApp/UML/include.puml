@@ -1,0 +1,158 @@
+@startuml
+class App <<partial>> {
+    + App()
+}
+Application <|-- App
+class EditWasteInfo <<partial>> {
+    + EditWasteInfo(product:ProductData, store:IWasteStore)
+    <<async>> LoadWasteData() : Task
+}
+ContentPage <|-- EditWasteInfo
+EditWasteInfo --> "Product" ProductData
+EditWasteInfo --> "Store" IWasteStore
+EditWasteInfo --> "WasteData" WasteCollection
+class MainPage <<partial>> {
+    + MainPage(productSource:IProductSource<ProductData>)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    <<async>> ShowTestProduct_Clicked(sender:object, e:EventArgs) : void
+    CachingSwitch_Toggled(sender:object, e:ToggledEventArgs) : void
+    <<async>> ScanButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> LoadProduct(productId:string, minLoadingTime:uint) : Task<ProductData>
+    <<async>> LoadWasteStatisticsAsync() : Task
+}
+class "IProductSource`1"<T> {
+}
+class "Task`1"<T> {
+}
+ContentPage <|-- MainPage
+MainPage --> "ProductSource<ProductData>" "IProductSource`1"
+MainPage --> "productLoadingTask<ProductData>" "Task`1"
+class ProductInfo <<partial>> {
+    + ProductInfo(product:ProductData)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    <<async>> LoadWasteData(wasteData:WasteCollection) : void
+    <<async>> EcoScoreInfoButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> AddWasteInfo_Clicked(sender:object, e:EventArgs) : void
+}
+ContentPage <|-- ProductInfo
+ProductInfo o-> "WasteStore" IWasteStore
+ProductInfo --> "editWasteInfoPage" EditWasteInfo
+ProductInfo --> "Product" ProductData
+class FirebaseAuthentificationReply {
+    + idToken : string <<get>> <<set>>
+    email : string <<get>> <<set>>
+    refreshToken : string <<get>> <<set>>
+    expiresIn : int <<get>> <<set>>
+    localId : string <<get>> <<set>>
+}
+class Firestore {
+    + authToken : string
+    apiKey : string
+    jsonStr : string
+    loginUrl : string
+    projectID : string
+    collection : string
+    + Firestore()
+    + <<async>> Initialize() : void
+    + <<async>> SaveData(productId:string, wasteCollection:WasteCollection) : Task
+    + <<async>> GetData(productId:string) : Task<WasteCollection>
+}
+IWasteStore <|-- Firestore
+interface IMessage {
+    LongAlert(message:string) : void
+    ShortAlert(message:string) : void
+}
+class ToastService <<static>> {
+    + {static} ShowToastShort(message:string) : void
+    + {static} ShowToastLong(message:string) : void
+}
+ToastService --> "_service" IMessage
+ToastService --> "Service" IMessage
+class OpenFoodFactsApi <<static>> {
+    + {static} <<async>> GetProductDataByBarcode(barcode:string) : Task<ProductData>
+    + {static} <<async>> GetProductDataJsonByBarcode(barcode:string) : Task<string>
+}
+class ProductNotFoundException {
+}
+Exception <|-- ProductNotFoundException
+class EditableWasteCollection {
+    + EditableWasteCollection(wasteList:List<WasteAmount>)
+    + SetWasteAmount(wasteType:WasteType, wasteAmount:int) : EditableWasteCollection
+    + RemoveWasteAmount(wasteType:WasteType) : EditableWasteCollection
+    + ClearAllWaste() : EditableWasteCollection
+}
+class "List`1"<T> {
+}
+EditableWasteCollection --> "WasteList<WasteAmount>" "List`1"
+interface IWasteStore {
+    SaveData(productId:string, waste:WasteCollection) : Task
+    GetData(productId:string) : Task<WasteCollection>
+}
++ <<override>> ToString() : string
+class WasteCollection {
+    + WasteCollection(waste:WasteAmount[])
+    + Modify() : EditableWasteCollection
+    + <<override>> ToString() : string
+    + GetEnumerator() : IEnumerator<WasteAmount>
+    GetEnumerator() : IEnumerator
+}
+class "IEnumerable`1"<T> {
+}
+class "List`1"<T> {
+}
+"IEnumerable`1" "<WasteAmount>" <|-- WasteCollection
+WasteCollection --> "WasteEnumeration<WasteAmount>" "List`1"
+enum WasteType {
+    Plastic,
+    Paper,
+    Glas,
+    Metal,
+}
+class WasteTypeHelper <<static>> {
+    + {static} ToFriendlyName(wasteType:WasteType) : string
+    + {static} WithProductId(wasteType:WasteType, productId:string) : string
+}
+class "IEnumerable`1"<T> {
+}
+WasteTypeHelper --> "WasteTypesEnumerator<WasteType>" "IEnumerable`1"
+interface "IProductSource`1"<T> {
+    GetData(barcode:string) : Task<T>
+}
+class OpenFoodFactsProductSource {
+    <<async>> GetData(barcode:string) : Task<string>
+    <<async>> GetData(barcode:string) : Task<ProductData>
+}
+class "IProductSource`1"<T> {
+}
+"IProductSource`1" "<string>" <|-- OpenFoodFactsProductSource
+"IProductSource`1" "<ProductData>" <|-- OpenFoodFactsProductSource
+class ProductCache {
+    + {static} IsCachingEnabled : bool <<get>> <<set>>
+    {static} ProductCache()
+    + ProductCache(fallback:IProductSource<string>)
+    + <<async>> GetData(barcode:string) : Task<string>
+}
+class "IProductSource`1"<T> {
+}
+"IProductSource`1" "<string>" <|-- ProductCache
+ProductCache --> "Fallback<string>" "IProductSource`1"
++ <<async>> GetData(barcode:string) : Task<ProductData>
++ {static} Parse(jsonData:string, barcode:string) : ProductData
+class "IProductSource`1"<T> {
+}
+<<const>> SAVE_DATE_KEY : string = "-sd"
++ GetData(barcode:string) : Task<ProductData>
++ {static} GetBarcodeRequestsSince(minimumDate:DateTime) : string[]
+SaveRequestDate(barcode:string, dateTime:DateTime) : void
+class "IProductSource`1"<T> {
+}
+class LocalWasteStorage {
+    + GetData(productId:string) : Task<WasteCollection>
+    + <<async>> SaveData(productId:string, wasteCollection:WasteCollection) : Task
+    RemoveWasteValue(wasteKey:string) : void
+    SetWasteValue(wasteKey:string, value:int) : void
+    GetWasteValue(wasteKey:string) : int?
+    GetWasteValue(productId:string, wasteType:WasteType) : WasteAmount
+}
+IWasteStore <|-- LocalWasteStorage
+@enduml

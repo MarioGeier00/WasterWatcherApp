@@ -1,0 +1,13 @@
+@startuml
+class ProductInfo <<partial>> {
+    + ProductInfo(product:ProductData)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    <<async>> LoadWasteData(wasteData:WasteCollection) : void
+    <<async>> EcoScoreInfoButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> AddWasteInfo_Clicked(sender:object, e:EventArgs) : void
+}
+ContentPage <|-- ProductInfo
+ProductInfo o-> "WasteStore" IWasteStore
+ProductInfo --> "editWasteInfoPage" EditWasteInfo
+ProductInfo --> "Product" ProductData
+@enduml

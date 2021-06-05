@@ -1,0 +1,15 @@
+@startuml
+enum WasteType {
+    Plastic,
+    Paper,
+    Glas,
+    Metal,
+}
+class WasteTypeHelper <<static>> {
+    + {static} ToFriendlyName(wasteType:WasteType) : string
+    + {static} WithProductId(wasteType:WasteType, productId:string) : string
+}
+class "IEnumerable`1"<T> {
+}
+WasteTypeHelper --> "WasteTypesEnumerator<WasteType>" "IEnumerable`1"
+@enduml

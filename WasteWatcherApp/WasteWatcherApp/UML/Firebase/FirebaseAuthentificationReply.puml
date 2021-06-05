@@ -1,0 +1,9 @@
+@startuml
+class FirebaseAuthentificationReply {
+    + idToken : string <<get>> <<set>>
+    email : string <<get>> <<set>>
+    refreshToken : string <<get>> <<set>>
+    expiresIn : int <<get>> <<set>>
+    localId : string <<get>> <<set>>
+}
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class EditableWasteCollection {
+    + EditableWasteCollection(wasteList:List<WasteAmount>)
+    + SetWasteAmount(wasteType:WasteType, wasteAmount:int) : EditableWasteCollection
+    + RemoveWasteAmount(wasteType:WasteType) : EditableWasteCollection
+    + ClearAllWaste() : EditableWasteCollection
+}
+class "List`1"<T> {
+}
+EditableWasteCollection --> "WasteList<WasteAmount>" "List`1"
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+class MainPage <<partial>> {
+    + MainPage(productSource:IProductSource<ProductData>)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    <<async>> ShowTestProduct_Clicked(sender:object, e:EventArgs) : void
+    CachingSwitch_Toggled(sender:object, e:ToggledEventArgs) : void
+    <<async>> ScanButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> LoadProduct(productId:string, minLoadingTime:uint) : Task<ProductData>
+    <<async>> LoadWasteStatisticsAsync() : Task
+}
+class "IProductSource`1"<T> {
+}
+class "Task`1"<T> {
+}
+ContentPage <|-- MainPage
+MainPage --> "ProductSource<ProductData>" "IProductSource`1"
+MainPage --> "productLoadingTask<ProductData>" "Task`1"
+@enduml

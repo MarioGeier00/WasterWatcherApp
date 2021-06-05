@@ -1,0 +1,8 @@
+@startuml
+<<const>> SAVE_DATE_KEY : string = "-sd"
++ GetData(barcode:string) : Task<ProductData>
++ {static} GetBarcodeRequestsSince(minimumDate:DateTime) : string[]
+SaveRequestDate(barcode:string, dateTime:DateTime) : void
+class "IProductSource`1"<T> {
+}
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class OpenFoodFactsApi <<static>> {
+    + {static} <<async>> GetProductDataByBarcode(barcode:string) : Task<ProductData>
+    + {static} <<async>> GetProductDataJsonByBarcode(barcode:string) : Task<string>
+}
+@enduml

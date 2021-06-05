@@ -1,0 +1,8 @@
+@startuml
+class ToastService <<static>> {
+    + {static} ShowToastShort(message:string) : void
+    + {static} ShowToastLong(message:string) : void
+}
+ToastService --> "_service" IMessage
+ToastService --> "Service" IMessage
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+interface IMessage {
+    LongAlert(message:string) : void
+    ShortAlert(message:string) : void
+}
+@enduml
