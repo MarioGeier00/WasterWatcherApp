@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1043px" preserveAspectRatio="none" style="width:1347px;height:1043px;background:#FFFFFF;" version="1.1" viewBox="0 0 1347 1043" width="1347px" zoomAndPan="magnify"><defs/><g><!--MD5=[30f1745fe19a334992d98649def302ff]
+class IProductSource--><rect codeLine="3" fill="#FFFFFF" height="60.2969" id="IProductSource" style="stroke:#000000;stroke-width:1.5;" width="266" x="772" y="53"/><ellipse cx="841.75" cy="67" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M842.7031,63.7813 L844.4219,63.7813 C844.8125,63.7813 845,63.75 845.125,63.6719 C845.3906,63.5156 845.5313,63.2344 845.5313,62.9375 C845.5313,62.6719 845.4219,62.4063 845.1875,62.2344 C845.0156,62.125 844.875,62.0938 844.4219,62.0938 L839.2813,62.0938 C838.8438,62.0938 838.7188,62.1094 838.5625,62.2031 C838.3125,62.3594 838.1563,62.6563 838.1563,62.9375 C838.1563,63.2188 838.2969,63.4688 838.5156,63.6406 C838.6719,63.75 838.8594,63.7813 839.2813,63.7813 L841,63.7813 L841,70.2969 L839.2813,70.2969 C838.8438,70.2969 838.7188,70.3125 838.5625,70.4219 C838.3125,70.5781 838.1563,70.8594 838.1563,71.1563 C838.1563,71.4063 838.2969,71.6719 838.5156,71.8281 C838.6719,71.9531 838.875,72 839.2813,72 L844.4219,72 C845.1719,72 845.5313,71.7188 845.5313,71.1563 C845.5313,70.875 845.4219,70.625 845.1875,70.4531 C845.0156,70.3281 844.875,70.2969 844.4219,70.2969 L842.7031,70.2969 L842.7031,63.7813 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="108" x="859.25" y="71.8467">IProductSource</text><rect fill="#FFFFFF" height="15.9688" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="9" x="1032" y="50"/><text fill="#000000" font-family="Verdana" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="7" x="1033" y="62.1387">T</text><line style="stroke:#000000;stroke-width:1.5;" x1="773" x2="1037" y1="81" y2="81"/><line style="stroke:#000000;stroke-width:1.5;" x1="773" x2="1037" y1="89" y2="89"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="254" x="778" y="105.9951">GetData(barcode:string) : Task&lt;T&gt;</text><!--MD5=[72136138052d025cffdce3c22fbd185f]
+class Product--><rect codeLine="7" fill="#FFFFFF" height="141.7813" id="Product" style="stroke:#000000;stroke-width:1.5;" width="267" x="1073.5" y="12"/><ellipse cx="1175.25" cy="26" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M1177.5938,21.6719 C1176.6563,21.2344 1176.0625,21.0938 1175.1875,21.0938 C1172.5625,21.0938 1170.5625,23.1719 1170.5625,25.8906 L1170.5625,27.0156 C1170.5625,29.5938 1172.6719,31.4844 1175.5625,31.4844 C1176.7813,31.4844 1177.9375,31.1875 1178.6875,30.6406 C1179.2656,30.2344 1179.5938,29.7813 1179.5938,29.3906 C1179.5938,28.9375 1179.2031,28.5469 1178.7344,28.5469 C1178.5156,28.5469 1178.3125,28.625 1178.125,28.8125 C1177.6719,29.2969 1177.6719,29.2969 1177.4844,29.3906 C1177.0625,29.6563 1176.375,29.7813 1175.6094,29.7813 C1173.5625,29.7813 1172.2656,28.6875 1172.2656,26.9844 L1172.2656,25.8906 C1172.2656,24.1094 1173.5156,22.7969 1175.25,22.7969 C1175.8281,22.7969 1176.4375,22.9531 1176.9063,23.2031 C1177.3906,23.4844 1177.5625,23.7031 1177.6563,24.1094 C1177.7188,24.5156 1177.75,24.6406 1177.8906,24.7656 C1178.0313,24.9063 1178.2656,25.0156 1178.4844,25.0156 C1178.75,25.0156 1179.0156,24.875 1179.1875,24.6563 C1179.2969,24.5 1179.3281,24.3125 1179.3281,23.8906 L1179.3281,22.4688 C1179.3281,22.0313 1179.3125,21.9063 1179.2188,21.75 C1179.0625,21.4844 1178.7813,21.3438 1178.4844,21.3438 C1178.1875,21.3438 1177.9844,21.4375 1177.7656,21.75 L1177.5938,21.6719 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="56" x="1192.75" y="30.8467">Product</text><line style="stroke:#000000;stroke-width:1.5;" x1="1074.5" x2="1339.5" y1="40" y2="40"/><ellipse cx="1084.5" cy="51" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="240" x="1091.5" y="56.9951">ProductName : string «get» «set»</text><ellipse cx="1084.5" cy="67.2969" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="206" x="1091.5" y="73.292">Barcode  : string «get» «set»</text><ellipse cx="1084.5" cy="83.5938" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="185" x="1091.5" y="89.5889">Brand : string «get» «set»</text><ellipse cx="1084.5" cy="99.8906" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="243" x="1091.5" y="105.8857">ProductImage : string «get» «set»</text><ellipse cx="1084.5" cy="116.1875" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="203" x="1091.5" y="122.1826">Package : string «get» «set»</text><ellipse cx="1084.5" cy="132.4844" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="210" x="1091.5" y="138.4795">EcoScore : string «get» «set»</text><line style="stroke:#000000;stroke-width:1.5;" x1="1074.5" x2="1339.5" y1="145.7813" y2="145.7813"/><!--MD5=[f6d2c49d349fd4fc612243a0058cace1]
+class OpenFoodFactsApi--><rect codeLine="20" fill="#FFFFFF" height="88.8594" id="OpenFoodFactsApi" style="stroke:#000000;stroke-width:1.5;" width="552" x="12" y="367"/><ellipse cx="216.25" cy="387.1328" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M218.5938,382.8047 C217.6563,382.3672 217.0625,382.2266 216.1875,382.2266 C213.5625,382.2266 211.5625,384.3047 211.5625,387.0234 L211.5625,388.1484 C211.5625,390.7266 213.6719,392.6172 216.5625,392.6172 C217.7813,392.6172 218.9375,392.3203 219.6875,391.7734 C220.2656,391.3672 220.5938,390.9141 220.5938,390.5234 C220.5938,390.0703 220.2031,389.6797 219.7344,389.6797 C219.5156,389.6797 219.3125,389.7578 219.125,389.9453 C218.6719,390.4297 218.6719,390.4297 218.4844,390.5234 C218.0625,390.7891 217.375,390.9141 216.6094,390.9141 C214.5625,390.9141 213.2656,389.8203 213.2656,388.1172 L213.2656,387.0234 C213.2656,385.2422 214.5156,383.9297 216.25,383.9297 C216.8281,383.9297 217.4375,384.0859 217.9063,384.3359 C218.3906,384.6172 218.5625,384.8359 218.6563,385.2422 C218.7188,385.6484 218.75,385.7734 218.8906,385.8984 C219.0313,386.0391 219.2656,386.1484 219.4844,386.1484 C219.75,386.1484 220.0156,386.0078 220.1875,385.7891 C220.2969,385.6328 220.3281,385.4453 220.3281,385.0234 L220.3281,383.6016 C220.3281,383.1641 220.3125,383.0391 220.2188,382.8828 C220.0625,382.6172 219.7813,382.4766 219.4844,382.4766 C219.1875,382.4766 218.9844,382.5703 218.7656,382.8828 L218.5938,382.8047 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="47" x="278.25" y="383.1387">«static»</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="136" x="233.75" y="398.9639">OpenFoodFactsApi</text><line style="stroke:#000000;stroke-width:1.5;" x1="13" x2="563" y1="407.2656" y2="407.2656"/><line style="stroke:#000000;stroke-width:1.5;" x1="13" x2="563" y1="415.2656" y2="415.2656"/><ellipse cx="23" cy="426.2656" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="528" x="30" y="432.2607">«async» GetProductDataByBarcode(barcode:string) : Task&lt;ProductData&gt;</text><ellipse cx="23" cy="442.5625" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="509" x="30" y="448.5576">«async» GetProductDataJsonByBarcode(barcode:string) : Task&lt;string&gt;</text><!--MD5=[44526e3f07be4050074c2c5a1e7bf396]
+class ProductCache--><rect codeLine="26" fill="#FFFFFF" height="92.8906" id="ProductCache" style="stroke:#000000;stroke-width:1.5;" width="418" x="434" y="214"/><ellipse cx="589.25" cy="228" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M591.5938,223.6719 C590.6563,223.2344 590.0625,223.0938 589.1875,223.0938 C586.5625,223.0938 584.5625,225.1719 584.5625,227.8906 L584.5625,229.0156 C584.5625,231.5938 586.6719,233.4844 589.5625,233.4844 C590.7813,233.4844 591.9375,233.1875 592.6875,232.6406 C593.2656,232.2344 593.5938,231.7813 593.5938,231.3906 C593.5938,230.9375 593.2031,230.5469 592.7344,230.5469 C592.5156,230.5469 592.3125,230.625 592.125,230.8125 C591.6719,231.2969 591.6719,231.2969 591.4844,231.3906 C591.0625,231.6563 590.375,231.7813 589.6094,231.7813 C587.5625,231.7813 586.2656,230.6875 586.2656,228.9844 L586.2656,227.8906 C586.2656,226.1094 587.5156,224.7969 589.25,224.7969 C589.8281,224.7969 590.4375,224.9531 590.9063,225.2031 C591.3906,225.4844 591.5625,225.7031 591.6563,226.1094 C591.7188,226.5156 591.75,226.6406 591.8906,226.7656 C592.0313,226.9063 592.2656,227.0156 592.4844,227.0156 C592.75,227.0156 593.0156,226.875 593.1875,226.6563 C593.2969,226.5 593.3281,226.3125 593.3281,225.8906 L593.3281,224.4688 C593.3281,224.0313 593.3125,223.9063 593.2188,223.75 C593.0625,223.4844 592.7813,223.3438 592.4844,223.3438 C592.1875,223.3438 591.9844,223.4375 591.7656,223.75 L591.5938,223.6719 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="100" x="606.75" y="232.8467">ProductCache</text><line style="stroke:#000000;stroke-width:1.5;" x1="435" x2="851" y1="242" y2="242"/><ellipse cx="445" cy="253" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="259" x="452" y="258.9951">IsCachingEnabled : bool «get» «set»</text><line style="stroke:#000000;stroke-width:1.5;" x1="435" x2="851" y1="266.2969" y2="266.2969"/><ellipse cx="445" cy="277.2969" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="394" x="452" y="283.292">ProductCache(fallbackSource:IProductSource&lt;string&gt;)</text><ellipse cx="445" cy="293.5938" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="347" x="452" y="299.5889">«async» GetData(barcode:string) : Task&lt;string&gt;</text><!--MD5=[ee6f099ed81f171a58cd3c8c176dc1b1]
+class ProductJsonParser--><rect codeLine="37" fill="#FFFFFF" height="76.5938" id="ProductJsonParser" style="stroke:#000000;stroke-width:1.5;" width="419" x="599.5" y="373"/><ellipse cx="740.25" cy="387" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M742.5938,382.6719 C741.6563,382.2344 741.0625,382.0938 740.1875,382.0938 C737.5625,382.0938 735.5625,384.1719 735.5625,386.8906 L735.5625,388.0156 C735.5625,390.5938 737.6719,392.4844 740.5625,392.4844 C741.7813,392.4844 742.9375,392.1875 743.6875,391.6406 C744.2656,391.2344 744.5938,390.7813 744.5938,390.3906 C744.5938,389.9375 744.2031,389.5469 743.7344,389.5469 C743.5156,389.5469 743.3125,389.625 743.125,389.8125 C742.6719,390.2969 742.6719,390.2969 742.4844,390.3906 C742.0625,390.6563 741.375,390.7813 740.6094,390.7813 C738.5625,390.7813 737.2656,389.6875 737.2656,387.9844 L737.2656,386.8906 C737.2656,385.1094 738.5156,383.7969 740.25,383.7969 C740.8281,383.7969 741.4375,383.9531 741.9063,384.2031 C742.3906,384.4844 742.5625,384.7031 742.6563,385.1094 C742.7188,385.5156 742.75,385.6406 742.8906,385.7656 C743.0313,385.9063 743.2656,386.0156 743.4844,386.0156 C743.75,386.0156 744.0156,385.875 744.1875,385.6563 C744.2969,385.5 744.3281,385.3125 744.3281,384.8906 L744.3281,383.4688 C744.3281,383.0313 744.3125,382.9063 744.2188,382.75 C744.0625,382.4844 743.7813,382.3438 743.4844,382.3438 C743.1875,382.3438 742.9844,382.4375 742.7656,382.75 L742.5938,382.6719 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="130" x="757.75" y="391.8467">ProductJsonParser</text><line style="stroke:#000000;stroke-width:1.5;" x1="600.5" x2="1017.5" y1="401" y2="401"/><line style="stroke:#000000;stroke-width:1.5;" x1="600.5" x2="1017.5" y1="409" y2="409"/><ellipse cx="610.5" cy="420" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="395" x="617.5" y="425.9951">«async» GetData(barcode:string) : Task&lt;ProductData&gt;</text><ellipse cx="610.5" cy="436.2969" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="376" x="617.5" y="442.292">Parse(jsonData:string, barcode:string) : ProductData</text><!--MD5=[bb8315371984f7a5fcc87de692db3957]
+class ProductRequestStore--><rect codeLine="45" fill="#FFFFFF" height="92.8906" id="ProductRequestStore" style="stroke:#000000;stroke-width:1.5;" width="486" x="566" y="516"/><ellipse cx="727.75" cy="530" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M730.0938,525.6719 C729.1563,525.2344 728.5625,525.0938 727.6875,525.0938 C725.0625,525.0938 723.0625,527.1719 723.0625,529.8906 L723.0625,531.0156 C723.0625,533.5938 725.1719,535.4844 728.0625,535.4844 C729.2813,535.4844 730.4375,535.1875 731.1875,534.6406 C731.7656,534.2344 732.0938,533.7813 732.0938,533.3906 C732.0938,532.9375 731.7031,532.5469 731.2344,532.5469 C731.0156,532.5469 730.8125,532.625 730.625,532.8125 C730.1719,533.2969 730.1719,533.2969 729.9844,533.3906 C729.5625,533.6563 728.875,533.7813 728.1094,533.7813 C726.0625,533.7813 724.7656,532.6875 724.7656,530.9844 L724.7656,529.8906 C724.7656,528.1094 726.0156,526.7969 727.75,526.7969 C728.3281,526.7969 728.9375,526.9531 729.4063,527.2031 C729.8906,527.4844 730.0625,527.7031 730.1563,528.1094 C730.2188,528.5156 730.25,528.6406 730.3906,528.7656 C730.5313,528.9063 730.7656,529.0156 730.9844,529.0156 C731.25,529.0156 731.5156,528.875 731.6875,528.6563 C731.7969,528.5 731.8281,528.3125 731.8281,527.8906 L731.8281,526.4688 C731.8281,526.0313 731.8125,525.9063 731.7188,525.75 C731.5625,525.4844 731.2813,525.3438 730.9844,525.3438 C730.6875,525.3438 730.4844,525.4375 730.2656,525.75 L730.0938,525.6719 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="155" x="745.25" y="534.8467">ProductRequestStore</text><line style="stroke:#000000;stroke-width:1.5;" x1="567" x2="1051" y1="544" y2="544"/><line style="stroke:#000000;stroke-width:1.5;" x1="567" x2="1051" y1="552" y2="552"/><ellipse cx="577" cy="563" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="335" x="584" y="568.9951">GetData(barcode:string) : Task&lt;ProductData&gt;</text><ellipse cx="577" cy="579.2969" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="462" x="584" y="585.292">GetRequestedBarcodesSince(minimumDate:DateTime) : string[]</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="440" x="584" y="601.5889">SaveRequestDate(barcode:string, dateTime:DateTime) : void</text><!--MD5=[3e277fbfcdb7b9cc78a1a5d0d58a5b57]
+class MainPage--><rect codeLine="61" fill="#FFFFFF" height="170.3438" id="MainPage" style="stroke:#000000;stroke-width:1.5;" width="619" x="499.5" y="669"/><ellipse cx="771.25" cy="689.1328" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M773.5938,684.8047 C772.6563,684.3672 772.0625,684.2266 771.1875,684.2266 C768.5625,684.2266 766.5625,686.3047 766.5625,689.0234 L766.5625,690.1484 C766.5625,692.7266 768.6719,694.6172 771.5625,694.6172 C772.7813,694.6172 773.9375,694.3203 774.6875,693.7734 C775.2656,693.3672 775.5938,692.9141 775.5938,692.5234 C775.5938,692.0703 775.2031,691.6797 774.7344,691.6797 C774.5156,691.6797 774.3125,691.7578 774.125,691.9453 C773.6719,692.4297 773.6719,692.4297 773.4844,692.5234 C773.0625,692.7891 772.375,692.9141 771.6094,692.9141 C769.5625,692.9141 768.2656,691.8203 768.2656,690.1172 L768.2656,689.0234 C768.2656,687.2422 769.5156,685.9297 771.25,685.9297 C771.8281,685.9297 772.4375,686.0859 772.9063,686.3359 C773.3906,686.6172 773.5625,686.8359 773.6563,687.2422 C773.7188,687.6484 773.75,687.7734 773.8906,687.8984 C774.0313,688.0391 774.2656,688.1484 774.4844,688.1484 C774.75,688.1484 775.0156,688.0078 775.1875,687.7891 C775.2969,687.6328 775.3281,687.4453 775.3281,687.0234 L775.3281,685.6016 C775.3281,685.1641 775.3125,685.0391 775.2188,684.8828 C775.0625,684.6172 774.7813,684.4766 774.4844,684.4766 C774.1875,684.4766 773.9844,684.5703 773.7656,684.8828 L773.5938,684.8047 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="52" x="796.75" y="685.1387">«partial»</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="68" x="788.75" y="700.9639">MainPage</text><line style="stroke:#000000;stroke-width:1.5;" x1="500.5" x2="1117.5" y1="709.2656" y2="709.2656"/><line style="stroke:#000000;stroke-width:1.5;" x1="500.5" x2="1117.5" y1="717.2656" y2="717.2656"/><ellipse cx="510.5" cy="728.2656" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="410" x="517.5" y="734.2607">MainPage(productSource:IProductSource&lt;ProductData&gt;)</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="400" x="517.5" y="750.5576">MainPage_Appearing(sender:object, e:EventArgs) : void</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="478" x="517.5" y="766.8545">CachingSwitch_Toggled(sender:object, e:ToggledEventArgs) : void</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="496" x="517.5" y="783.1514">«async» ShowTestProduct_Clicked(sender:object, e:EventArgs) : void</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="454" x="517.5" y="799.4482">«async» ScanButton_Clicked(sender:object, e:EventArgs) : void</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="595" x="517.5" y="815.7451">«async» LoadProduct(productId:string, minLoadingTime:uint) : Task&lt;ProductData&gt;</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="305" x="517.5" y="832.042">«async» LoadWasteStatisticsAsync() : Task</text><!--MD5=[3064160fa99fc40647910e94d99f0175]
+class ProductInfoPage--><rect codeLine="71" fill="#FFFFFF" height="137.75" id="ProductInfoPage" style="stroke:#000000;stroke-width:1.5;" width="539" x="539.5" y="899"/><ellipse cx="745.75" cy="919.1328" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M748.0938,914.8047 C747.1563,914.3672 746.5625,914.2266 745.6875,914.2266 C743.0625,914.2266 741.0625,916.3047 741.0625,919.0234 L741.0625,920.1484 C741.0625,922.7266 743.1719,924.6172 746.0625,924.6172 C747.2813,924.6172 748.4375,924.3203 749.1875,923.7734 C749.7656,923.3672 750.0938,922.9141 750.0938,922.5234 C750.0938,922.0703 749.7031,921.6797 749.2344,921.6797 C749.0156,921.6797 748.8125,921.7578 748.625,921.9453 C748.1719,922.4297 748.1719,922.4297 747.9844,922.5234 C747.5625,922.7891 746.875,922.9141 746.1094,922.9141 C744.0625,922.9141 742.7656,921.8203 742.7656,920.1172 L742.7656,919.0234 C742.7656,917.2422 744.0156,915.9297 745.75,915.9297 C746.3281,915.9297 746.9375,916.0859 747.4063,916.3359 C747.8906,916.6172 748.0625,916.8359 748.1563,917.2422 C748.2188,917.6484 748.25,917.7734 748.3906,917.8984 C748.5313,918.0391 748.7656,918.1484 748.9844,918.1484 C749.25,918.1484 749.5156,918.0078 749.6875,917.7891 C749.7969,917.6328 749.8281,917.4453 749.8281,917.0234 L749.8281,915.6016 C749.8281,915.1641 749.8125,915.0391 749.7188,914.8828 C749.5625,914.6172 749.2813,914.4766 748.9844,914.4766 C748.6875,914.4766 748.4844,914.5703 748.2656,914.8828 L748.0938,914.8047 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="52" x="796.75" y="915.1387">«partial»</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="119" x="763.25" y="930.9639">ProductInfoPage</text><line style="stroke:#000000;stroke-width:1.5;" x1="540.5" x2="1077.5" y1="939.2656" y2="939.2656"/><line style="stroke:#000000;stroke-width:1.5;" x1="540.5" x2="1077.5" y1="947.2656" y2="947.2656"/><ellipse cx="550.5" cy="958.2656" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="247" x="557.5" y="964.2607">ProductInfoPage(product:Product)</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="400" x="557.5" y="980.5576">MainPage_Appearing(sender:object, e:EventArgs) : void</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="425" x="557.5" y="996.8545">«async» LoadWasteData(wasteData:WasteCollection) : void</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="515" x="557.5" y="1013.1514">«async» EcoScoreInfoButton_Clicked(sender:object, e:EventArgs) : void</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="471" x="557.5" y="1029.4482">«async» AddWasteInfo_Clicked(sender:object, e:EventArgs) : void</text><!--MD5=[a157c9d38e8d5ccc23a705288ac49ccc]
+class ContentPage--><rect fill="#FFFFFF" height="44" id="ContentPage" style="stroke:#000000;stroke-width:1.5;" width="123" x="1098.5" y="540.5"/><ellipse cx="1111.5" cy="554.5" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M1113.8438,550.1719 C1112.9063,549.7344 1112.3125,549.5938 1111.4375,549.5938 C1108.8125,549.5938 1106.8125,551.6719 1106.8125,554.3906 L1106.8125,555.5156 C1106.8125,558.0938 1108.9219,559.9844 1111.8125,559.9844 C1113.0313,559.9844 1114.1875,559.6875 1114.9375,559.1406 C1115.5156,558.7344 1115.8438,558.2813 1115.8438,557.8906 C1115.8438,557.4375 1115.4531,557.0469 1114.9844,557.0469 C1114.7656,557.0469 1114.5625,557.125 1114.375,557.3125 C1113.9219,557.7969 1113.9219,557.7969 1113.7344,557.8906 C1113.3125,558.1563 1112.625,558.2813 1111.8594,558.2813 C1109.8125,558.2813 1108.5156,557.1875 1108.5156,555.4844 L1108.5156,554.3906 C1108.5156,552.6094 1109.7656,551.2969 1111.5,551.2969 C1112.0781,551.2969 1112.6875,551.4531 1113.1563,551.7031 C1113.6406,551.9844 1113.8125,552.2031 1113.9063,552.6094 C1113.9688,553.0156 1114,553.1406 1114.1406,553.2656 C1114.2813,553.4063 1114.5156,553.5156 1114.7344,553.5156 C1115,553.5156 1115.2656,553.375 1115.4375,553.1563 C1115.5469,553 1115.5781,552.8125 1115.5781,552.3906 L1115.5781,550.9688 C1115.5781,550.5313 1115.5625,550.4063 1115.4688,550.25 C1115.3125,549.9844 1115.0313,549.8438 1114.7344,549.8438 C1114.4375,549.8438 1114.2344,549.9375 1114.0156,550.25 L1113.8438,550.1719 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="95" x="1123.5" y="559.3467">ContentPage</text><line style="stroke:#000000;stroke-width:1.5;" x1="1099.5" x2="1220.5" y1="568.5" y2="568.5"/><line style="stroke:#000000;stroke-width:1.5;" x1="1099.5" x2="1220.5" y1="576.5" y2="576.5"/><!--MD5=[5cdae9fe0d5c2bac667c49d41e7f806e]
+link OpenFoodFactsApi to ProductCache--><path codeLine="34" d="M404.234,366.923 C448.88,348.754 499.366,327.602 542.43,309.034 " fill="none" id="OpenFoodFactsApi-to-ProductCache" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="547.107,307.015,537.2587,306.9096,542.5165,308.9967,540.4294,314.2544,547.107,307.015" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[87312ee088ab049e7b4c65657b75b775]
+link ProductCache to OpenFoodFactsApi--><path codeLine="35" d="M522.709,307.015 C477.737,325.387 427.323,346.546 384.731,364.925 " fill="none" id="ProductCache-to-OpenFoodFactsApi" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="380.107,366.923,389.9553,367.0233,384.6965,364.9389,386.7808,359.6801,380.107,366.923" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[7753faf9d5328c8ebc5cce5ad577c394]
+link ProductCache to ProductJsonParser--><path codeLine="42" d="M681.857,307.015 C702.732,326.916 728.653,350.088 751.739,369.453 " fill="none" id="ProductCache-to-ProductJsonParser" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="755.716,372.775,751.3721,363.9358,751.8783,369.57,746.2441,370.0762,755.716,372.775" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[d1700ab954666abb5144a690d8b4a8b0]
+link ProductJsonParser to ProductCache--><path codeLine="43" d="M778.887,372.775 C759.601,353.873 734.132,330.757 710.362,310.5 " fill="none" id="ProductJsonParser-to-ProductCache" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="706.255,307.015,710.5292,315.8881,710.0674,310.2501,715.7053,309.7883,706.255,307.015" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[f91f3a750c987183051d7acea8d9c388]
+reverse link IProductSource to ProductCache--><path codeLine="51" d="M844.631,124.438 C804.75,151.152 752.409,186.213 711.05,213.917 " fill="none" id="IProductSource-backto-ProductCache" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="840.93,118.492,861.442,113.177,848.721,130.124,840.93,118.492" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="56" x="789.7887" y="133.4678">&lt;string&gt;</text><!--MD5=[64c1313c988989fbc01791d62b5ead4f]
+reverse link IProductSource to ProductRequestStore--><path codeLine="52" d="M944.83,128.681 C1004.792,201.627 1104.33,348.894 1036,456 C1019.64,481.646 995.253,501.155 968.454,515.965 " fill="none" id="IProductSource-backto-ProductRequestStore" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="939.182,132.842,931.636,113.041,949.883,123.814,939.182,132.842" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="69" x="860.9158" y="133.302">&lt;Product&gt;</text><!--MD5=[e8d2b736a5041d0bef01f0501153406f]
+reverse link IProductSource to ProductJsonParser--><path codeLine="53" d="M902.184,133.592 C898.369,179.653 889.488,249.576 869,307 C860.764,330.083 847.373,353.876 835.329,372.821 " fill="none" id="IProductSource-backto-ProductJsonParser" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="895.224,132.789,903.66,113.352,909.187,133.808,895.224,132.789" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="69" x="910.4993" y="133.209">&lt;Product&gt;</text><!--MD5=[3bf7892608611b24382ddc312b0a3ead]
+link ProductRequestStore to ProductJsonParser--><path codeLine="56" d="M821.551,515.935 C822.879,496.66 822.813,474.326 821.353,455.355 " fill="none" id="ProductRequestStore-to-ProductJsonParser" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="820.905,450.099,817.6857,459.4068,821.3306,455.0809,825.6566,458.7258,820.905,450.099" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[0f9bb5c9779759192bc04e860f789d4e]
+link ProductJsonParser to ProductRequestStore--><path codeLine="57" d="M797.757,450.099 C796.116,468.537 795.815,491.01 796.854,510.93 " fill="none" id="ProductJsonParser-to-ProductRequestStore" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="797.146,515.935,800.6146,506.7172,796.8546,510.9435,792.6282,507.1834,797.146,515.935" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[13c931d5aff399967943c63886fbeff9]
+reverse link ContentPage to ProductInfoPage--><path codeLine="78" d="M1168.75,604.488 C1178.69,662.77 1187.51,770.141 1136,839 C1117.83,863.286 1094.37,882.967 1068.37,898.915 " fill="none" id="ContentPage-backto-ProductInfoPage" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="1161.85,605.691,1165,584.738,1175.6,603.084,1161.85,605.691" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[1da6805ef5c43c3d98aeaf7e0673f972]
+reverse link ContentPage to MainPage--><path codeLine="79" d="M1103.24,594.144 C1065.53,614.501 1014.05,642.294 964.692,668.944 " fill="none" id="ContentPage-backto-MainPage" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="1100.17,587.846,1121.1,584.504,1106.82,600.165,1100.17,587.846" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[5e9c3e06a6d292170cf5ba30474160cf]
+link ProductRequestStore to MainPage--><path codeLine="84" d="M797.897,609.373 C796.688,625.693 796.145,644.677 796.267,663.393 " fill="none" id="ProductRequestStore-to-MainPage" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="796.319,668.663,800.2288,659.6235,796.269,663.6632,792.2292,659.7034,796.319,668.663" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[25407026eaf9e6c4b797595e29f74d8e]
+link MainPage to ProductRequestStore--><path codeLine="85" d="M822.427,668.663 C822.686,650.182 822.253,631.167 821.128,614.475 " fill="none" id="MainPage-to-ProductRequestStore" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="820.756,609.373,817.4223,618.6405,821.1203,614.3597,825.401,618.0577,820.756,609.373" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[4bde71de8e9a8eae750642a265b579ad]
+link MainPage to ProductInfoPage--><path codeLine="87" d="M796.495,839.093 C796.089,857.007 796.188,875.795 796.791,893.287 " fill="none" id="MainPage-to-ProductInfoPage" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="796.994,898.671,800.6491,889.5255,796.804,893.6746,792.6548,889.8295,796.994,898.671" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[639ef18c41a3c4fcaf6f51785547f9f2]
+link ProductInfoPage to MainPage--><path codeLine="88" d="M821.712,898.671 C822.468,881.323 822.68,862.427 822.348,844.211 " fill="none" id="ProductInfoPage-to-MainPage" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="822.24,839.093,818.4311,848.1755,822.3457,844.0919,826.4293,848.0064,822.24,839.093" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[25020a90f13101429b2a3b7f656ba786]
+@startuml
+!theme plain
+
+interface IProductSource<T> {
+    GetData(barcode:string) : Task<T>
+}
+
+class Product
+{
+
+    + ProductName : string <<get>> <<set>>
+    + Barcode  : string <<get>> <<set>>
+    + Brand : string <<get>> <<set>>
+    + ProductImage : string <<get>> <<set>>
+    + Package : string <<get>> <<set>>
+    + EcoScore : string <<get>> <<set>>
+}
+
+
+
+class OpenFoodFactsApi <<static>> {
+    + {static} <<async>> GetProductDataByBarcode(barcode:string) : Task<ProductData>
+    + {static} <<async>> GetProductDataJsonByBarcode(barcode:string) : Task<string>
+}
+
+
+class ProductCache {
+    + {static} IsCachingEnabled : bool <<get>> <<set>>
+    + ProductCache(fallbackSource:IProductSource<string>)
+    + <<async>> GetData(barcode:string) : Task<string>
+}
+
+
+
+OpenFoodFactsApi - -> ProductCache
+ProductCache - -> OpenFoodFactsApi
+
+class ProductJsonParser {
+    + <<async>> GetData(barcode:string) : Task<ProductData>
+    + {static} Parse(jsonData:string, barcode:string) : ProductData
+}
+
+ProductCache - -> ProductJsonParser
+ProductJsonParser - -> ProductCache
+
+class ProductRequestStore {
+    + GetData(barcode:string) : Task<ProductData>
+    + {static} GetRequestedBarcodesSince(minimumDate:DateTime) : string[]
+    SaveRequestDate(barcode:string, dateTime:DateTime) : void
+}
+
+"IProductSource" "<string>" <|- - ProductCache
+"IProductSource" "<Product>" <|- - ProductRequestStore
+"IProductSource" "<Product>" <|- - ProductJsonParser
+
+
+ProductRequestStore - -> ProductJsonParser
+ProductJsonParser - -> ProductRequestStore
+
+
+
+class MainPage <<partial>> {
+    + MainPage(productSource:IProductSource<ProductData>)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    CachingSwitch_Toggled(sender:object, e:ToggledEventArgs) : void
+    <<async>> ShowTestProduct_Clicked(sender:object, e:EventArgs) : void
+    <<async>> ScanButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> LoadProduct(productId:string, minLoadingTime:uint) : Task<ProductData>
+    <<async>> LoadWasteStatisticsAsync() : Task
+}
+
+class ProductInfoPage <<partial>> {
+    + ProductInfoPage(product:Product)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    <<async>> LoadWasteData(wasteData:WasteCollection) : void
+    <<async>> EcoScoreInfoButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> AddWasteInfo_Clicked(sender:object, e:EventArgs) : void
+}
+ContentPage <|- - ProductInfoPage
+ContentPage <|- - MainPage
+
+
+
+
+ProductRequestStore - -> MainPage
+MainPage - -> ProductRequestStore
+
+MainPage - -> ProductInfoPage
+ProductInfoPage - -> MainPage
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+
+interface IProductSource<T> {
+    GetData(barcode:string) : Task<T>
+}
+
+class Product
+{
+
+    + ProductName : string <<get>> <<set>>
+    + Barcode  : string <<get>> <<set>>
+    + Brand : string <<get>> <<set>>
+    + ProductImage : string <<get>> <<set>>
+    + Package : string <<get>> <<set>>
+    + EcoScore : string <<get>> <<set>>
+}
+
+
+
+class OpenFoodFactsApi <<static>> {
+    + {static} <<async>> GetProductDataByBarcode(barcode:string) : Task<ProductData>
+    + {static} <<async>> GetProductDataJsonByBarcode(barcode:string) : Task<string>
+}
+
+
+class ProductCache {
+    + {static} IsCachingEnabled : bool <<get>> <<set>>
+    + ProductCache(fallbackSource:IProductSource<string>)
+    + <<async>> GetData(barcode:string) : Task<string>
+}
+
+
+
+OpenFoodFactsApi - -> ProductCache
+ProductCache - -> OpenFoodFactsApi
+
+class ProductJsonParser {
+    + <<async>> GetData(barcode:string) : Task<ProductData>
+    + {static} Parse(jsonData:string, barcode:string) : ProductData
+}
+
+ProductCache - -> ProductJsonParser
+ProductJsonParser - -> ProductCache
+
+class ProductRequestStore {
+    + GetData(barcode:string) : Task<ProductData>
+    + {static} GetRequestedBarcodesSince(minimumDate:DateTime) : string[]
+    SaveRequestDate(barcode:string, dateTime:DateTime) : void
+}
+
+"IProductSource" "<string>" <|- - ProductCache
+"IProductSource" "<Product>" <|- - ProductRequestStore
+"IProductSource" "<Product>" <|- - ProductJsonParser
+
+
+ProductRequestStore - -> ProductJsonParser
+ProductJsonParser - -> ProductRequestStore
+
+
+
+class MainPage <<partial>> {
+    + MainPage(productSource:IProductSource<ProductData>)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    CachingSwitch_Toggled(sender:object, e:ToggledEventArgs) : void
+    <<async>> ShowTestProduct_Clicked(sender:object, e:EventArgs) : void
+    <<async>> ScanButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> LoadProduct(productId:string, minLoadingTime:uint) : Task<ProductData>
+    <<async>> LoadWasteStatisticsAsync() : Task
+}
+
+class ProductInfoPage <<partial>> {
+    + ProductInfoPage(product:Product)
+    MainPage_Appearing(sender:object, e:EventArgs) : void
+    <<async>> LoadWasteData(wasteData:WasteCollection) : void
+    <<async>> EcoScoreInfoButton_Clicked(sender:object, e:EventArgs) : void
+    <<async>> AddWasteInfo_Clicked(sender:object, e:EventArgs) : void
+}
+ContentPage <|- - ProductInfoPage
+ContentPage <|- - MainPage
+
+
+
+
+ProductRequestStore - -> MainPage
+MainPage - -> ProductRequestStore
+
+MainPage - -> ProductInfoPage
+ProductInfoPage - -> MainPage
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 12:40:07 UTC 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
