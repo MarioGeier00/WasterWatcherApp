@@ -2,4 +2,4 @@
 
 ## Use Case
 
-![](/WasteWatcherApp/WasteWatcher/WasteWatcherApp/UML/AppDataFlow.svg?raw=true)
+![](/WasteWatcherApp/WasteWatcherApp/UML/AppDataFlow.svg)
