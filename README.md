@@ -2,7 +2,7 @@
 This project aims at controlling your personal waste consumption and helps reduce CO2 emissions
 
 ### App architecture
-[App Data Flow UML Diagram](WasteWatcherApp/WasteWatcherApp/Readme.md)
+[App Data Flow UML Diagram](WasteWatcherApp/WasteWatcherApp/UML/Readme.md)
 
 ### Description
 The WasteWatcherApp is preferably a mobile application which allows the user to track the consumed waste.
