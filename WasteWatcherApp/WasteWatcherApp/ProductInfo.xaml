@@ -65,14 +65,14 @@
                     </StackLayout>
                 </Frame>
 
-                <Frame Margin="0, 4" x:Name="BrandContainer">
+                <Frame x:Name="BrandContainer">
                     <StackLayout>
                         <Label Text="Hersteller" FontSize="Title" />
                         <Label x:Name="Brand" />
                     </StackLayout>
                 </Frame>
 
-                <Frame Margin="0, 4" x:Name="BrandUnavailableContainer" IsVisible="False">
+                <Frame x:Name="BrandUnavailableContainer" IsVisible="False">
                     <StackLayout>
                         <Label Text="Hersteller" FontSize="Title" />
                         <Label Text="Keine Informationen" Opacity="0.8" />
